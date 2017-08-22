@@ -13,11 +13,14 @@
 	<img id="khipukamayuq-transparent" src="images/khipukamayuq-transparent.png" />
 	<a-asset-item id="mtl" src="blocks/grendizer/materials.mtl" />
 	<a-asset-item id="obj" src="blocks/grendizer/model.obj" />
+	<a-asset-item id="diamond-mtl" src="blocks/diamond/materials.mtl" />
+	<a-asset-item id="diamond-obj" src="blocks/diamond/model.obj" />	
       </a-assets>
       <a-sky id="image-360" radius="10" src="#prueba" />
       <a-curvedimage id="image-2d" src="#khipukamayuq" height="3.0" radius="5.7" theta-length="25" rotation="0 100 0" scale="0.8 0.8 0.8" position="0 2 -5" />
       <a-curvedimage id="image-2d-transparent" src="#khipukamayuq-transparent" height="3.0" radius="5.7" theta-length="25" rotation="0 100 0" scale="0.8 0.8 0.8" position="-3 1 1" />
-      <a-entity obj-model="obj: #obj; mtl: #mtl;" position="4 0 2" scale="2 2 2" rotation="0 40 0"/>
+      <a-entity obj-model="obj: #diamond-obj; mtl: #diamond-mtl;" position="1.3 -1 5" scale="10 10 10" />            
+      <a-entity obj-model="obj: #obj; mtl: #mtl;" position="0.5 0 0" scale="0.2 0.2 0.2" rotation="0 40 0"/>
     </a-scene>
   </body>
 </html>
