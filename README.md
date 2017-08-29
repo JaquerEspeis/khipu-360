@@ -1,6 +1,8 @@
 # Khipu 360
 Narrativa inmersiva de reconexión astral
 
+![Logo](images/khipu-360.jpg "Logo")
+
 Toda civilización ha ingeniado sistemas para guardar y compartir información de
 generación en generación; desde el habla, la escritura, y un montón de otras
 formas. Hoy en día son bits anidados en nuestras computadoras.
