@@ -1,4 +1,4 @@
-var teleport = document.getElementById("teleport");
+var teleport = document.getElementById("amulet");
 
 teleport.addEventListener("click", function() {
     console.log("click on teleport!");
