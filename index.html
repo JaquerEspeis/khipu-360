@@ -8,23 +8,41 @@
   <body>
     <a-scene>
       <a-assets>
-	<img id="prueba1" src="images/prueba1.jpg" />
-        <img id="prueba2" src="images/prueba2.jpg" />
-	<img id="khipukamayuq-transparent" src="images/khipukamayuq-transparent.png" />
-	<a-asset-item id="amulet-mtl" src="blocks/amulet/amulet.mtl" />
-	<a-asset-item id="amulet-obj" src="blocks/amulet/amulet.obj" />
+	<img id="prueba1" src="images/prueba1.jpg">
+        <img id="prueba2" src="images/prueba2.jpg">
+	<img id="khipukamayuq-transparent" src="images/khipukamayuq-transparent.png">
+	<a-asset-item id="amulet-mtl" src="blocks/amulet/amulet.mtl"></a-asset-item>
+	<a-asset-item id="amulet-obj" src="blocks/amulet/amulet.obj"></a-asset-item>
 	<audio id="prueba-audio" src="audios/No_Finger_Nails_-_04_-_Quipu.mp3" preload="auto"></audio>
       </a-assets>
-      <a-sky id="image-360-1" radius="10" src="#prueba1" />
-      <a-sky id="image-360-2" radius="10" src="#prueba2" opacity="0" />
+      <a-sky id="image-360-1" radius="10" src="#prueba1"></a-sky>
+      <a-sky id="image-360-2" radius="10" src="#prueba2" opacity="0"></a-sky>
       <a-image id="teleport" src="#khipukamayuq-transparent" height="3" position="-3 0 3" rotation="0 30 0">
-	<a-animation attribute="position" to="-3 1 -5" dur="10000" />
+	<a-animation id="khipukamayuq-animation" attribute="position"
+		     to="-3 1 -5" dur="10000">
+	</a-animation>
+        <a-entity id="amulet" obj-model="obj: #amulet-obj; mtl: #amulet-mtl;"
+		  position="0 0 0.5" scale="0.2 0.2 0.2" rotation="90 210 180"
+		  visible="false">
+          <a-animation attribute="visible" to="true"
+		       begin="khipukamayuqVisible">
+	  </a-animation>
+	</a-entity>
       </a-image>
-      <a-entity obj-model="obj: #amulet-obj; mtl: #amulet-mtl;" position="-2.8 1 -4.5" scale="0.2 0.2 0.2" rotation="90 210 180" opacity="0">
-	<a-animation attribute="opacity" to="1" delay="12000" dur="5000" />
-      </a-entity>
       <a-entity sound="src: #prueba-audio; autoplay: true"></a-entity>
+      <a-camera wasd-controls-enabled="true">
+        <a-cursor id="cursor">
+          <a-animation begin="click" easing="ease-in"
+		       attribute="scale" fill="backwards"
+		       from="0.1 0.1 0.1" to="1 1 1" dur="150">
+	  </a-animation>
+          <a-animation begin="cursor-fusing" easing="ease-in"
+		       attribute="scale" from="1 1 1" to="0.1 0.1 0.1"
+		       dur="1500">
+	  </a-animation>
+        </a-cursor>
+      </a-camera>
     </a-scene>
-    <script src="controller.js" />
+    <script src="controller.js"></script>    
   </body>
 </html>
