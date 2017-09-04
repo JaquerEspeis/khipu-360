@@ -4,24 +4,40 @@
     <meta charset="utf-8">
     <title>Khipu 360</title>
     <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+    <script src="scripts/aframe-gif-shader.js"></script>  
   </head>
   <body>
     <a-scene>
       <a-assets>
+	<img id="azotea" src="images/e03_azotea.jpg">
 	<img id="prueba1" src="images/prueba1.jpg">
         <img id="prueba2" src="images/prueba2.jpg">
 	<img id="khipukamayuq-transparent" src="images/khipukamayuq-transparent.png">
-	<a-asset-item id="amulet-mtl" src="blocks/amulet/amulet.mtl"></a-asset-item>
-	<a-asset-item id="amulet-obj" src="blocks/amulet/amulet.obj"></a-asset-item>
-	<audio id="prueba-audio" src="audios/No_Finger_Nails_-_04_-_Quipu.mp3" preload="auto"></audio>
+	<a-asset-item id="amulet-model" src="models/amulet/amulet_1set.glb"></a-asset-item>
+	<audio id="audio1" src="audios/escena_01.mp3" preload="auto"></audio>
       </a-assets>
-      <a-sky id="image-360-1" radius="10" src="#prueba1"></a-sky>
+      <a-sky id="image-360-1" radius="10" src="#azotea"></a-sky>
       <a-sky id="image-360-2" radius="10" src="#prueba2" opacity="0"></a-sky>
-      <a-image id="teleport" src="#khipukamayuq-transparent" height="3" position="-3 0 3" rotation="0 30 0">
+      <a-entity position="2 0 -4">
+	<a-entity geometry="primitive: plane; height: 5; width: 3"
+		  material="side: front; src:images/front_kkamayuq.png; transparent: true">
+	</a-entity>
+	<a-entity geometry="primitive: plane; height: 5; width: 3"
+		  material="side: back; src: images/back_kkamayuq.png; transparent: true">
+	</a-entity>
+	<a-animation attribute="rotation"
+		   dur="10000" fill="forwards" to="0 360 0"
+		   repeat="indefinite"
+	</a-animation>
+      </a-entity>
+      <a-entity position="-1 0 -4" geometry="primitive: plane; height: 4"
+		material="shader: gif; src:url(images/wink_coni2.gif); transparent: true; autoplay: true">  
+      </a-entity>
+      <a-image src="#khipukamayuq-transparent" height="3" position="-3 0 3" rotation="0 30 0">
 	<a-animation id="khipukamayuq-animation" attribute="position"
 		     to="-3 1 -5" dur="10000">
 	</a-animation>
-        <a-entity id="amulet" obj-model="obj: #amulet-obj; mtl: #amulet-mtl;"
+        <a-entity id="amulet" gltf-model="#amulet-model"
 		  position="0 0 0.5" scale="0.2 0.2 0.2" rotation="90 210 180"
 		  visible="false">
           <a-animation attribute="visible" to="true"
@@ -29,7 +45,7 @@
 	  </a-animation>
 	</a-entity>
       </a-image>
-      <a-entity sound="src: #prueba-audio; autoplay: true"></a-entity>
+      <a-entity sound="src: #audio1; autoplay: true"></a-entity>
       <a-camera wasd-controls-enabled="true">
         <a-cursor id="cursor">
           <a-animation begin="click" easing="ease-in"
@@ -43,6 +59,6 @@
         </a-cursor>
       </a-camera>
     </a-scene>
-    <script src="controller.js"></script>    
+    <script src="scripts/controller.js"></script>    
   </body>
 </html>
