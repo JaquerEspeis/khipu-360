@@ -1,6 +1,17 @@
 var camera = document.getElementById("camera");
 
+// Scene 1.
+var videoScene1 = document.getElementById("video-scene1");
+var aVideoScene1 = document.getElementById("a-video-scene1");
+
 // Scene 2.
+var skyMedialab = document.getElementById("sky-medialab");
+
+var imageAnaoScene2 = document.getElementById("image-anao-scene2");
+var imageAnapScene2 = document.getElementById("image-anap-scene2");
+var imageConiScene2 = document.getElementById("image-coni-scene2");
+var imageDanieScene2 = document.getElementById("image-danie-scene2");
+
 var teleportScene2 = document.getElementById("teleport-scene2");
 var soundBackgroundScene2 = document.getElementById("sound-background-scene2");
 var animationDoor = document.getElementById("animation-door");
@@ -17,19 +28,35 @@ var animationAmuletAppears = document.getElementById("amulet-appears");
 var animationAmuletDecends = document.getElementById("amulet-decends");
 var soundNarrativeScene3 = document.getElementById("sound-narrative-scene3");
 
+// Scene 1 actions.
+
+videoScene1.addEventListener('ended', function (evt) {
+    aVideoScene1.setAttribute("visible", "false");
+
+    skyMedialab.setAttribute("visible", "true");
+    
+    imageAnaoScene2.setAttribute("visible", "true");    
+    imageAnapScene2.setAttribute("visible", "true");    
+    imageConiScene2.setAttribute("visible", "true");    
+    imageDanieScene2.setAttribute("visible", "true");
+
+    soundBackgroundScene2.components.sound.playSound();
+    
+    teleportScene2.setAttribute("visible", "true");
+    var imageTeleportScene2 = document.getElementById("image-teleport-scene2");
+    imageTeleportScene2.emit("start");
+});
+
+// Scene 2 actions.
+
 teleportScene2.addEventListener("click", function() {
     console.log("click on teleport!");
-    var skyMedialab = document.getElementById("sky-medialab");
     skyMedialab.setAttribute("visible", "false");
     teleportScene2.setAttribute("visible", "false");
 
-    var imageAnaoScene2 = document.getElementById("image-anao-scene2");
     imageAnaoScene2.setAttribute("visible", "false");    
-    var imageAnapScene2 = document.getElementById("image-anap-scene2");
     imageAnapScene2.setAttribute("visible", "false");    
-    var imageConiScene2 = document.getElementById("image-coni-scene2");
     imageConiScene2.setAttribute("visible", "false");    
-    var imageDanieScene2 = document.getElementById("image-danie-scene2");
     imageDanieScene2.setAttribute("visible", "false");
 
     soundEffectScene2.components.sound.stopSound();
@@ -39,12 +66,12 @@ teleportScene2.addEventListener("click", function() {
     soundBackgroundScene3.emit("start");
 
     camera.setAttribute("position", "0 2 1");
-    
-    var skyRooftop = document.getElementById("sky-rooftop");
+
+    var skyRooftop = document.getElementById("sky-rooftop");    
     skyRooftop.setAttribute("visible", "true");
 
-    var imageAnaoScene3 = document.getElementById("image-anao-scene3");
-    imageAnaoScene3.setAttribute("visible", "true");
+    var imageAnaoScene3 = document.getElementById("image-anao-scene3");    
+    imageAnaoScene3.setAttribute("visible", "true");    
     var imageAnapScene3 = document.getElementById("image-anap-scene3");
     imageAnapScene3.setAttribute("visible", "true");    
     var imageConiScene3 = document.getElementById("image-coni-scene3");
@@ -55,8 +82,6 @@ teleportScene2.addEventListener("click", function() {
     var khipukamayuq = document.getElementById("khipukamayuq");
     khipukamayuq.emit("start");
 });
-
-// Scene 2 actions.
 
 /*
  * After 3 seconds, the door starts making sounds.

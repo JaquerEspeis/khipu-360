@@ -5,10 +5,13 @@
     <title>Khipu 360</title>
     <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
     <script src="scripts/aframe-gif-shader.js"></script>
+    <script src="scripts/glow.js"></script>
   </head>
   <body>
     <a-scene>
       <a-assets>
+	<!-- Videos. -->
+	<video id="video-scene1" src="videos/scene1.mp4" autoplay></video>
 	<!-- 360 images. -->
 	<img id="image-medialab" src="images/360/medialab.jpg">
 	<img id="image-rooftop" src="images/360/rooftop.jpg">
@@ -32,6 +35,8 @@
 
 	<!-- Models. -->
 	<a-asset-item id="amulet-model" src="models/amulet/amulet_1set.glb"></a-asset-item>
+	<a-asset-item id="amulet-obj" src="models/amulet/amulet.obj"></a-asset-item>
+	<a-asset-item id="amulet-mtl" src="models/amulet/amulet.mtl"></a-asset-item>
 	<!-- Background audios. -->
 	<audio id="audio-background-scene2" src="audios/background/scene2.mp3"></audio>	
 	<audio id="audio-background-scene3" src="audios/background/scene3.mp3"></audio>
@@ -56,14 +61,18 @@
 	  </a-animation>
         </a-cursor>
       </a-camera>
-
+      
+      <!-- Scene 1. -->
+      <a-video id="a-video-scene1" src="#video-scene1"
+	       width="30%" height="30%"></a-video>
+      
       <!-- Scene 2. -->
       <a-sky id="sky-medialab" radius="5" src="#image-medialab"
 	     rotation="0 -90 0"
-	     visible="true">
+	     visible="false">
       </a-sky>
       <a-sound id="sound-background-scene2" src="#audio-background-scene2"
-	       autoplay="true"
+	       autoplay="false"
 	       position="-3 -1 5">
 	<a-animation attribute="volume"
 		     dur="5000" from="1" to="0.1"
@@ -77,7 +86,7 @@
       <!-- Characters. -->
       <a-image id="image-anao-scene2" src="#anao-front" position="1 0 -1.75"
 	       height="2.5" width="0.75"
-	       visible="true">
+	       visible="false">
 	<a-animation attribute="position"
 		     to="2 -1 0"
 		     begin="walk"
@@ -96,7 +105,7 @@
       </a-image>	
       <a-image id="image-anap-scene2" src="#anap-front" position="1.25 0 -0.75"
 	       height="2.5" width="0.75"
-	       visible="true">
+	       visible="false">
 	<a-animation attribute="position"
 		     to="1 -1 0"
 		     begin="walk"
@@ -115,7 +124,7 @@
       </a-image>
       <a-image id="image-coni-scene2" src="#coni-front" position="-0.75 0 -1.5"
 	       height="2" width="0.75"
-	       visible="true">
+	       visible="false">
 	<a-animation attribute="position"
 		     to="0 -1 0"
 		     begin="walk"
@@ -134,7 +143,7 @@
       </a-image>
       <a-image id="image-danie-scene2" src="#danie-front" position="-2 0 1"
 	       height="2" width="0.75"
-	       visible="true">
+	       visible="false">
 	<a-animation attribute="position"
 		     to="-1 -1 0"
 		     begin="walk"
@@ -152,16 +161,17 @@
 	</a-animation>		  
       </a-image>
       <!-- Teleport. -->
-      <a-entity id="teleport-scene2" transparent="true">
-	<a-image  src="#img-teleport"
-		  position="3.5 0.5 0"
-		  rotation="0 70 0" 
-		  opacity="0">
+      <a-entity id="teleport-scene2" transparent="true" visible="false">
+	<a-image id="image-teleport-scene2" src="#img-teleport"
+		 position="3.5 0.5 0"
+		 rotation="0 70 0" 
+		 opacity="0">
 	  <a-animation id="animation-door-delay" attribute="opacity"
-		       to="0" dur="3000">
+		       to="0" dur="3000"
+		       begin="start">
 	  </a-animation>
 	  <a-animation id="animation-door" attribute="opacity"
-		       delay="3000" dur="3000" to="1">
+		       begin="start" delay="3000" dur="3000" to="1">
 	  </a-animation>			
 	</a-image> 
 	<a-sound id="sound-effect-scene2" src="#audio-effect-scene2"
@@ -235,7 +245,7 @@
 	</a-sound>
       </a-image>
       <!-- Teleport. -->
-      <a-entity id="amulet" gltf-model="#amulet-model"
+      <a-entity glow id="amulet"  obj-model="obj: #amulet-obj; mtl: #amulet-mtl"
 		position="0 4.5 -4.5" scale="0 0 0" rotation="90 0 360"
 		visible="true">
 	<a-animation id="amulet-delay" attribute="scale" to="0 0 0"
