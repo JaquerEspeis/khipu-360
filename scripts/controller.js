@@ -1,6 +1,8 @@
 var animationKhipukamayuqDelay = document.getElementById("animation-khipukamayuq-delay");
 var soundKhipukamayuq = document.getElementById("sound-khipukamayuq");
 var soundBackgroundScene3 = document.getElementById("sound-background-scene3");
+var amulet = document.getElementById("amulet");
+var animationAmuletAppears = document.getElementById("amulet-appears");
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -20,6 +22,14 @@ animationKhipukamayuqDelay.addEventListener("animationend", function() {
  */
 soundKhipukamayuq.addEventListener("sound-ended", function() {
     soundBackgroundScene3.emit("background-sound-raise-volume");
+    amulet.emit("voice-khipukamayuq-ended");
+});
+
+/*
+ * When the amulet appears, move it to the center of the girls.
+ */
+animationAmuletAppears.addEventListener("animationend", function() {
+    amulet.emit("amulet-appears-ended");
 });
 
 
@@ -33,8 +43,3 @@ teleport.addEventListener("click", function() {
     image_360_2.setAttribute("opacity", "1");
 });
 
-var khipukamayuqAnimation = document.getElementById("khipukamayuq-animation");
-
-khipukamayuqAnimation.addEventListener("animationend", function () {
-    document.querySelector('#amulet').emit("khipukamayuqVisible");
-});

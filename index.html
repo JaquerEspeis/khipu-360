@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Khipu 360</title>
     <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
-    <script src="scripts/aframe-gif-shader.js"></script>  
+    <script src="scripts/aframe-gif-shader.js"></script>
   </head>
   <body>
     <a-scene>
@@ -50,6 +50,9 @@
 	       autoplay="true"
 	       position="-3 -1 2">
 	<a-animation attribute="volume"
+		     dur="3000" from="0" to="1">
+	</a-animation>		
+	<a-animation attribute="volume"
 		     dur="5000" from="1" to="0.1"
 		     begin="background-sound-reduce-volume">
 	</a-animation>
@@ -82,11 +85,26 @@
 		     dur="5000" to="0">
         </a-animation>	
 	<a-animation id="animation-khipukamayuq" attribute="opacity"
-		     begin="5000" dur="5000" to="1">
+		     delay="5000" dur="5000" to="1">
         </a-animation>
-	<a-sound id="sound-khipukamayuq" src="#audio-khipukamayuq"
+	<a-sound id="sound-khipukamayuq" src="#audio-khipukamayuq">
 	</a-sound>
       </a-image>
+      <!-- Teleport -->
+      <a-entity id="amulet" gltf-model="#amulet-model"
+		position="0 4.5 -4.5" scale="0 0 0" rotation="90 0 360"
+		visible="false">
+	<a-animation attribute="visible" to="true"
+		     begin="voice-khipukamayuq-ended">
+	</a-animation>
+	<a-animation id="amulet-appears" attribute="scale" to="0.2 0.2 0.2"
+		     begin="voice-khipukamayuq-ended" dur="3000">
+	</a-animation>
+	<a-animation attribute="position" to="0 0 -1.5"
+		     begin="amulet-appears-ended" dur="3000">
+	</a-animation>	
+      </a-entity>
+
 
       
       <!--a-entity sound="src: #audio-narrative-scene3; autoplay: true"></a-entity -->
@@ -100,13 +118,6 @@
 	<a-animation id="khipukamayuq-animation" attribute="position"
 		     to="-3 1 -5" dur="10000">
 	</a-animation>
-        <a-entity id="amulet" gltf-model="#amulet-model"
-		  position="0 0 0.5" scale="0.2 0.2 0.2" rotation="90 210 180"
-		  visible="false">
-          <a-animation attribute="visible" to="true"
-		       begin="khipukamayuqVisible">
-	  </a-animation>
-	</a-entity>
       </a-image-->
     </a-scene>
     <script src="scripts/controller.js"></script>    
