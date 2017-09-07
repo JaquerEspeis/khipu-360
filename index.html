@@ -42,7 +42,7 @@
         </a-cursor>
       </a-camera>
       
-      <!-- Scene 3 -->
+      <!-- Scene 3. -->
       <a-sky id="sky-rooftop" radius="10" src="#image-rooftop"
 	     rotation="0 -95 0">
       </a-sky>
@@ -61,7 +61,7 @@
 		     begin="background-sound-raise-volume">
 	</a-animation>	
       </a-sound>
-      <!-- Characters -->
+      <!-- Characters. -->
       <a-image src="#anao-side" position="2 0 -2"
 	       height="3" width="1"
 	       rotation="0 -90 0">
@@ -90,25 +90,24 @@
 	<a-sound id="sound-khipukamayuq" src="#audio-khipukamayuq">
 	</a-sound>
       </a-image>
-      <!-- Teleport -->
+      <!-- Teleport. -->
       <a-entity id="amulet" gltf-model="#amulet-model"
 		position="0 4.5 -4.5" scale="0 0 0" rotation="90 0 360"
-		visible="false">
-	<a-animation attribute="visible" to="true"
-		     begin="voice-khipukamayuq-ended">
+		visible="true">
+	<a-animation id="amulet-delay" attribute="scale" to="0 0 0"
+		     begin="amulet-appears-started" dur="20000">
 	</a-animation>
 	<a-animation id="amulet-appears" attribute="scale" to="0.2 0.2 0.2"
-		     begin="voice-khipukamayuq-ended" dur="3000">
+		     begin="amulet-delay-ended">
 	</a-animation>
-	<a-animation attribute="position" to="0 0 -1.5"
+	<a-animation id="amulet-decends" attribute="position" to="0 0 -1.5"
 		     begin="amulet-appears-ended" dur="3000">
-	</a-animation>	
+	</a-animation>
       </a-entity>
-
-
-      
-      <!--a-entity sound="src: #audio-narrative-scene3; autoplay: true"></a-entity -->
-
+      <!-- Narrative. -->
+      <a-entity>
+	<a-sound id="sound-narrative-scene3" src="#audio-narrative-scene3">
+      </a-entity>
       
       <!--a-sky id="image-360-2" radius="10" src="#prueba2" opacity="0"></a-sky>
       <a-entity position="-1 0 -4" geometry="primitive: plane; height: 4"

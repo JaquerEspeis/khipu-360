@@ -2,18 +2,18 @@ var animationKhipukamayuqDelay = document.getElementById("animation-khipukamayuq
 var soundKhipukamayuq = document.getElementById("sound-khipukamayuq");
 var soundBackgroundScene3 = document.getElementById("sound-background-scene3");
 var amulet = document.getElementById("amulet");
+var animationAmuletDelay = document.getElementById("amulet-delay");
 var animationAmuletAppears = document.getElementById("amulet-appears");
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+var animationAmuletDecends = document.getElementById("amulet-decends");
+var soundNarrativeScene3 = document.getElementById("sound-narrative-scene3");
 
 /*
- * When the Khipukamayuq starts appearing, play his voice and reduce the
- * background volume.
+ * When the Khipukamayuq starts appearing, play his voice, reduce the
+ * background volume, and start the (delayed) amulet animation.
  */
 animationKhipukamayuqDelay.addEventListener("animationend", function() {
     soundKhipukamayuq.components.sound.playSound();
+    amulet.emit("amulet-appears-started");    
     soundBackgroundScene3.emit("background-sound-reduce-volume");
 });
 
@@ -21,17 +21,38 @@ animationKhipukamayuqDelay.addEventListener("animationend", function() {
  * When the Khipukamayuq voice ends, raise the background volume.
  */
 soundKhipukamayuq.addEventListener("sound-ended", function() {
-    soundBackgroundScene3.emit("background-sound-raise-volume");
+    //soundBackgroundScene3.emit("background-sound-raise-volume");
     amulet.emit("voice-khipukamayuq-ended");
 });
 
 /*
- * When the amulet appears, move it to the center of the girls.
+ * After 20 seconds of the Khipukamayuq voice, make the amulet visible.
+ */
+animationAmuletDelay.addEventListener("animationend", function() {
+    amulet.emit("amulet-delay-ended");    
+});
+
+/*
+ * After the amulet appears, move it to the center of the girls.
  */
 animationAmuletAppears.addEventListener("animationend", function() {
     amulet.emit("amulet-appears-ended");
 });
 
+/*
+ * When the amulet finishes the decend, start the narrative.
+ */
+animationAmuletDecends.addEventListener("animationend", function() {
+    soundNarrativeScene3.components.sound.playSound();
+//    soundBackgroundScene3.emit("background-sound-reduce-volume");
+});
+
+/*
+ * When the narrative ends, raise the background volume.
+ */	
+soundNarrativeScene3.addEventListener("sound-ended", function() {
+    soundBackgroundScene3.emit("background-sound-raise-volume");
+});
 
 var teleport = document.getElementById("amulet");
 
