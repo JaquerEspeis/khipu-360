@@ -11,22 +11,64 @@
       <a-assets>
 	<!-- 360 images. -->
 	<img id="image-rooftop" src="images/360/rooftop.jpg">
+	<!-- Character images -->
+	<img id="anap-side" src="images/characters/anap_side.png">
+	<img id="anao-side" src="images/characters/anao_side.png">
+	<img id="coni-side" src="images/characters/coni_side.png">
+	<img id="danie-side" src="images/characters/danie_side.png">
+	
 	<img id="khipukamayuq-transparent" src="images/khipukamayuq-transparent.png">
 	<a-asset-item id="amulet-model" src="models/amulet/amulet_1set.glb"></a-asset-item>
 	<!-- Background audios. -->
-	<audio id="audio-background-scene3" src="audios/background/scene3.mp3" autoplay></audio>
+	<audio id="audio-background-scene3" src="audios/background/scene3.mp3"></audio>
 	<!-- Narrative audios. -->
 	<audio id="audio-narrative-scene3" src="audios/narrative/scene3.mp3"></audio>
       </a-assets>
 
+      <a-camera wasd-controls-enabled="true" position="0 0 1">
+        <a-cursor id="cursor">
+          <a-animation begin="click" easing="ease-in"
+		       attribute="scale" fill="backwards" from="0.1
+		       0.1 0.1" to="1 1 1" dur="150">
+	  </a-animation>
+          <a-animation begin="cursor-fusing" easing="ease-in"
+		       attribute="scale" from="1 1 1" to="0.1 0.1 0.1"
+		       dur="1500">
+	  </a-animation>
+        </a-cursor>
+      </a-camera>
+      
       <!-- Scene 3 -->
-      <a-sky id="sky-rooftop" radius="10" src="#image-rooftop"></a-sky>
-      <a-entity sound="src: #audio-background-scene3; autoplay: true"></a-entity>
+      <a-sky id="sky-rooftop" radius="10" src="#image-rooftop"
+	     rotation="0 -95 0">
+      </a-sky>
+      <a-sound src="#audio-background-scene3" autoplay="true"
+	       position="-3 -1 2">
+      </a-sound>
+      <!-- Characters -->
+      <a-image src="#anao-side" position="2 0 -2"
+	       height="3" width="1"
+	       rotation="0 -90 0">
+      </a-image>	
+      <a-image src="#anap-side" position="2 0 -1"
+	       height="3" width="1"
+	       rotation="0 -100 0">
+      </a-image>
+      <a-image src="#coni-side" position="-2 0 -2"
+	       height="3" width="1"
+	       rotation="0 -80 0">
+      </a-image>
+      <a-image src="#danie-side" position="-2 0 -1"
+	       height="3" width="1"
+	       rotation="0 -70 0">
+      </a-image>
+
+      
       <!--a-entity sound="src: #audio-narrative-scene3; autoplay: true"></a-entity -->
 
       
       <a-sky id="image-360-2" radius="10" src="#prueba2" opacity="0"></a-sky>
-      <a-entity position="2 0 -4">
+      <!--a-entity position="2 0 -4">
 	<a-entity geometry="primitive: plane; height: 5; width: 3"
 		  material="side: front; src:images/front_kkamayuq.png; transparent: true">
 	</a-entity>
@@ -52,19 +94,7 @@
 		       begin="khipukamayuqVisible">
 	  </a-animation>
 	</a-entity>
-      </a-image>
-      <a-camera wasd-controls-enabled="true">
-        <a-cursor id="cursor">
-          <a-animation begin="click" easing="ease-in"
-		       attribute="scale" fill="backwards"
-		       from="0.1 0.1 0.1" to="1 1 1" dur="150">
-	  </a-animation>
-          <a-animation begin="cursor-fusing" easing="ease-in"
-		       attribute="scale" from="1 1 1" to="0.1 0.1 0.1"
-		       dur="1500">
-	  </a-animation>
-        </a-cursor>
-      </a-camera>
+      </a-image-->
     </a-scene>
     <script src="scripts/controller.js"></script>    
   </body>
