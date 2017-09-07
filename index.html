@@ -16,6 +16,8 @@
 	<img id="anao-side" src="images/characters/anao_side.png">
 	<img id="coni-side" src="images/characters/coni_side.png">
 	<img id="danie-side" src="images/characters/danie_side.png">
+
+	<img id="khipukamayuq-front" src="images/characters/khipukamayuq_front.png">
 	
 	<img id="khipukamayuq-transparent" src="images/khipukamayuq-transparent.png">
 	<a-asset-item id="amulet-model" src="models/amulet/amulet_1set.glb"></a-asset-item>
@@ -62,24 +64,20 @@
 	       height="3" width="1"
 	       rotation="0 -70 0">
       </a-image>
+      <a-image src="#khipukamayuq-front" position="0 5 -5"
+	       height="3" width="1"
+	       opacity="0">
+	<a-animation attribute="opacity"
+		     delay="5000" dur="5000" to="1"
+	</a-animation>
+      </a-image>
+
 
       
       <!--a-entity sound="src: #audio-narrative-scene3; autoplay: true"></a-entity -->
 
       
-      <a-sky id="image-360-2" radius="10" src="#prueba2" opacity="0"></a-sky>
-      <!--a-entity position="2 0 -4">
-	<a-entity geometry="primitive: plane; height: 5; width: 3"
-		  material="side: front; src:images/front_kkamayuq.png; transparent: true">
-	</a-entity>
-	<a-entity geometry="primitive: plane; height: 5; width: 3"
-		  material="side: back; src: images/back_kkamayuq.png; transparent: true">
-	</a-entity>
-	<a-animation attribute="rotation"
-		   dur="10000" fill="forwards" to="0 360 0"
-		   repeat="indefinite"
-	</a-animation>
-      </a-entity>
+      <!--a-sky id="image-360-2" radius="10" src="#prueba2" opacity="0"></a-sky>
       <a-entity position="-1 0 -4" geometry="primitive: plane; height: 4"
 		material="shader: gif; src:url(images/wink_coni2.gif); transparent: true; autoplay: true">  
       </a-entity>
