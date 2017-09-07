@@ -25,6 +25,8 @@
 	<img id="anao-side" src="images/characters/anao_side.png">
 	<img id="coni-side" src="images/characters/coni_side.png">
 	<img id="danie-side" src="images/characters/danie_side.png">
+	<!-- Character gifs -->
+	<img id="gif-coni-walk" src="gifs/coni_walk.gif">
 
 	<img id="khipukamayuq-front" src="images/characters/khipukamayuq_front.png">
 
@@ -67,6 +69,10 @@
 		     dur="5000" from="1" to="0.1"
 		     begin="background-sound-reduce-volume">
 	</a-animation>
+	<a-animation attribute="volume"
+		     dur="5000" from="0.1" to="1"
+		     begin="background-sound-raise-volume">
+	</a-animation>	
       </a-sound>
       <!-- Characters. -->
       <a-image id="image-anao-scene2" src="#anao-front" position="1 0 -1.75"
@@ -163,8 +169,8 @@
 	</a-sound>
       </a-entity>
 
-      <!--a-entity id="gif-anao-walk" position="1 0 7" geometry="primitive: plane; height: 4; width: 1.5"
-		material="shader: gif; src:url(gifs/anao_walk.gif); transparent: true; autoplay: true"
+      <!--a-entity id="gif-coni-walk" position="1 0 7" geometry="primitive: plane; height: 4; width: 1.5"
+		material="shader: gif; src:#gif-coni-walk; transparent: true; autoplay: true"
 		visible="true">
 	<a-animation attribute="position"
 		     to="1 0 11"

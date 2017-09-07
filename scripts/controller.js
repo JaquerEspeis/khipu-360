@@ -32,8 +32,8 @@ teleportScene2.addEventListener("click", function() {
     var imageDanieScene2 = document.getElementById("image-danie-scene2");
     imageDanieScene2.setAttribute("visible", "false");
 
-    soundBackgroundScene2.components.sound.stopSound();
     soundEffectScene2.components.sound.stopSound();
+    soundBackgroundScene2.components.sound.stopSound();    
 
     soundBackgroundScene3.components.sound.playSound();
     soundBackgroundScene3.emit("start");
@@ -85,6 +85,10 @@ animationDoor.addEventListener("animationend", function() {
     //var gifAnaoWalk = document.getElementById("gif-anao-walk");
     //gifAnaoWalk.setAttribute("visible", "true");
     //gifAnaoWalk.emit("walk")
+});
+
+soundEffectScene2.addEventListener("sound-ended", function() {
+    soundBackgroundScene2.emit("background-sound-raise-volume");
 });
 
 // Scene 3 actions.
