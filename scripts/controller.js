@@ -1,3 +1,12 @@
+var camera = document.getElementById("camera");
+
+// Scene 2.
+var teleportScene2 = document.getElementById("teleport-scene2");
+var soundBackgroundScene2 = document.getElementById("sound-background-scene2");
+var animationDoor = document.getElementById("animation-door");
+var soundEffectScene2 = document.getElementById("sound-effect-scene2");
+
+// Scene 3.
 var animationKhipukamayuqDelay = document.getElementById("animation-khipukamayuq-delay");
 var soundKhipukamayuq = document.getElementById("sound-khipukamayuq");
 var soundBackgroundScene3 = document.getElementById("sound-background-scene3");
@@ -6,6 +15,75 @@ var animationAmuletDelay = document.getElementById("amulet-delay");
 var animationAmuletAppears = document.getElementById("amulet-appears");
 var animationAmuletDecends = document.getElementById("amulet-decends");
 var soundNarrativeScene3 = document.getElementById("sound-narrative-scene3");
+
+teleportScene2.addEventListener("click", function() {
+    console.log("click on teleport!");
+    var skyMedialab = document.getElementById("sky-medialab");
+    skyMedialab.setAttribute("visible", "false");
+    teleportScene2.setAttribute("visible", "false");
+
+    var imageAnaoScene2 = document.getElementById("image-anao-scene2");
+    imageAnaoScene2.setAttribute("visible", "false");    
+    var imageAnapScene2 = document.getElementById("image-anap-scene2");
+    imageAnapScene2.setAttribute("visible", "false");    
+    var imageConiScene2 = document.getElementById("image-coni-scene2");
+    imageConiScene2.setAttribute("visible", "false");    
+    var imageDanieScene2 = document.getElementById("image-danie-scene2");
+    imageDanieScene2.setAttribute("visible", "false");
+
+    soundBackgroundScene2.components.sound.stopSound();
+    soundEffectScene2.components.sound.stopSound();
+
+    soundBackgroundScene3.components.sound.playSound();
+    soundBackgroundScene3.emit("start");
+
+    camera.setAttribute("position", "0 2 1");
+    
+    var skyRooftop = document.getElementById("sky-rooftop");
+    skyRooftop.setAttribute("visible", "true");
+
+    var imageAnaoScene3 = document.getElementById("image-anao-scene3");
+    imageAnaoScene3.setAttribute("visible", "true");
+    var imageAnapScene3 = document.getElementById("image-anap-scene3");
+    imageAnapScene3.setAttribute("visible", "true");    
+    var imageConiScene3 = document.getElementById("image-coni-scene3");
+    imageConiScene3.setAttribute("visible", "true");    
+    var imageDanieScene3 = document.getElementById("image-danie-scene3");
+    imageDanieScene3.setAttribute("visible", "true");
+
+    var khipukamayuq = document.getElementById("khipukamayuq");
+    khipukamayuq.emit("start");
+});
+
+// Scene 2 actions.
+
+/*
+ * After 3 seconds, the door starts making sounds.
+ */
+animationDoor.addEventListener("animationstart", function() {
+    soundBackgroundScene2.emit("background-sound-reduce-volume");
+    soundEffectScene2.components.sound.playSound();
+});
+
+animationDoor.addEventListener("animationend", function() {
+    var imageAnaoScene2 = document.getElementById("image-anao-scene2");
+    imageAnaoScene2.emit("walk");
+
+    var imageAnapScene2 = document.getElementById("image-anap-scene2");
+    imageAnapScene2.emit("walk");
+
+    var imageConiScene2 = document.getElementById("image-coni-scene2");
+    imageConiScene2.emit("walk");
+
+    var imageDanieScene2 = document.getElementById("image-danie-scene2");
+    imageDanieScene2.emit("walk");    
+    
+    //var gifAnaoWalk = document.getElementById("gif-anao-walk");
+    //gifAnaoWalk.setAttribute("visible", "true");
+    //gifAnaoWalk.emit("walk")
+});
+
+// Scene 3 actions.
 
 /*
  * When the Khipukamayuq starts appearing, play his voice, reduce the
@@ -53,14 +131,3 @@ animationAmuletDecends.addEventListener("animationend", function() {
 soundNarrativeScene3.addEventListener("sound-ended", function() {
     soundBackgroundScene3.emit("background-sound-raise-volume");
 });
-
-var teleport = document.getElementById("amulet");
-
-teleport.addEventListener("click", function() {
-    console.log("click on teleport!");
-    var image_360_1 = document.getElementById("image-360-1");
-    image_360_1.setAttribute("opacity", "0");
-    var image_360_2 = document.getElementById("image-360-2");
-    image_360_2.setAttribute("opacity", "1");
-});
-
