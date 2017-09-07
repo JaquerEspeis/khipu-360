@@ -4,6 +4,7 @@ var camera = document.getElementById("camera");
 var teleportScene2 = document.getElementById("teleport-scene2");
 var soundBackgroundScene2 = document.getElementById("sound-background-scene2");
 var animationDoor = document.getElementById("animation-door");
+var animationDoorDelay = document.getElementById("animation-door-delay");
 var soundEffectScene2 = document.getElementById("sound-effect-scene2");
 
 // Scene 3.
@@ -60,11 +61,14 @@ teleportScene2.addEventListener("click", function() {
 /*
  * After 3 seconds, the door starts making sounds.
  */
-animationDoor.addEventListener("animationstart", function() {
+animationDoorDelay.addEventListener("animationend", function() {
     soundBackgroundScene2.emit("background-sound-reduce-volume");
     soundEffectScene2.components.sound.playSound();
 });
 
+/*
+ * When the door starts making a sound, the girls walk towards it.
+ */
 animationDoor.addEventListener("animationend", function() {
     var imageAnaoScene2 = document.getElementById("image-anao-scene2");
     imageAnaoScene2.emit("walk");
