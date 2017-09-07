@@ -25,6 +25,8 @@
 	<audio id="audio-background-scene3" src="audios/background/scene3.mp3"></audio>
 	<!-- Narrative audios. -->
 	<audio id="audio-narrative-scene3" src="audios/narrative/scene3.mp3"></audio>
+	<!-- Character audios. -->
+	<audio id="audio-khipukamayuq" src="audios/characters/khipukamayuq.mp3"></audio>
       </a-assets>
 
       <a-camera wasd-controls-enabled="true" position="0 0 1">
@@ -44,8 +46,17 @@
       <a-sky id="sky-rooftop" radius="10" src="#image-rooftop"
 	     rotation="0 -95 0">
       </a-sky>
-      <a-sound src="#audio-background-scene3" autoplay="true"
+      <a-sound id="sound-background-scene3" src="#audio-background-scene3"
+	       autoplay="true"
 	       position="-3 -1 2">
+	<a-animation attribute="volume"
+		     dur="5000" from="1" to="0.1"
+		     begin="background-sound-reduce-volume">
+	</a-animation>
+	<a-animation attribute="volume"
+		     dur="5000" from="0.1" to="1"
+		     begin="background-sound-raise-volume">
+	</a-animation>	
       </a-sound>
       <!-- Characters -->
       <a-image src="#anao-side" position="2 0 -2"
@@ -67,11 +78,15 @@
       <a-image src="#khipukamayuq-front" position="0 5 -5"
 	       height="3" width="1"
 	       opacity="0">
-	<a-animation attribute="opacity"
-		     delay="5000" dur="5000" to="1"
-	</a-animation>
+	<a-animation id="animation-khipukamayuq-delay" attribute="opacity"
+		     dur="5000" to="0">
+        </a-animation>	
+	<a-animation id="animation-khipukamayuq" attribute="opacity"
+		     begin="5000" dur="5000" to="1">
+        </a-animation>
+	<a-sound id="sound-khipukamayuq" src="#audio-khipukamayuq"
+	</a-sound>
       </a-image>
-
 
       
       <!--a-entity sound="src: #audio-narrative-scene3; autoplay: true"></a-entity -->

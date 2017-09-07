@@ -1,3 +1,28 @@
+var animationKhipukamayuqDelay = document.getElementById("animation-khipukamayuq-delay");
+var soundKhipukamayuq = document.getElementById("sound-khipukamayuq");
+var soundBackgroundScene3 = document.getElementById("sound-background-scene3");
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+/*
+ * When the Khipukamayuq starts appearing, play his voice and reduce the
+ * background volume.
+ */
+animationKhipukamayuqDelay.addEventListener("animationend", function() {
+    soundKhipukamayuq.components.sound.playSound();
+    soundBackgroundScene3.emit("background-sound-reduce-volume");
+});
+
+/*
+ * When the Khipukamayuq voice ends, raise the background volume.
+ */
+soundKhipukamayuq.addEventListener("sound-ended", function() {
+    soundBackgroundScene3.emit("background-sound-raise-volume");
+});
+
+
 var teleport = document.getElementById("amulet");
 
 teleport.addEventListener("click", function() {
