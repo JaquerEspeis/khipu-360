@@ -9,13 +9,22 @@
   <body>
     <a-scene>
       <a-assets>
-	<!-- 360 images -->
+	<!-- 360 images. -->
 	<img id="image-rooftop" src="images/360/rooftop.jpg">
 	<img id="khipukamayuq-transparent" src="images/khipukamayuq-transparent.png">
 	<a-asset-item id="amulet-model" src="models/amulet/amulet_1set.glb"></a-asset-item>
-	<audio id="audio1" src="audios/escena_01.mp3" preload="auto"></audio>
+	<!-- Background audios. -->
+	<audio id="audio-background-scene3" src="audios/background/scene3.mp3" autoplay></audio>
+	<!-- Narrative audios. -->
+	<audio id="audio-narrative-scene3" src="audios/narrative/scene3.mp3"></audio>
       </a-assets>
+
+      <!-- Scene 3 -->
       <a-sky id="sky-rooftop" radius="10" src="#image-rooftop"></a-sky>
+      <a-entity sound="src: #audio-background-scene3; autoplay: true"></a-entity>
+      <!--a-entity sound="src: #audio-narrative-scene3; autoplay: true"></a-entity -->
+
+      
       <a-sky id="image-360-2" radius="10" src="#prueba2" opacity="0"></a-sky>
       <a-entity position="2 0 -4">
 	<a-entity geometry="primitive: plane; height: 5; width: 3"
@@ -44,7 +53,6 @@
 	  </a-animation>
 	</a-entity>
       </a-image>
-      <a-entity sound="src: #audio1; autoplay: true"></a-entity>
       <a-camera wasd-controls-enabled="true">
         <a-cursor id="cursor">
           <a-animation begin="click" easing="ease-in"
