@@ -18,6 +18,8 @@
 
 	<!-- Teleport. -->
 	<img id="img-teleport" src="images/teleport.png">
+	<img id="img-amulet-front" src="images/amulet_front.png">
+	<img id="img-amulet-back" src="images/amulet_back.png">
 	<!-- Character images -->
 	<img id="anap-front" src="images/characters/anap_front.png">
 	<img id="anao-front" src="images/characters/anao_front.png">
@@ -33,10 +35,6 @@
 
 	<img id="khipukamayuq-front" src="images/characters/khipukamayuq_front.png">
 
-	<!-- Models. -->
-	<a-asset-item id="amulet-model" src="models/amulet/amulet_1set.glb"></a-asset-item>
-	<a-asset-item id="amulet-obj" src="models/amulet/amulet.obj"></a-asset-item>
-	<a-asset-item id="amulet-mtl" src="models/amulet/amulet.mtl"></a-asset-item>
 	<!-- Background audios. -->
 	<audio id="audio-background-scene2" src="audios/background/scene2.mp3"></audio>	
 	<audio id="audio-background-scene3" src="audios/background/scene3.mp3"></audio>
@@ -245,9 +243,15 @@
 	</a-sound>
       </a-image>
       <!-- Teleport. -->
-      <a-entity glow id="amulet"  obj-model="obj: #amulet-obj; mtl: #amulet-mtl"
-		position="0 4.5 -4.5" scale="0 0 0" rotation="90 0 360"
+      <a-entity id="amulet" position="0 4.5 -4.5"
+		scale="0 0 0" rotation="90 0 360"
 		visible="true">
+	<a-entity geometry="primitive: plane; height: 4; width: 4"
+		  material="side: front; src: #img-amulet-front; transparent: true">
+	</a-entity>
+	<a-entity glow geometry="primitive: plane; height: 4; width: 4"
+		  material="side: back; src: #img-amulet-back; transparent: true">
+	</a-entity>
 	<a-animation id="amulet-delay" attribute="scale" to="0 0 0"
 		     begin="amulet-appears-started" dur="20000">
 	</a-animation>
@@ -255,6 +259,9 @@
 		     begin="amulet-delay-ended">
 	</a-animation>
 	<a-animation id="amulet-decends" attribute="position" to="0 1 -1.5"
+		     begin="amulet-appears-ended" dur="3000">
+	</a-animation>
+	<a-animation attribute="rotation" to="180 180 0"
 		     begin="amulet-appears-ended" dur="3000">
 	</a-animation>
       </a-entity>
