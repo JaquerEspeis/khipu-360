@@ -1,5 +1,10 @@
 var camera = document.getElementById("camera");
 
+// Intro.
+
+var skyIntro = document.getElementById("sky-intro");
+var animationLastIntro = document.getElementById("animation-last-intro");
+
 // Scene 1.
 var videoScene1 = document.getElementById("video-scene1");
 var aVideoScene1 = document.getElementById("a-video-scene1");
@@ -28,9 +33,16 @@ var animationAmuletAppears = document.getElementById("amulet-appears");
 var animationAmuletDecends = document.getElementById("amulet-decends");
 var soundNarrativeScene3 = document.getElementById("sound-narrative-scene3");
 
+// Intro actions.
+
+animationLastIntro.addEventListener("animationend", function() {
+    aVideoScene1.setAttribute("visible", "true");
+    videoScene1.play();
+});
+
 // Scene 1 actions.
 
-videoScene1.addEventListener('ended', function (evt) {
+videoScene1.addEventListener("ended", function(evt) {
     aVideoScene1.setAttribute("visible", "false");
 
     skyMedialab.setAttribute("visible", "true");
@@ -45,6 +57,9 @@ videoScene1.addEventListener('ended', function (evt) {
     teleportScene2.setAttribute("visible", "true");
     var imageTeleportScene2 = document.getElementById("image-teleport-scene2");
     imageTeleportScene2.emit("start");
+
+    skyIntro.setAttribute("visible", "false");
+    camera.setAttribute("position", "0 0 4.5");
 });
 
 // Scene 2 actions.

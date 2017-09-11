@@ -10,11 +10,18 @@
   <body>
     <a-scene>
       <a-assets>
+	<!-- Intro. -->
+	<img id="img-headphones" src="images/intro/headphones.png">	
+	<img id="img-cardboard" src="images/intro/cardboard.png">
+	<img id="img-rotation" src="images/intro/rotation.png">
+	<img id="img-intro1" src="images/intro/intro1.jpg">
+	<img id="img-intro2" src="images/intro/intro2.jpg">
+	<img id="img-intro3" src="images/intro/intro3.jpg">	
 	<!-- Videos. -->
-	<video id="video-scene1" src="videos/scene1.mp4" autoplay></video>
+	<video id="video-scene1" src="videos/scene1.mp4"></video>
 	<!-- 360 images. -->
-	<img id="image-medialab" src="images/360/medialab.jpg">
-	<img id="image-rooftop" src="images/360/rooftop.jpg">
+	<img id="img-medialab" src="images/360/medialab.jpg">
+	<img id="img-rooftop" src="images/360/rooftop.jpg">
 
 	<!-- Teleport. -->
 	<img id="img-teleport" src="images/teleport.png">
@@ -47,7 +54,7 @@
       </a-assets>
 
       <a-camera id="camera" wasd-controls-enabled="true"
-		position="0 0 4.5">
+		position="0 0 0">
         <a-cursor id="cursor">
           <a-animation begin="click" easing="ease-in"
 		       attribute="scale" fill="backwards" from="0.1
@@ -59,13 +66,161 @@
 	  </a-animation>
         </a-cursor>
       </a-camera>
+
+      <!-- Intro. -->
+      <a-sky id="sky-intro" color="#000"></a-sky>
+  
+      <a-image src="#img-headphones" opacity="0" position="0 0 -6">
+	<a-animation 
+	  attribute="opacity" 
+	  from="0" 
+	  to="1" 
+	  dur="5000">
+	</a-animation>
+	<a-animation 
+	  attribute="opacity" 
+	  from="1" 
+	  to="0" 
+	  delay="5000"
+	  dur="5000">
+	</a-animation>
+	<a-animation attribute="visible" delay="10000" to="false"></a-animation>
+	<a-animation attribute="rotation"
+		     dur="5000"
+		     fill="forwards"
+		     to="0 360 0" 
+		     repeat="2"></a-animation>
+      </a-image>
+
+      <a-entity text="value: Ponete auriculares para una mejor experiencia; anchor: center; width: 5; color: white; opacity:0"
+		position="0 -1 -6"
+		visible="true">
+	<a-animation attribute="text.opacity" from="0" to="1" dur="5000">
+	</a-animation>
+	<a-animation attribute="text.opacity" from="1" to="0" 
+		     delay="5000" dur="5000">
+	</a-animation>
+	<a-animation attribute="visible" delay="10000" to="false"></a-animation>
+      </a-entity>
+
+      <a-image src="#img-cardboard" visible="false" opacity="0"  position="0 0 -6">
+	<a-animation attribute="visible" delay="10000" to="true"></a-animation>
+	<a-animation 
+	  attribute="opacity" 
+	  from="0" 
+	  to="1" 
+	  delay="10000"
+	  dur="5000">
+	</a-animation>
+	<a-animation 
+	  attribute="opacity" 
+	  from="1" 
+	  to="0" 
+	  delay="15000"
+	  dur="5000">
+	</a-animation>
+	<a-animation attribute="visible" delay="20000" to="false"></a-animation>
+	<a-animation attribute="rotation"
+		     delay="10000"
+		     dur="5000"
+		     fill="forwards"
+		     to="0 360 0"
+		     repeat="3">
+	</a-animation>
+      </a-image>
+
+      <a-entity text="value: Coloca tu teléfono en el Cardboard; anchor: center; width: 5; color: white; opacity: 0"
+		position="0 -1 -6"		
+		visible="false">
+	<a-animation attribute="visible" delay="10000" to="true"></a-animation>
+	<a-animation attribute="text.opacity" from="0" to="1" 
+		     delay="10000" dur="5000">
+	</a-animation>
+	<a-animation attribute="text.opacity" from="1" to="0" 
+		     delay="15000" dur="5000">
+	</a-animation>
+	<a-animation attribute="visible" delay="20000" to="false"></a-animation>
+      </a-entity>      
+
+      <a-image src="#img-rotation" visible="false"
+	       opacity="0"
+	       position="0 0 -6">
+	<a-animation attribute="visible" delay="20000" to="true"></a-animation>
+	<a-animation 
+	  attribute="opacity" 
+	  from="0" 
+	  to="1" 
+	  delay="20000"
+	  dur="5000">
+	</a-animation>
+	<a-animation 
+	  attribute="opacity" 
+	  from="1" 
+	  to="0" 
+	  delay="25000"
+	  dur="5000">
+	</a-animation>
+	<a-animation attribute="visible"
+		     delay="30000"
+		     to="false">
+	</a-animation>
+	<a-animation attribute="rotation"
+		     delay="20000"
+		     dur="5000"
+		     fill="forwards"
+		     to="0 360 0"
+		     repeat="3">
+	</a-animation>
+      </a-image>
+
+      <a-entity text="value: Vas a poder moverte libremente todo el tiempo; anchor: center; width: 5; color: white; opacity: 0"
+		position="0 -1 -6"
+		visible="false">
+	<a-animation attribute="visible" delay="20000" to="true"></a-animation>
+	<a-animation attribute="text.opacity" from="0" to="1" 
+		     delay="20000" dur="5000">
+	</a-animation>
+	<a-animation attribute="text.opacity" from="1" to="0" 
+		     delay="25000" dur="5000">
+	</a-animation>
+	<a-animation attribute="visible" delay="30000" to="false"></a-animation>
+      </a-entity>
+
+      <a-plane src="#img-intro1" opacity="0" visibility="false" width="5" height="2.8" position="0 2 -3">
+	<a-animation attribute="opacity" from="0" to="1" begin="30000" dur="5000">
+	</a-animation>
+	<a-animation attribute="opacity" from="1" to="0" 
+		     begin="35000" dur="5000">
+	</a-animation>
+	<a-animation attribute="visible" begin="40000" to="false"></a-animation>
+      </a-plane>
+
+      <a-plane src="#img-intro2" opacity="0" visibility="false" width="5" height="2.8" position="0 2 -3">
+	<a-animation attribute="opacity" from="0" to="1" begin="40000" dur="5000">
+	</a-animation>
+	<a-animation attribute="opacity" from="1" to="0" 
+		     begin="45000" dur="5000">
+	</a-animation>
+	<a-animation attribute="visible" begin="50000" to="false"></a-animation>
+      </a-plane>
+
+      <a-plane src="#img-intro3" opacity="0" visibility="false" width="5" height="2.8" position="0 2 -3">
+	<a-animation attribute="opacity" from="0" to="1" begin="50000" dur="5000">
+	</a-animation>
+	<a-animation attribute="opacity" from="1" to="0" 
+		     begin="55000" dur="5000">
+	</a-animation>
+	<a-animation id="animation-last-intro" attribute="visible" begin="60000" to="false"></a-animation>
+      </a-plane>
       
       <!-- Scene 1. -->
       <a-video id="a-video-scene1" src="#video-scene1"
-	       width="30%" height="30%"></a-video>
-      
+	       width="5" height="2.8" position="0 2 -3"
+	       visible="false">
+      </a-video>
+
       <!-- Scene 2. -->
-      <a-sky id="sky-medialab" radius="5" src="#image-medialab"
+      <a-sky id="sky-medialab" radius="5" src="#img-medialab"
 	     rotation="0 -90 0"
 	     visible="false">
       </a-sky>
@@ -82,78 +237,78 @@
 	</a-animation>	
       </a-sound>
       <!-- Characters. -->
-      <a-image id="image-anao-scene2" src="#anao-front" position="1 0 -1.75"
-	       height="2.5" width="0.75"
+      <a-image id="image-anao-scene2" src="#anao-front" position="1 -1 -1.75"
+	       height="3" width="1"
 	       visible="false">
 	<a-animation attribute="position"
-		     to="2 -1 0"
+		     to="1.85 -1 0"
 		     begin="walk"
 		     dur="3000">
 	</a-animation>
 	<a-animation attribute="height"
-		     to="4"
+		     to="3.5"
 		     begin="walk"
 		     dur="3000">
 	</a-animation>
 	<a-animation attribute="width"
-		     to="1.25"
+		     to="1.1"
 		     begin="walk"
 		     dur="3000">
 	</a-animation>
       </a-image>	
-      <a-image id="image-anap-scene2" src="#anap-front" position="1.25 0 -0.75"
-	       height="2.5" width="0.75"
+      <a-image id="image-anap-scene2" src="#anap-front" position="1.25 -1 -0.75"
+	       height="3" width="1"
 	       visible="false">
 	<a-animation attribute="position"
-		     to="1 -1 0"
+		     to="0.85 -1 0"
 		     begin="walk"
 		     dur="3000">
 	</a-animation>
 	<a-animation attribute="height"
-		     to="4"
+		     to="3.5"
 		     begin="walk"
 		     dur="3000">
 	</a-animation>
 	<a-animation attribute="width"
-		     to="1.25"
+		     to="1.1"
 		     begin="walk"
 		     dur="3000">
 	</a-animation>
       </a-image>
-      <a-image id="image-coni-scene2" src="#coni-front" position="-0.75 0 -1.5"
-	       height="2" width="0.75"
+      <a-image id="image-coni-scene2" src="#coni-front" position="-0.75 -1 -1.5"
+	       height="3" width="1"
 	       visible="false">
 	<a-animation attribute="position"
-		     to="0 -1 0"
+		     to="-0.85 -1 0"
 		     begin="walk"
 		     dur="3000">
 	</a-animation>	  
 	<a-animation attribute="height"
-		     to="4"
+		     to="3.5"
 		     begin="walk"
 		     dur="3000">
 	</a-animation>
 	<a-animation attribute="width"
-		     to="1.25"
+		     to="1.1"
 		     begin="walk"
 		     dur="3000">
 	</a-animation>
       </a-image>
-      <a-image id="image-danie-scene2" src="#danie-front" position="-2 0 1"
-	       height="2" width="0.75"
+      <a-image id="image-danie-scene2" src="#danie-front" position="-2 -1 1"
+	       height="3" width="1"
 	       visible="false">
 	<a-animation attribute="position"
-		     to="-1 -1 0"
+		     to="-1.15 -1 0"
 		     begin="walk"
 		     dur="3000">
 	</a-animation>
 	<a-animation attribute="height"
-		     to="4"
+		     to="3.5"
 		     begin="walk"
 		     dur="3000">
 	</a-animation>
 	<a-animation attribute="width"
-		     to="1.25"
+		     to="1.1"
 		     begin="walk"
 		     dur="3000">
 	</a-animation>		  
@@ -188,7 +343,7 @@
       </a-entity-->
 
       <!-- Scene 3. -->
-      <a-sky id="sky-rooftop" radius="10" src="#image-rooftop"
+      <a-sky id="sky-rooftop" radius="10" src="#img-rooftop"
 	     rotation="0 -95 0"
 	     visible="false">
       </a-sky>
