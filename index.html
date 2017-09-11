@@ -38,7 +38,10 @@
 	<img id="coni-side" src="images/characters/coni_side.png">
 	<img id="danie-side" src="images/characters/danie_side.png">
 	<!-- Character gifs -->
+	<img id="gif-anap-walk" src="gifs/anap_walk.gif">
+	<img id="gif-anao-walk" src="gifs/anao_walk.gif">		
 	<img id="gif-coni-walk" src="gifs/coni_walk.gif">
+	<img id="gif-danie-walk" src="gifs/danie_walk.gif">			
 
 	<img id="khipukamayuq-front" src="images/characters/khipukamayuq_front.png">
 
@@ -187,30 +190,30 @@
       </a-entity>
 
       <a-plane src="#img-intro1" opacity="0" visibility="false" width="5" height="2.8" position="0 2 -3">
-	<a-animation attribute="opacity" from="0" to="1" begin="30000" dur="5000">
+	<a-animation attribute="opacity" from="0" to="1" delay="30000" dur="5000">
 	</a-animation>
 	<a-animation attribute="opacity" from="1" to="0" 
-		     begin="35000" dur="5000">
+		     delay="35000" dur="5000">
 	</a-animation>
-	<a-animation attribute="visible" begin="40000" to="false"></a-animation>
+	<a-animation attribute="visible" delay="40000" to="false"></a-animation>
       </a-plane>
 
       <a-plane src="#img-intro2" opacity="0" visibility="false" width="5" height="2.8" position="0 2 -3">
-	<a-animation attribute="opacity" from="0" to="1" begin="40000" dur="5000">
+	<a-animation attribute="opacity" from="0" to="1" delay="40000" dur="5000">
 	</a-animation>
 	<a-animation attribute="opacity" from="1" to="0" 
-		     begin="45000" dur="5000">
+		     delay="45000" dur="5000">
 	</a-animation>
-	<a-animation attribute="visible" begin="50000" to="false"></a-animation>
+	<a-animation attribute="visible" delay="50000" to="false"></a-animation>
       </a-plane>
 
       <a-plane src="#img-intro3" opacity="0" visibility="false" width="5" height="2.8" position="0 2 -3">
-	<a-animation attribute="opacity" from="0" to="1" begin="50000" dur="5000">
+	<a-animation attribute="opacity" from="0" to="1" delay="50000" dur="5000">
 	</a-animation>
 	<a-animation attribute="opacity" from="1" to="0" 
-		     begin="55000" dur="5000">
+		     delay="55000" dur="5000">
 	</a-animation>
-	<a-animation id="animation-last-intro" attribute="visible" begin="60000" to="false"></a-animation>
+	<a-animation id="animation-last-intro" attribute="visible" delay="60000" to="false"></a-animation>
       </a-plane>
       
       <!-- Scene 1. -->
@@ -240,8 +243,34 @@
       <a-image id="image-anao-scene2" src="#anao-front" position="1 -1 -1.75"
 	       height="3" width="1"
 	       visible="false">
+	<a-animation attribute="visible"
+		     to="false"
+		     begin="walk">
+	</a-animation>	
 	<a-animation attribute="position"
-		     to="1.85 -1 0"
+		     to="1.70 -1 0.5"
+		     begin="walk">
+	</a-animation>
+	<a-animation attribute="height"
+		     to="3.5"
+		     begin="walk">
+	</a-animation>
+	<a-animation attribute="width"
+		     to="1.1"
+		     begin="walk">
+	</a-animation>
+      </a-image>
+
+      <a-entity id="entity-gif-anao-walk" position="1 -1 -1.75" geometry="primitive: plane; height: 3; width: 1"
+		material="shader: gif; src:#gif-anao-walk; transparent: true; autoplay: true; side: double"
+		rotation="0 180 0"
+		visible="false">
+	<a-animation attribute="visible"
+		     to="true"
+		     begin="walk">
+	</a-animation>
+	<a-animation attribute="position"
+		     to="1.70 -1 0.5"
 		     begin="walk"
 		     dur="3000">
 	</a-animation>
@@ -255,12 +284,30 @@
 		     begin="walk"
 		     dur="3000">
 	</a-animation>
-      </a-image>	
+      </a-entity>
+      
       <a-image id="image-anap-scene2" src="#anap-front" position="1.25 -1 -0.75"
 	       height="3" width="1"
 	       visible="false">
+	<a-animation attribute="visible"
+		     to="false"
+		     begin="walk">
+	</a-animation>
 	<a-animation attribute="position"
-		     to="0.85 -1 0"
+		     to="0.70 -1 0.5"
+		     begin="walk">
+	</a-animation>
+      </a-image>
+
+      <a-entity id="entity-gif-anap-walk" position="1.25 -1 -0.75" geometry="primitive: plane; height: 3; width: 1"
+		material="shader: gif; src:#gif-anap-walk; transparent: true; autoplay: true; side: double"
+		visible="false">
+	<a-animation attribute="visible"
+		     to="true"
+		     begin="walk">
+	</a-animation>
+	<a-animation attribute="position"
+		     to="0.70 -1 0.5"
 		     begin="walk"
 		     dur="3000">
 	</a-animation>
@@ -274,15 +321,34 @@
 		     begin="walk"
 		     dur="3000">
 	</a-animation>
-      </a-image>
-      <a-image id="image-coni-scene2" src="#coni-front" position="-0.75 -1 -1.5"
+      </a-entity>
+      
+      <a-image id="image-coni-scene2" src="#coni-front" position="-0.75 -1 -2.5"
 	       height="3" width="1"
 	       visible="false">
+        <a-animation attribute="visible"
+		     to="false"
+		     begin="walk">
+	</a-animation>
 	<a-animation attribute="position"
-		     to="-0.85 -1 0"
+		     to="-0.15 -1 0.5"
+		     begin="walk">
+	</a-animation>
+      </a-image>
+
+      <a-entity id="entity-gif-coni-walk" position="-0.75 -1 -2.5" geometry="primitive: plane; height: 3; width: 1"
+		material="shader: gif; src:#gif-coni-walk; transparent: true; autoplay: true; side: double"
+		rotation="0 180 0"
+		visible="false">
+	<a-animation attribute="visible"
+		     to="true"
+		     begin="walk">
+	</a-animation>
+	<a-animation attribute="position"
+		     to="-0.15 -1 0.5"
 		     begin="walk"
 		     dur="3000">
-	</a-animation>	  
+	</a-animation>
 	<a-animation attribute="height"
 		     to="3.5"
 		     begin="walk"
@@ -292,13 +358,41 @@
 		     to="1.1"
 		     begin="walk"
 		     dur="3000">
-	</a-animation>
-      </a-image>
+	</a-animation>	
+      </a-entity>
+      
       <a-image id="image-danie-scene2" src="#danie-front" position="-2 -1 1"
 	       height="3" width="1"
 	       visible="false">
+	<a-animation attribute="visible"
+		     to="false"
+		     begin="walk">
+	</a-animation>
 	<a-animation attribute="position"
-		     to="-1.15 -1 0"
+		     to="-1.15 -1 0.5"
+		     begin="walk">
+	</a-animation>
+	<a-animation attribute="height"
+		     to="3"
+		     begin="walk">
+	</a-animation>
+	<a-animation attribute="width"
+		     to="1"
+		     begin="walk">
+	</a-animation>	
+      </a-image>
+
+      <a-entity id="entity-gif-danie-walk" position="-2 -1 1" geometry="primitive: plane; height: 3; width: 1"
+		material="shader: gif; src:#gif-danie-walk; transparent: true; autoplay: true; side: double"
+		rotation="0 180 0"
+		visible="false">
+	<a-animation attribute="visible"
+		     to="true"
+		     begin="walk">
+	</a-animation>
+	<a-animation id="animation-walk"
+		     attribute="position"
+		     to="-1.15 -1 0.5"
 		     begin="walk"
 		     dur="3000">
 	</a-animation>
@@ -311,13 +405,14 @@
 		     to="1.1"
 		     begin="walk"
 		     dur="3000">
-	</a-animation>		  
-      </a-image>
+	</a-animation>	
+      </a-entity>
+      
       <!-- Teleport. -->
       <a-entity id="teleport-scene2" transparent="true" visible="false">
 	<a-image id="image-teleport-scene2" src="#img-teleport"
-		 position="3.5 0.5 0"
-		 rotation="0 70 0" 
+		 position="3.5 0 0"
+		 rotation="0 -10 0"
 		 opacity="0">
 	  <a-animation id="animation-door-delay" attribute="opacity"
 		       to="0" dur="3000"
@@ -331,16 +426,6 @@
 		 autoplay="false">
 	</a-sound>
       </a-entity>
-
-      <!--a-entity id="gif-coni-walk" position="1 0 7" geometry="primitive: plane; height: 4; width: 1.5"
-		material="shader: gif; src:#gif-coni-walk; transparent: true; autoplay: true"
-		visible="true">
-	<a-animation attribute="position"
-		     to="1 0 11"
-		     begin="walk"
-		     dur="3000">
-	</a-animation>
-      </a-entity-->
 
       <!-- Scene 3. -->
       <a-sky id="sky-rooftop" radius="10" src="#img-rooftop"

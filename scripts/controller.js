@@ -13,15 +13,19 @@ var aVideoScene1 = document.getElementById("a-video-scene1");
 var skyMedialab = document.getElementById("sky-medialab");
 
 var imageAnaoScene2 = document.getElementById("image-anao-scene2");
+var entityGifAnaoWalk = document.getElementById("entity-gif-anao-walk");
 var imageAnapScene2 = document.getElementById("image-anap-scene2");
+var entityGifAnapWalk = document.getElementById("entity-gif-anap-walk");
 var imageConiScene2 = document.getElementById("image-coni-scene2");
+var entityGifConiWalk = document.getElementById("entity-gif-coni-walk");
 var imageDanieScene2 = document.getElementById("image-danie-scene2");
-
+var entityGifDanieWalk = document.getElementById("entity-gif-danie-walk");
 var teleportScene2 = document.getElementById("teleport-scene2");
 var soundBackgroundScene2 = document.getElementById("sound-background-scene2");
 var animationDoor = document.getElementById("animation-door");
 var animationDoorDelay = document.getElementById("animation-door-delay");
 var soundEffectScene2 = document.getElementById("sound-effect-scene2");
+var animationWalk = document.getElementById("animation-walk");
 
 // Scene 3.
 var animationKhipukamayuqDelay = document.getElementById("animation-khipukamayuq-delay");
@@ -110,21 +114,34 @@ animationDoorDelay.addEventListener("animationend", function() {
  * When the door starts making a sound, the girls walk towards it.
  */
 animationDoor.addEventListener("animationend", function() {
-    var imageAnaoScene2 = document.getElementById("image-anao-scene2");
     imageAnaoScene2.emit("walk");
-
-    var imageAnapScene2 = document.getElementById("image-anap-scene2");
-    imageAnapScene2.emit("walk");
-
-    var imageConiScene2 = document.getElementById("image-coni-scene2");
-    imageConiScene2.emit("walk");
-
-    var imageDanieScene2 = document.getElementById("image-danie-scene2");
-    imageDanieScene2.emit("walk");    
+    entityGifAnaoWalk.emit("walk");
     
-    //var gifAnaoWalk = document.getElementById("gif-anao-walk");
-    //gifAnaoWalk.setAttribute("visible", "true");
-    //gifAnaoWalk.emit("walk")
+    imageAnapScene2.emit("walk");
+    entityGifAnapWalk.emit("walk");
+
+    imageConiScene2.emit("walk");
+    entityGifConiWalk.emit("walk");
+
+    imageDanieScene2.emit("walk");
+    entityGifDanieWalk.emit("walk");
+});
+
+/*
+ * When the girls reach the door, stop walking.
+ */
+animationWalk.addEventListener("animationend", function() {
+    entityGifAnaoWalk.setAttribute("visible", false);
+    imageAnaoScene2.setAttribute("visible", true);
+
+    entityGifAnapWalk.setAttribute("visible", false);
+    imageAnapScene2.setAttribute("visible", true);
+
+    entityGifConiWalk.setAttribute("visible", false);
+    imageConiScene2.setAttribute("visible", true);
+
+    entityGifDanieWalk.setAttribute("visible", false);
+    imageDanieScene2.setAttribute("visible", true);
 });
 
 soundEffectScene2.addEventListener("sound-ended", function() {
@@ -139,7 +156,7 @@ soundEffectScene2.addEventListener("sound-ended", function() {
  */
 animationKhipukamayuqDelay.addEventListener("animationend", function() {
     soundKhipukamayuq.components.sound.playSound();
-    amulet.emit("amulet-appears-started");    
+    amulet.emit("amulet-appears-started");
     soundBackgroundScene3.emit("background-sound-reduce-volume");
 });
 
