@@ -99,10 +99,12 @@ var imageTeleportScene5 = document.getElementById("image-teleport-scene5");
 var skyForrest = document.getElementById("sky-forrest");
 
 var soundBackgroundScene6 = document.getElementById("sound-background-scene6");
+var imageAll = document.getElementById("image-all");
 
 var soundNarrativeScene6 = document.getElementById("sound-narrative-scene6");
 
 var animationScene6NarrativeDelay = document.getElementById("animation-scene6-narrative-delay");
+
 
 
 
@@ -231,9 +233,10 @@ var runKhipu = function() {
         soundBackgroundScene6.emit("start");
 
         skyForrest.setAttribute("visible", "true");
+        imageAll.setAttribute("visible", "true");
     };
 
-    startIntro();
+    //startIntro();
 
     // For debugging.
     //startScene1();
@@ -241,7 +244,7 @@ var runKhipu = function() {
     //startScene3();
     //startScene4();
     //startScene5();
-    //startScene6();
+    startScene6();
 
     // Intro actions.
 
