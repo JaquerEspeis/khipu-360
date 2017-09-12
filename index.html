@@ -64,6 +64,7 @@
 	      <audio id="audio-narrative-scene3" src="audios/narrative/scene3.mp3"></audio>
 	      <audio id="audio-narrative-scene4" src="audios/narrative/scene4.mp3"></audio>
 	      <audio id="audio-narrative-scene5" src="audios/narrative/scene5.mp3"></audio>
+	      <audio id="audio-narrative-scene6" src="audios/narrative/scene6.mp3"></audio>
 	      <!-- Character audios. -->
 	      <audio id="audio-khipukamayuq" src="audios/characters/khipukamayuq.mp3"></audio>
       </a-assets>
@@ -759,6 +760,12 @@
 	             autoplay="false"
                loop="true"
                volume="0">
+        <a-animation id="animation-scene6-narrative-delay"
+                     attribute="autoplay"
+                     to="false"
+                     begin="start"
+                     dur="3000">
+        </a-animation>
 	      <a-animation attribute="volume"
 		                 dur="3000" from="0" to="1"
 		                 begin="start">
@@ -772,6 +779,12 @@
 		                 begin="background-sound-raise-volume">
 	      </a-animation>
       </a-sound>
+
+      <!-- Narrative. -->
+      <a-entity>
+	      <a-sound id="sound-narrative-scene6" src="#audio-narrative-scene6"
+		             autoplay="false">
+      </a-entity>
 
     </a-scene>
 

@@ -100,6 +100,11 @@ var skyForrest = document.getElementById("sky-forrest");
 
 var soundBackgroundScene6 = document.getElementById("sound-background-scene6");
 
+var soundNarrativeScene6 = document.getElementById("sound-narrative-scene6");
+
+var animationScene6NarrativeDelay = document.getElementById("animation-scene6-narrative-delay");
+
+
 
 var runKhipu = function() {
 
@@ -228,14 +233,14 @@ var runKhipu = function() {
         skyForrest.setAttribute("visible", "true");
     };
 
-    //startIntro();
+    startIntro();
 
     // For debugging.
     //startScene1();
     //startScene2();
     //startScene3();
     //startScene4();
-    startScene5();
+    //startScene5();
     //startScene6();
 
     // Intro actions.
@@ -468,4 +473,22 @@ var runKhipu = function() {
             startScene6();
         }
     });
+
+    // Scene 6 actions.
+
+    /*
+     * After 3 seconds of starting the scene, the narrative starts.
+     */
+    animationScene6NarrativeDelay.addEventListener("animationend", function() {
+        soundBackgroundScene6.emit("background-sound-reduce-volume");
+        soundNarrativeScene6.components.sound.playSound();
+    });
+
+    /*
+     * When the narrative ends, raise the background volume.
+     */
+    soundNarrativeScene6.addEventListener("sound-ended", function() {
+        soundBackgroundScene6.emit("background-sound-raise-volume");
+    });
+
 }
