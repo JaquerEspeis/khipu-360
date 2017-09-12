@@ -1,3 +1,22 @@
+// Scene 1.
+var videoScene1 = document.getElementById("video-scene1");
+var aVideoScene1 = document.getElementById("a-video-scene1");
+
+var start = function (){
+
+    runKhipu();
+    videoScene1.play();
+    videoScene1.pause();
+    var rootPlay = document.getElementById("root");
+    rootPlay.style.display = 'none';
+
+
+};
+
+
+
+var runKhipu = function(){
+
 var camera = document.getElementById("camera");
 
 // Intro.
@@ -192,7 +211,12 @@ animationAmuletDecends.addEventListener("animationend", function() {
 
 /*
  * When the narrative ends, raise the background volume.
- */	
+ */ 
 soundNarrativeScene3.addEventListener("sound-ended", function() {
     soundBackgroundScene3.emit("background-sound-raise-volume");
 });
+
+
+
+
+}
