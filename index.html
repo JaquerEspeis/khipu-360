@@ -25,6 +25,7 @@
 	      <!-- 360 images. -->
 	      <img id="img-medialab" src="images/360/medialab.jpg">
 	      <img id="img-rooftop" src="images/360/rooftop.jpg">
+        <img id="img-inventoria-scene4" src="images/360/inventoria-scene4.jpg">
 
 	      <!-- Teleport. -->
 	      <img id="img-teleport" src="images/teleport.png">
@@ -51,6 +52,7 @@
 	      <!-- Background audios. -->
 	      <audio id="audio-background-scene2" src="audios/background/scene2.mp3"></audio>
 	      <audio id="audio-background-scene3" src="audios/background/scene3.mp3"></audio>
+	      <audio id="audio-background-scene4" src="audios/background/scene4.mp3"></audio>
 	      <!-- Sound effects. -->
 	      <audio id="audio-effect-scene2" src="audios/effects/scene2-door.mp3"></audio>
 	      <!-- Narrative audios. -->
@@ -76,147 +78,254 @@
       <!-- Intro. -->
       <a-sky id="sky-intro" color="#000"></a-sky>
 
-      <a-image src="#img-headphones" opacity="0" position="0 1.6 -6">
-	      <a-animation
-	        attribute="opacity"
-	        from="0"
-	        to="1"
-	        dur="5000">
+      <a-image id="image-headphones" src="#img-headphones"
+               visible="false"
+               opacity="0" position="0 1.6 -6">
+        <a-animation attribute="visible"
+                     to="true"
+                     begin="start">
+        </a-animation>
+	      <a-animation id="animation-headphones-start"
+                     attribute="opacity"
+	                   from="0"
+	                   to="1"
+                     begin="start"
+	                   dur="5000">
 	      </a-animation>
-	      <a-animation
-	        attribute="opacity"
-	        from="1"
-	        to="0"
-	        delay="5000"
-	        dur="5000">
-	      </a-animation>
-	      <a-animation attribute="visible" delay="10000" to="false"></a-animation>
 	      <a-animation attribute="rotation"
+                     begin="start"
 		                 dur="5000"
 		                 fill="forwards"
 		                 to="0 360 0"
 		                 repeat="2">
 	      </a-animation>
-      </a-image>
-
-      <a-entity text="value: Ponete auriculares para una mejor experiencia; anchor: center; width: 5; color: white; opacity:0"
-		            position="0 0.6 -6"
-		            visible="true">
-	      <a-animation attribute="text.opacity" from="0" to="1" dur="5000">
-	      </a-animation>
-	      <a-animation attribute="text.opacity" from="1" to="0"
-		                 delay="5000" dur="5000">
-	      </a-animation>
-	      <a-animation attribute="visible" delay="10000" to="false"></a-animation>
-      </a-entity>
-
-      <a-image src="#img-cardboard" visible="false" opacity="0"  position="0 1.6 -6">
-	      <a-animation attribute="visible" delay="10000" to="true"></a-animation>
-	      <a-animation
-	        attribute="opacity"
-	        from="0"
-	        to="1"
-	        delay="10000"
-	        dur="5000">
-	      </a-animation>
-	      <a-animation
-	        attribute="opacity"
-	        from="1"
-	        to="0"
-	        delay="15000"
-	        dur="5000">
-	      </a-animation>
-	      <a-animation attribute="visible" delay="20000" to="false"></a-animation>
-	      <a-animation attribute="rotation"
-		                 delay="10000"
-		                 dur="5000"
-		                 fill="forwards"
-		                 to="0 360 0"
-		                 repeat="3">
-	      </a-animation>
-      </a-image>
-
-      <a-entity text="value: Coloca tu telefono en el Cardboard; anchor: center; width: 5; color: white; opacity:0"
-		            position="0 0.6 -6"
-		            visible="false">
-	      <a-animation attribute="visible" delay="10000" to="true"></a-animation>
-	      <a-animation attribute="text.opacity" from="0" to="1" delay="10000" dur="5000">
-	      </a-animation>
-	      <a-animation attribute="text.opacity" from="1" to="0"
-		                 delay="15000" dur="5000">
-	      </a-animation>
-	      <a-animation attribute="visible" delay="20000" to="false"></a-animation>
-      </a-entity>
-
-      <a-image src="#img-rotation" visible="false"
-	             opacity="0"
-	             position="0 1.6 -6">
-	      <a-animation attribute="visible" delay="20000" to="true"></a-animation>
-	      <a-animation
-	        attribute="opacity"
-	        from="0"
-	        to="1"
-	        delay="20000"
-	        dur="5000">
-	      </a-animation>
-	      <a-animation
-	        attribute="opacity"
-	        from="1"
-	        to="0"
-	        delay="25000"
-	        dur="5000">
+	      <a-animation id="animation-headphones-stop"
+                     attribute="opacity"
+	                   from="1"
+	                   to="0"
+	                   begin="stop"
+	                   dur="5000">
 	      </a-animation>
 	      <a-animation attribute="visible"
-		                 delay="30000"
-		                 to="false">
+                     begin="next"
+                     to="false">
+        </a-animation>
+      </a-image>
+
+      <a-entity id="text-headphones"
+                text="value: Ponete auriculares para una mejor experiencia; anchor: center; width: 5; color: white; opacity:0"
+		            position="0 0.6 -6"
+		            visible="false">
+        <a-animation attribute="visible"
+                     to="true"
+                     begin="start">
+        </a-animation>
+	      <a-animation attribute="text.opacity"
+                     from="0" to="1"
+                     begin="start"
+                     dur="5000">
+	      </a-animation>
+	      <a-animation attribute="text.opacity"
+                     from="1" to="0"
+		                 begin="stop" dur="5000">
+	      </a-animation>
+	      <a-animation attribute="visible"
+                     to="false"
+                     begin="next">
+        </a-animation>
+      </a-entity>
+
+      <a-image id="image-cardboard" src="#img-cardboard"
+               visible="false"
+               opacity="0"  position="0 1.6 -6">
+	      <a-animation attribute="visible"
+                     to="true"
+                     begin="start">
+        </a-animation>
+	      <a-animation id="animation-cardboard-start"
+	                   attribute="opacity"
+	                   from="0"
+	                   to="1"
+	                   begin="start"
+	                   dur="5000">
 	      </a-animation>
 	      <a-animation attribute="rotation"
-		                 delay="20000"
+		                 begin="start"
 		                 dur="5000"
 		                 fill="forwards"
 		                 to="0 360 0"
 		                 repeat="3">
 	      </a-animation>
+	      <a-animation id="animation-cardboard-stop"
+                     attribute="opacity"
+	                   from="1"
+	                   to="0"
+	                   begin="stop"
+	                   dur="5000">
+	      </a-animation>
+	      <a-animation attribute="visible"
+                     begin="next"
+                     to="false">
+        </a-animation>
       </a-image>
 
-      <a-entity text="value: Vas a poder moverte libremente todo el tiempo; anchor: center; width: 5; color: white; opacity: 0"
-		            position="0 0.6 -6"
+      <a-entity id="text-cardboard"
+                text="value: Coloca tu dispositivo en el Cardboard; anchor: center; width: 5; color: white; opacity:0"
+		            position="0.6 0.6 -6"
 		            visible="false">
-	      <a-animation attribute="visible" delay="20000" to="true"></a-animation>
-	      <a-animation attribute="text.opacity" from="0" to="1"
-		                 delay="20000" dur="5000">
+	      <a-animation attribute="visible"
+                     begin="start"
+                     to="true">
+        </a-animation>
+	      <a-animation attribute="text.opacity"
+                     from="0" to="1"
+                     begin="start"
+                     dur="5000">
 	      </a-animation>
-	      <a-animation attribute="text.opacity" from="1" to="0"
-		                 delay="25000" dur="5000">
+	      <a-animation attribute="text.opacity"
+                     from="1" to="0"
+		                 begin="stop"
+                     dur="5000">
 	      </a-animation>
-	      <a-animation attribute="visible" delay="30000" to="false"></a-animation>
+	      <a-animation attribute="visible"
+                     to="false"
+                     begin="next">
+        </a-animation>
       </a-entity>
 
-      <a-plane src="#img-intro1" opacity="0" visibility="false" width="5" height="2.8" position="0 2 -3">
-	      <a-animation attribute="opacity" from="0" to="1" delay="30000" dur="5000">
+      <a-image id="image-rotation"
+               src="#img-rotation"
+               visible="false"
+	             opacity="0"
+	             position="0 1.6 -6">
+	      <a-animation attribute="visible"
+                     to="true"
+                     begin="start" >
+        </a-animation>
+	      <a-animation id="animation-rotation-start"
+	                   attribute="opacity"
+	                   from="0"
+	                   to="1"
+	                   begin="start"
+	                   dur="5000">
 	      </a-animation>
-	      <a-animation attribute="opacity" from="1" to="0"
-		                 delay="35000" dur="5000">
+	      <a-animation attribute="rotation"
+		                 begin="start"
+		                 dur="5000"
+		                 fill="forwards"
+		                 to="0 360 0"
+		                 repeat="3">
 	      </a-animation>
-	      <a-animation attribute="visible" delay="40000" to="false"></a-animation>
+	      <a-animation id="animation-rotation-stop"
+	                   attribute="opacity"
+	                   from="1"
+	                   to="0"
+	                   begin="stop"
+	                   dur="5000">
+	      </a-animation>
+	      <a-animation attribute="visible"
+		                 begin="next"
+		                 to="false">
+	      </a-animation>
+      </a-image>
+
+      <a-entity id="text-rotation"
+                text="value: Vas a poder moverte libremente todo el tiempo; anchor: center; width: 5; color: white; opacity: 0"
+		            position="0 0.6 -6"
+		            visible="false">
+	      <a-animation attribute="visible"
+                     to="true"
+                     begin="start">
+        </a-animation>
+	      <a-animation attribute="text.opacity"
+                     from="0" to="1"
+		                 begin="start"
+                     dur="5000">
+	      </a-animation>
+	      <a-animation attribute="text.opacity"
+                     from="1" to="0"
+		                 begin="stop"
+                     dur="5000">
+	      </a-animation>
+	      <a-animation attribute="visible"
+                     to="false"
+                     begin="next">
+        </a-animation>
+      </a-entity>
+
+      <a-plane id="plane-intro1" src="#img-intro1"
+               opacity="0" visibility="false"
+               width="5" height="2.8"
+               position="0 2 -3">
+        <a-animation attribute="visibility"
+                     to="true"
+                     begin="start">
+        </a-animation>
+	      <a-animation id="animation-intro1-start"
+                     attribute="opacity" from="0" to="1"
+                     begin="start"
+                     dur="5000">
+	      </a-animation>
+	      <a-animation id="animation-intro1-stop"
+                     attribute="opacity"
+                     from="1" to="0"
+		                 begin="stop"
+                     dur="5000">
+	      </a-animation>
+	      <a-animation attribute="visible"
+                     begin="next" to="false">
+        </a-animation>
       </a-plane>
 
-      <a-plane src="#img-intro2" opacity="0" visibility="false" width="5" height="2.8" position="0 2 -3">
-	      <a-animation attribute="opacity" from="0" to="1" delay="40000" dur="5000">
+      <a-plane id="plane-intro2" src="#img-intro2"
+               opacity="0" visibility="false"
+               width="5" height="2.8" position="0 2 -3">
+        <a-animation attribute="visibility"
+                     to="true"
+                     begin="start">
+        </a-animation>
+	      <a-animation id="animation-intro2-start"
+                     attribute="opacity"
+                     from="0" to="1"
+                     begin="start"
+                     dur="5000">
 	      </a-animation>
-	      <a-animation attribute="opacity" from="1" to="0"
-		                 delay="45000" dur="5000">
+	      <a-animation id="animation-intro2-stop"
+                     attribute="opacity"
+                     from="1" to="0"
+		                 begin="stop"
+                     dur="5000">
 	      </a-animation>
-	      <a-animation attribute="visible" delay="50000" to="false"></a-animation>
+	      <a-animation attribute="visible"
+                     begin="next" to="false">
+        </a-animation>
       </a-plane>
 
-      <a-plane src="#img-intro3" opacity="0" visibility="false" width="5" height="2.8" position="0 2 -3">
-	      <a-animation attribute="opacity" from="0" to="1" delay="50000" dur="5000">
+      <a-plane id="plane-intro3" src="#img-intro3"
+               opacity="0"
+               visibility="false"
+               width="5" height="2.8"
+               position="0 2 -3">
+        <a-animation attribute="visibility"
+                     to="true"
+                     begin="start">
+        </a-animation>
+	      <a-animation id="animation-intro3-start"
+                     attribute="opacity"
+                     from="0" to="1"
+                     begin="start"
+                     dur="5000">
 	      </a-animation>
-	      <a-animation attribute="opacity" from="1" to="0"
-		                 delay="55000" dur="5000">
+	      <a-animation id="animation-intro3-stop"
+                     attribute="opacity"
+                     from="1" to="0"
+		                 begin="stop"
+                     dur="5000">
 	      </a-animation>
-	      <a-animation id="animation-last-intro" attribute="visible" delay="60000" to="false"></a-animation>
+	      <a-animation id="animation-last-intro"
+                     attribute="visible"
+                     begin="next" to="false">
+        </a-animation>
       </a-plane>
 
       <!-- Scene 1. -->
@@ -445,7 +554,8 @@
       </a-sky>
       <a-sound id="sound-background-scene3" src="#audio-background-scene3"
 	             autoplay="false"
-	             position="-3 -1 2">
+	             position="-3 -1 2"
+               volume="0">
 	      <a-animation attribute="volume"
 		                 dur="3000" from="0" to="1"
 		                 begin="start"¨>
@@ -515,12 +625,42 @@
 	      <a-animation attribute="rotation" to="180 180 0"
 		                 begin="amulet-appears-ended" dur="3000">
 	      </a-animation>
+	      <a-animation attribute="rotation"
+		                 begin="rotate"
+		                 dur="5000"
+		                 fill="forwards"
+		                 to="0 360 0"
+		                 repeat="indefinite">
+	      </a-animation>
       </a-entity>
       <!-- Narrative. -->
       <a-entity>
 	      <a-sound id="sound-narrative-scene3" src="#audio-narrative-scene3"
 		             autoplay="false">
       </a-entity>
+
+      <!-- Scene 4. -->
+      <a-sky id="sky-inventoria-scene4" radius="10" src="#img-inventoria-scene4"
+	           rotation="0 -95 0"
+	           visible="false">
+      </a-sky>
+      <a-sound id="sound-background-scene4" src="#audio-background-scene4"
+	             autoplay="false"
+	             position="0 0 0"
+               volume="0">
+	      <a-animation attribute="volume"
+		                 dur="3000" from="0" to="1"
+		                 begin="start"¨>
+	      </a-animation>
+	      <a-animation attribute="volume"
+		                 dur="5000" from="1" to="0.1"
+		                 begin="background-sound-reduce-volume">
+	      </a-animation>
+	      <a-animation attribute="volume"
+		                 dur="5000" from="0.1" to="1"
+		                 begin="background-sound-raise-volume">
+	      </a-animation>
+      </a-sound>
 
     </a-scene>
 
