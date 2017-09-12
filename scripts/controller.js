@@ -72,6 +72,11 @@ var soundNarrativeScene3 = document.getElementById("sound-narrative-scene3");
 var skyInventoriaScene4 = document.getElementById("sky-inventoria-scene4");
 
 var soundBackgroundScene4 = document.getElementById("sound-background-scene4");
+var soundNarrativeScene4 = document.getElementById("sound-narrative-scene4");
+
+var animationScene4NarrativeDelay = document.getElementById("animation-scene4-narrative-delay");
+var teleportScene4 = document.getElementById("teleport-scene4");
+var imageTeleportScene4 = document.getElementById("image-teleport-scene4");
 
 var start = function() {
     videoScene1.play();
@@ -81,6 +86,19 @@ var start = function() {
 
     runKhipu();
 };
+
+// Scene 5.
+var skyInventoriaScene5 = document.getElementById("sky-inventoria-scene5");
+
+var soundBackgroundScene5 = document.getElementById("sound-background-scene5");
+
+var teleportScene5 = document.getElementById("teleport-scene5");
+var imageTeleportScene5 = document.getElementById("image-teleport-scene5");
+
+// Scene 6.
+var skyForrest = document.getElementById("sky-forrest");
+
+var soundBackgroundScene6 = document.getElementById("sound-background-scene6");
 
 
 var runKhipu = function() {
@@ -95,11 +113,12 @@ var runKhipu = function() {
         videoScene1.play();
     };
 
-    var startScene2 = function() {
+    var stopScene1 = function() {
         teleportEnabled = false;
-
         aVideoScene1.setAttribute("visible", "false");
+    };
 
+    var startScene2 = function() {
         skyMedialab.setAttribute("visible", "true");
 
         imageAnaoScene2.setAttribute("visible", "true");
@@ -116,7 +135,7 @@ var runKhipu = function() {
         camera.setAttribute("position", "0 0 4.5");
     };
 
-    var startScene3 = function() {
+    var stopScene2 = function() {
         teleportEnabled = false;
 
         skyMedialab.setAttribute("visible", "false");
@@ -129,7 +148,9 @@ var runKhipu = function() {
 
         soundEffectScene2.components.sound.stopSound();
         soundBackgroundScene2.components.sound.stopSound();
+    };
 
+    var startScene3 = function() {
         soundBackgroundScene3.components.sound.playSound();
         soundBackgroundScene3.emit("start");
 
@@ -145,7 +166,7 @@ var runKhipu = function() {
         khipukamayuq.emit("start");
     };
 
-    var startScene4 = function() {
+    var stopScene3 = function() {
         teleportEnabled = false;
 
         skyRooftop.setAttribute("visible", "false");
@@ -158,16 +179,60 @@ var runKhipu = function() {
         imageDanieScene3.setAttribute("visible", "false");
 
         soundBackgroundScene3.components.sound.stopSound();
+    };
+
+    var startScene4 = function() {
+        soundBackgroundScene4.components.sound.playSound();
         soundBackgroundScene4.emit("start");
 
         skyInventoriaScene4.setAttribute("visible", "true");
     };
 
-    //startIntro();
+    var stopScene4 = function() {
+        teleportEnabled = false;
+
+        soundBackgroundScene4.components.sound.stopSound();
+        skyInventoriaScene4.setAttribute("visible", "false");
+        teleportScene4.setAttribute("visible", "false");
+    };
+
+    var startScene5 = function() {
+        soundBackgroundScene5.components.sound.playSound();
+        soundBackgroundScene5.emit("start");
+
+        skyInventoriaScene5.setAttribute("visible", "true");
+        imageTeleportScene5.setAttribute("visible", "true");
+        imageTeleportScene5.emit("rotate");
+
+        teleportEnabled = true;
+    };
+
+    var stopScene5 = function() {
+        teleportEnabled = false;
+
+        soundBackgroundScene5.components.sound.stopSound();
+        skyInventoriaScene5.setAttribute("visible", "false");
+        teleportScene5.setAttribute("visible", "false");
+    };
+
+    var startScene6 = function() {
+        camera.setAttribute("position", "0 0 4.5");
+
+        soundBackgroundScene6.components.sound.playSound();
+        soundBackgroundScene6.emit("start");
+
+        skyForrest.setAttribute("visible", "true");
+    };
+
+    startIntro();
+
+    // For debugging.
     //startScene1();
-    startScene2();
+    //startScene2();
     //startScene3();
     //startScene4();
+    //startScene5();
+    //startScene6();
 
     // Intro actions.
 
@@ -240,6 +305,7 @@ var runKhipu = function() {
     // Scene 1 actions.
 
     videoScene1.addEventListener("ended", function(evt) {
+        stopScene1();
         startScene2();
     });
 
@@ -248,6 +314,7 @@ var runKhipu = function() {
     teleportScene2.addEventListener("click", function() {
         console.log("click on teleport!");
         if (teleportEnabled == true) {
+            stopScene2();
             startScene3();
         }
     });
@@ -356,7 +423,45 @@ var runKhipu = function() {
     amulet.addEventListener("click", function() {
         console.log("click on teleport!");
         if (teleportEnabled == true) {
+            stopScene3();
             startScene4();
+        }
+    });
+
+    // Scene 4 actions.
+
+    /*
+     * After 3 seconds of starting the scene, the narrative starts.
+     */
+    animationScene4NarrativeDelay.addEventListener("animationend", function() {
+        soundBackgroundScene4.emit("background-sound-reduce-volume");
+        soundNarrativeScene4.components.sound.playSound();
+    });
+
+    /*
+     * When the narrative ends, raise the background volume.
+     */
+    soundNarrativeScene4.addEventListener("sound-ended", function() {
+        soundBackgroundScene4.emit("background-sound-raise-volume");
+        teleportEnabled = true;
+        imageTeleportScene4.emit("rotate");
+    });
+
+    imageTeleportScene4.addEventListener("click", function() {
+        console.log("click on teleport!");
+        if (teleportEnabled == true) {
+            stopScene4();
+            startScene5();
+        }
+    });
+
+    // Scene 5 actions.
+
+    imageTeleportScene5.addEventListener("click", function() {
+        console.log("click on teleport!");
+        if (teleportEnabled == true) {
+            stopScene5();
+            startScene6();
         }
     });
 }
