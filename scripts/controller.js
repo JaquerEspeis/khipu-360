@@ -73,18 +73,90 @@ var skyInventoriaScene4 = document.getElementById("sky-inventoria-scene4");
 var soundBackgroundScene4 = document.getElementById("sound-background-scene4");
 
 var start = function() {
-    runKhipu();
     videoScene1.play();
     videoScene1.pause();
     var rootPlay = document.getElementById("root");
     rootPlay.style.display = 'none';
 
-    imageHeadphones.emit("start");
-    textHeadphones.emit("start");
+    runKhipu();
 };
 
 
 var runKhipu = function() {
+
+    var startIntro = function() {
+      imageHeadphones.emit("start");
+      textHeadphones.emit("start");
+    };
+
+    var startScene1 = function() {
+        aVideoScene1.setAttribute("visible", "true");
+        videoScene1.play();
+    };
+
+    var startScene2 = function() {
+        aVideoScene1.setAttribute("visible", "false");
+
+        skyMedialab.setAttribute("visible", "true");
+
+        imageAnaoScene2.setAttribute("visible", "true");
+        imageAnapScene2.setAttribute("visible", "true");
+        imageConiScene2.setAttribute("visible", "true");
+        imageDanieScene2.setAttribute("visible", "true");
+
+        soundBackgroundScene2.components.sound.playSound();
+
+        teleportScene2.setAttribute("visible", "true");
+        imageTeleportScene2.emit("start");
+
+        skyIntro.setAttribute("visible", "false");
+        camera.setAttribute("position", "0 0 4.5");
+    };
+
+    var startScene3 = function() {
+        skyMedialab.setAttribute("visible", "false");
+        teleportScene2.setAttribute("visible", "false");
+
+        imageAnaoScene2.setAttribute("visible", "false");
+        imageAnapScene2.setAttribute("visible", "false");
+        imageConiScene2.setAttribute("visible", "false");
+        imageDanieScene2.setAttribute("visible", "false");
+
+        soundEffectScene2.components.sound.stopSound();
+        soundBackgroundScene2.components.sound.stopSound();
+
+        soundBackgroundScene3.components.sound.playSound();
+        soundBackgroundScene3.emit("start");
+
+        camera.setAttribute("position", "0 2 1");
+
+        skyRooftop.setAttribute("visible", "true");
+
+        imageAnaoScene3.setAttribute("visible", "true");
+        imageAnapScene3.setAttribute("visible", "true");
+        imageConiScene3.setAttribute("visible", "true");
+        imageDanieScene3.setAttribute("visible", "true");
+
+        khipukamayuq.emit("start");
+    };
+
+    var startScene4 = function() {
+        skyRooftop.setAttribute("visible", "false");
+        amulet.setAttribute("visible", "false");
+
+        khipukamayuq.setAttribute("visible", "false");
+        imageAnaoScene3.setAttribute("visible", "false");
+        imageAnapScene3.setAttribute("visible", "false");
+        imageConiScene3.setAttribute("visible", "false");
+        imageDanieScene3.setAttribute("visible", "false");
+
+        soundBackgroundScene3.components.sound.stopSound();
+        soundBackgroundScene4.emit("start");
+
+        skyInventoriaScene4.setAttribute("visible", "true");
+    };
+
+    startIntro();
 
     // Intro actions.
 
@@ -151,59 +223,20 @@ var runKhipu = function() {
     });
 
     animationLastIntro.addEventListener("animationend", function() {
-        aVideoScene1.setAttribute("visible", "true");
-        videoScene1.play();
+        startScene1();
     });
 
     // Scene 1 actions.
 
     videoScene1.addEventListener("ended", function(evt) {
-        aVideoScene1.setAttribute("visible", "false");
-
-        skyMedialab.setAttribute("visible", "true");
-
-        imageAnaoScene2.setAttribute("visible", "true");
-        imageAnapScene2.setAttribute("visible", "true");
-        imageConiScene2.setAttribute("visible", "true");
-        imageDanieScene2.setAttribute("visible", "true");
-
-        soundBackgroundScene2.components.sound.playSound();
-
-        teleportScene2.setAttribute("visible", "true");
-        imageTeleportScene2.emit("start");
-
-        skyIntro.setAttribute("visible", "false");
-        camera.setAttribute("position", "0 0 4.5");
+        startScene2();
     });
 
     // Scene 2 actions.
 
     teleportScene2.addEventListener("click", function() {
         console.log("click on teleport!");
-        skyMedialab.setAttribute("visible", "false");
-        teleportScene2.setAttribute("visible", "false");
-
-        imageAnaoScene2.setAttribute("visible", "false");
-        imageAnapScene2.setAttribute("visible", "false");
-        imageConiScene2.setAttribute("visible", "false");
-        imageDanieScene2.setAttribute("visible", "false");
-
-        soundEffectScene2.components.sound.stopSound();
-        soundBackgroundScene2.components.sound.stopSound();
-
-        soundBackgroundScene3.components.sound.playSound();
-        soundBackgroundScene3.emit("start");
-
-        camera.setAttribute("position", "0 2 1");
-
-        skyRooftop.setAttribute("visible", "true");
-
-        imageAnaoScene3.setAttribute("visible", "true");
-        imageAnapScene3.setAttribute("visible", "true");
-        imageConiScene3.setAttribute("visible", "true");
-        imageDanieScene3.setAttribute("visible", "true");
-
-        khipukamayuq.emit("start");
+        startScene3();
     });
 
     /*
@@ -307,18 +340,6 @@ var runKhipu = function() {
     amulet.addEventListener("click", function() {
         console.log("click on teleport!");
 
-        skyRooftop.setAttribute("visible", "false");
-        amulet.setAttribute("visible", "false");
-
-        khipukamayuq.setAttribute("visible", "false");
-        imageAnaoScene3.setAttribute("visible", "false");
-        imageAnapScene3.setAttribute("visible", "false");
-        imageConiScene3.setAttribute("visible", "false");
-        imageDanieScene3.setAttribute("visible", "false");
-
-        soundBackgroundScene3.components.sound.stopSound();
-        soundBackgroundScene4.emit("start");
-
-        skyInventoriaScene4.setAttribute("visible", "true");
+        startScene4();
     });
 }
