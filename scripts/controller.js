@@ -1,4 +1,5 @@
 var camera = document.getElementById("camera");
+var teleportEnabled = false;
 
 // Intro.
 
@@ -95,6 +96,8 @@ var runKhipu = function() {
     };
 
     var startScene2 = function() {
+        teleportEnabled = false;
+
         aVideoScene1.setAttribute("visible", "false");
 
         skyMedialab.setAttribute("visible", "true");
@@ -114,6 +117,8 @@ var runKhipu = function() {
     };
 
     var startScene3 = function() {
+        teleportEnabled = false;
+
         skyMedialab.setAttribute("visible", "false");
         teleportScene2.setAttribute("visible", "false");
 
@@ -141,6 +146,8 @@ var runKhipu = function() {
     };
 
     var startScene4 = function() {
+        teleportEnabled = false;
+
         skyRooftop.setAttribute("visible", "false");
         amulet.setAttribute("visible", "false");
 
@@ -156,7 +163,11 @@ var runKhipu = function() {
         skyInventoriaScene4.setAttribute("visible", "true");
     };
 
-    startIntro();
+    //startIntro();
+    //startScene1();
+    startScene2();
+    //startScene3();
+    //startScene4();
 
     // Intro actions.
 
@@ -236,7 +247,9 @@ var runKhipu = function() {
 
     teleportScene2.addEventListener("click", function() {
         console.log("click on teleport!");
-        startScene3();
+        if (teleportEnabled == true) {
+            startScene3();
+        }
     });
 
     /*
@@ -280,6 +293,7 @@ var runKhipu = function() {
         entityGifDanieWalk.setAttribute("visible", false);
         imageDanieScene2.setAttribute("visible", true);
 
+        teleportEnabled = true;
         imageTeleportScene2.emit("rotate");
     });
 
@@ -334,12 +348,15 @@ var runKhipu = function() {
      */
     soundNarrativeScene3.addEventListener("sound-ended", function() {
         soundBackgroundScene3.emit("background-sound-raise-volume");
+
+        teleportEnabled = true;
         amulet.emit("rotate")
     });
 
     amulet.addEventListener("click", function() {
         console.log("click on teleport!");
-
-        startScene4();
+        if (teleportEnabled == true) {
+            startScene4();
+        }
     });
 }
