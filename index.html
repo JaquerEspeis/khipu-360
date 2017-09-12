@@ -5,7 +5,6 @@
     <title>Khipu 360</title>
     <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
     <script src="scripts/aframe-gif-shader.js"></script>
-    <script src="scripts/glow.js"></script>
     <link href="styles/index.css"  rel="stylesheet" type="text/css">
  
   </head>
@@ -135,12 +134,11 @@
 	</a-animation>
       </a-image>
 
-      <a-entity text="value: Coloca tu teléfono en el Cardboard; anchor: center; width: 5; color: white; opacity: 0"
-		position="0 -1 -6"		
+      <a-entity text="value: Coloca tu telefono en el Cardboard; anchor: center; width: 5; color: white; opacity:0"
+		position="0 -1 -6"
 		visible="false">
-	<a-animation attribute="visible" delay="10000" to="true"></a-animation>
-	<a-animation attribute="text.opacity" from="0" to="1" 
-		     delay="10000" dur="5000">
+	<a-animation attribute="visible" delay="10000" to="true"></a-animation>	
+	<a-animation attribute="text.opacity" from="0" to="1" delay="10000" dur="5000">
 	</a-animation>
 	<a-animation attribute="text.opacity" from="1" to="0" 
 		     delay="15000" dur="5000">
@@ -412,7 +410,8 @@
       </a-entity>
       
       <!-- Teleport. -->
-      <a-entity id="teleport-scene2" transparent="true" visible="false">
+      <a-entity id="teleport-scene2"
+		transparent="true" visible="false">
 	<a-image id="image-teleport-scene2" src="#img-teleport"
 		 position="3.5 0 0"
 		 rotation="0 -10 0"
