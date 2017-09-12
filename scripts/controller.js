@@ -236,7 +236,7 @@ var runKhipu = function() {
         imageAll.setAttribute("visible", "true");
     };
 
-    //startIntro();
+    startIntro();
 
     // For debugging.
     //startScene1();
@@ -244,7 +244,7 @@ var runKhipu = function() {
     //startScene3();
     //startScene4();
     //startScene5();
-    startScene6();
+    //startScene6();
 
     // Intro actions.
 
