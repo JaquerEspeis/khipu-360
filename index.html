@@ -33,6 +33,7 @@
 	      <img id="img-teleport" src="images/teleport.png">
 	      <img id="img-amulet-front" src="images/amulet_front.png">
 	      <img id="img-amulet-back" src="images/amulet_back.png">
+	      <img id="img-khipu" src="images/khipu.png">
 	      <!-- Character images -->
 	      <img id="anap-front" src="images/characters/anap_front.png">
 	      <img id="anao-front" src="images/characters/anao_front.png">
@@ -649,7 +650,7 @@
       </a-entity>
 
       <!-- Scene 4. -->
-      <a-sky id="sky-inventoria-scene4" radius="10" src="#img-inventoria-scene4"
+      <a-sky id="sky-inventoria-scene4" radius="5" src="#img-inventoria-scene4"
 	           rotation="0 0 0"
 	           visible="false">
       </a-sky>
@@ -711,7 +712,7 @@
       </a-entity>
 
       <!-- Scene 5. -->
-      <a-sky id="sky-inventoria-scene5" radius="10" src="#img-inventoria-scene5"
+      <a-sky id="sky-inventoria-scene5" radius="5" src="#img-inventoria-scene5"
 	           visible="false">
       </a-sky>
       <a-sound id="sound-background-scene5" src="#audio-background-scene5"
@@ -735,8 +736,9 @@
       <!-- Teleport. -->
       <a-entity id="teleport-scene5"
 		            transparent="true">
-	      <a-image id="image-teleport-scene5" src="#img-teleport"
-		             position="1.5 1 -3"
+	      <a-image id="image-teleport-scene5" src="#img-khipu"
+                 scale="1.5 1.5 1.5"
+		             position="-2 -1 -4.5"
                  visible="false"
                  opacity="1">
 	        <a-animation attribute="rotation"

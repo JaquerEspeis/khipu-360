@@ -182,6 +182,8 @@ var runKhipu = function() {
     };
 
     var startScene4 = function() {
+        camera.setAttribute("position", "0 1.6 4.5");
+
         soundBackgroundScene4.components.sound.playSound();
         soundBackgroundScene4.emit("start");
 
@@ -197,6 +199,8 @@ var runKhipu = function() {
     };
 
     var startScene5 = function() {
+        camera.setAttribute("position", "0 1.6 4.5");
+
         soundBackgroundScene5.components.sound.playSound();
         soundBackgroundScene5.emit("start");
 
@@ -224,14 +228,14 @@ var runKhipu = function() {
         skyForrest.setAttribute("visible", "true");
     };
 
-    startIntro();
+    //startIntro();
 
     // For debugging.
     //startScene1();
     //startScene2();
     //startScene3();
     //startScene4();
-    //startScene5();
+    startScene5();
     //startScene6();
 
     // Intro actions.
