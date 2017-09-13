@@ -67,6 +67,7 @@
         <audio id="audio-background-scene6" src="audios/background/scene6.mp3"></audio>
 	      <!-- Sound effects. -->
 	      <audio id="audio-effect-scene2" src="audios/effects/scene2-door.mp3"></audio>
+        <audio id="audio-effect-drill" src="audios/effects/drill.mp3"></audio>
 	      <!-- Narrative audios. -->
 	      <audio id="audio-narrative-scene3" src="audios/narrative/scene3.mp3"></audio>
 	      <audio id="audio-narrative-scene4" src="audios/narrative/scene4.mp3"></audio>
@@ -606,6 +607,16 @@
 		            material="shader: gif; src:#gif-anap-drill; transparent: true; autoplay: true; side: double"
                 rotation="0 270 0"
 		            visible="false">
+	      <a-sound id="sound-effect-drill" src="#audio-effect-drill"
+                 loop="true"
+		             autoplay="false">
+          <a-animation attribute="volume"
+                       begin="start"
+                       dur="5000"
+                       from="0" to="1"
+                       repeat="indefinite">
+          </a-animation>
+	      </a-sound>
       </a-entity>
       <a-entity id="entity-gif-danie-writes" position="0.15 -0.1 -3" geometry="primitive: plane; height: 1.4; width: 0.5"
 		            material="shader: gif; src:#gif-danie-writes; transparent: true; autoplay: true; side: double"
@@ -673,7 +684,7 @@
       </a-sky>
       <a-sound id="sound-background-scene5" src="#audio-background-scene5"
 	             autoplay="false"
-               loop="false"
+               loop="true"
                volume="0">
         <a-animation id="animation-scene5-narrative-delay"
                      attribute="autoplay"
