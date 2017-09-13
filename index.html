@@ -663,10 +663,13 @@
       </a-entity>
 
       <!-- Teleport. -->
-      <a-entity id="teleport-scene4"
-		            transparent="true">
+      <a-entity id="teleport-scene4" glow="enabled: false; c: 0.3; p:3; scale: 1.1"
+                geometry="primitive: sphere; radius: 0.7" material="transparent: true; opacity: 0"
+                position="1.5 1 -2"
+                event-set__enter="_event: mouseenter; glow.enabled: true"
+                event-set__leave="_event: mouseleave; glow.enabled: false"
+		            transparent="true" visible="false">
 	      <a-image id="image-teleport-scene4" src="#img-teleport"
-                 position="1.5 1 -2"
                  visible="false"
                  opacity="0">
 	        <a-animation attribute="visible"

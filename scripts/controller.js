@@ -508,10 +508,12 @@ var runKhipu = function() {
     soundNarrativeScene4.addEventListener("sound-ended", function() {
         soundBackgroundScene4.emit("background-sound-raise-volume");
         teleportEnabled = true;
+        camera.setAttribute("target-indicator", "target: #teleport-scene4");
+        teleportScene4.setAttribute("visible", "true");
         imageTeleportScene4.emit("rotate");
     });
 
-    imageTeleportScene4.addEventListener("click", function() {
+    teleportScene4.addEventListener("click", function() {
         console.log("click on teleport!");
         if (teleportEnabled == true) {
             stopScene4();
