@@ -74,6 +74,8 @@ var skyInventoriaScene4 = document.getElementById("sky-inventoria-scene4");
 var soundBackgroundScene4 = document.getElementById("sound-background-scene4");
 var soundNarrativeScene4 = document.getElementById("sound-narrative-scene4");
 
+var entityGifDanieWrites = document.getElementById("entity-gif-danie-writes");
+
 var animationScene4NarrativeDelay = document.getElementById("animation-scene4-narrative-delay");
 var teleportScene4 = document.getElementById("teleport-scene4");
 var imageTeleportScene4 = document.getElementById("image-teleport-scene4");
@@ -193,10 +195,14 @@ var runKhipu = function() {
         soundBackgroundScene4.emit("start");
 
         skyInventoriaScene4.setAttribute("visible", "true");
+
+        entityGifDanieWrites.setAttribute("visible", "true");
     };
 
     var stopScene4 = function() {
         teleportEnabled = false;
+
+        entityGifDanieWrites.setAttribute("visible", "false");
 
         soundBackgroundScene4.components.sound.stopSound();
         skyInventoriaScene4.setAttribute("visible", "false");
@@ -234,9 +240,9 @@ var runKhipu = function() {
 
     // For debugging.
     //startScene1();
-    startScene2();
+    //startScene2();
     //startScene3();
-    //startScene4();
+    startScene4();
     //startScene5();
     //startScene6();
 

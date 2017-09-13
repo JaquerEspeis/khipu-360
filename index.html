@@ -53,6 +53,8 @@
 	      <img id="gif-coni-walk" src="gifs/coni_walk.gif">
 	      <img id="gif-danie-walk" src="gifs/danie_walk.gif">
 
+	      <img id="gif-danie-writes" src="gifs/danie_writes.gif">
+
 	      <img id="khipukamayuq-front" src="images/characters/khipukamayuq_front.png">
 
 	      <!-- Background audios. -->
@@ -569,7 +571,7 @@
 
       <!-- Scene 4. -->
       <a-sky id="sky-inventoria-scene4" radius="5" src="#img-inventoria-scene4"
-	           rotation="0 0 0"
+	           rotation="0 250 0"
 	           visible="false">
       </a-sky>
       <a-sound id="sound-background-scene4" src="#audio-background-scene4"
@@ -596,6 +598,13 @@
 		                 begin="background-sound-raise-volume">
 	      </a-animation>
       </a-sound>
+
+      <!-- Characters -->
+      <a-entity id="entity-gif-danie-writes" position="0.2 -0.40 -3.8" geometry="primitive: plane; height: 1.6; width: 0.5"
+		            material="shader: gif; src:#gif-danie-writes; transparent: true; autoplay: true; side: double"
+		            rotation="0 180 0"
+		            visible="false">
+      </a-entity>
 
       <!-- Narrative. -->
       <a-entity>
