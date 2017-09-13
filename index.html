@@ -635,7 +635,7 @@
         <a-animation id="animation-amulet-3-4" attribute="position"
                      dur="3000"
                      begin="start"
-                     to="1.9 3.5 -2.7">
+                     to="1.9 10 -2.7">
         </a-animation>
         <a-animation attribute="rotation"
                      dur="3000"
@@ -797,6 +797,17 @@
 	      </a-animation>
       </a-entity>
 
+      <a-image id="khipukamayuq-scene5" src="#khipukamayuq-front" position="0 2 -2"
+	             height="2" width="0.75"
+	             opacity="0">
+	      <a-animation id="animation-khipukamayuq-scene5" attribute="opacity"
+		                 begin="start" dur="5000" to="1">
+        </a-animation>
+	      <a-sound id="sound-khipukamayuq-scene5" src="#audio-khipukamayuq"
+		             autoplay="false">
+	      </a-sound>
+      </a-image>
+
       <!-- Narrative. -->
       <a-entity>
 	      <a-sound id="sound-narrative-scene5" src="#audio-narrative-scene5"
@@ -806,8 +817,8 @@
       <!-- Teleport. -->
 
       <a-entity id="teleport-scene5" position="0.1 -0.5 -2"
-                rotation="0 180 0"
 		            scale="0.2 0.2 0.2"
+                rotation="0 180 0"
 		            visible="false">
 	      <a-entity geometry="primitive: plane; height: 4; width: 4"
 		              material="side: front; src: #img-amulet-front; transparent: true">
@@ -854,8 +865,9 @@
       </a-sound>
 
       <!-- Characters. -->
-      <a-image id="image-all" src="#img-all" position="5 -1 -3"
-               height="3" width="4"
+      <a-image id="image-all" src="#img-all" position="4 -1 -2"
+               height="4" width="4"
+               rotation="0 -30 0"
 	             visible="false">
       </a-image>
 

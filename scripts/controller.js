@@ -106,6 +106,10 @@ var entityGifDanieWalkScene5 = document.getElementById("entity-gif-danie-walk-sc
 var animationWalkScene5 = document.getElementById("animation-walk-scene5");
 var animationAmuletConnects = document.getElementById("amulet-connects");
 
+var khipukamayuqScene5 = document.getElementById("khipukamayuq-scene5");
+var animationKhipukamayuq = document.getElementById("animation-khipukamayuq-scene5");
+var soundKhipukamayuqScene5 = document.getElementById("sound-khipukamayuq-scene5");
+
 var teleportScene5 = document.getElementById("teleport-scene5");
 
 // Scene 6.
@@ -258,20 +262,25 @@ var runKhipu = function() {
 
         soundBackgroundScene5.components.sound.stopSound();
         skyInventoriaScene5.setAttribute("visible", "false");
-        teleportScene5.setAttribute("visible", "false");
 
         imageAmulet34.setAttribute("visible", "false");
-        imageKhipu.setAttribute("visible", "false");
 
         imageAnaoScene5.setAttribute("visible", "false");
         imageAnapScene5.setAttribute("visible", "false");
         entityGifAnapWalkScene5.setAttribute("visible", "false");
         imageConiScene5.setAttribute("visible", "false");
         imageDanieScene5.setAttribute("visible", "false");
+
     };
 
     var startScene6 = function() {
         camera.setAttribute("position", "0 1 0");
+
+        teleportScene5.setAttribute("position", "0 2 -1");
+        teleportScene5.setAttribute("rotation", "0 180 0");
+        imageKhipu.setAttribute("position", "0 3 -3");
+        khipukamayuqScene5.setAttribute("position", "-3.5 2 -2");
+        khipukamayuqScene5.setAttribute("rotation", "0 30 0");
 
         soundBackgroundScene6.components.sound.playSound();
         soundBackgroundScene6.emit("start");
@@ -283,8 +292,8 @@ var runKhipu = function() {
     //startIntro();
 
     // For debugging.
-    //startScene1();
-    startScene2();
+    startScene1();
+    //startScene2();
     //startScene3();
     //startScene4();
     //startScene5();
@@ -534,7 +543,6 @@ var runKhipu = function() {
     animationAmulet34.addEventListener("animationend", function() {
         imageAmulet34.setAttribute("scale", "0.8 0.8 0.8");
         imageAmulet34.setAttribute("src", "images/amulet_front.png");
-        animationAmulet34.emit("connect");
 
         imageAnaoScene5.setAttribute("visible", "false");
         entityGifAnaoWalkScene5.emit("walk");
@@ -560,12 +568,17 @@ var runKhipu = function() {
         entityGifDanieWalkScene5.setAttribute("visible", "false");
         imageDanieScene5.setAttribute("visible", "true");
         imageDanieScene5.setAttribute("position", "1 -1 1");
+
+
+        khipukamayuqScene5.setAttribute("visible", "true");
+        khipukamayuqScene5.emit("start");
+        soundKhipukamayuqScene5.components.sound.playSound();
+        animationAmulet34.emit("connect");
     });
 
     animationAmuletConnects.addEventListener("animationend", function() {
         imageAmulet34.setAttribute("visible", "false");
         teleportScene5.setAttribute("visible", "true");
-
         teleportEnabled = true;
         teleportScene5.emit("rotate");
     });
