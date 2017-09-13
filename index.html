@@ -610,6 +610,22 @@
 		           position="1.9 -0.5 -2.75"
                rotation="45 -15 0"
                visible="false">
+        <a-animation id="animation-amulet-3-4" attribute="position"
+                     dur="3000"
+                     begin="start"
+                     to="1.9 3.5 -2.7">
+        </a-animation>
+        <a-animation attribute="rotation"
+                     dur="3000"
+                     begin="start"
+                     to="-45 0 45">
+        </a-animation>
+	      <a-animation id="amulet-connects" attribute="position" to="0.1 -0.5 -2"
+		                 begin="connect" dur="3000">
+	      </a-animation>
+	      <a-animation attribute="rotation" from="0 0 0" to="0 360 0"
+		                 begin="connect" dur="3000">
+	      </a-animation>
       </a-image>
 
       <!-- Narrative. -->
@@ -621,7 +637,7 @@
       <!-- Teleport. -->
       <a-entity id="teleport-scene4"
 		            transparent="true">
-	      <a-image id="image-teleport-scene4" src="#img-teleport"
+	      <a-image id="image-teleport-scene4" src="#img-"
                  position="1.5 1 -2"
                  visible="false"
                  opacity="0">
@@ -646,12 +662,19 @@
 
       <!-- Scene 5. -->
       <a-sky id="sky-inventoria-scene5" radius="5" src="#img-inventoria-scene5"
+	           rotation="0 250 0"
 	           visible="false">
       </a-sky>
       <a-sound id="sound-background-scene5" src="#audio-background-scene5"
 	             autoplay="false"
                loop="false"
                volume="0">
+        <a-animation id="animation-scene5-narrative-delay"
+                     attribute="autoplay"
+                     to="false"
+                     begin="start"
+                     dur="3000">
+        </a-animation>
 	      <a-animation attribute="volume"
 		                 dur="3000" from="0" to="1"
 		                 begin="start">
@@ -665,23 +688,36 @@
 		                 begin="background-sound-raise-volume">
 	      </a-animation>
       </a-sound>
+      <a-image id="image-khipu" src="#img-khipu"
+               scale="5 5 5"
+               position="-0 2 -2.5">
+      </a-image>
+
+      <!-- Narrative. -->
+      <a-entity>
+	      <a-sound id="sound-narrative-scene5" src="#audio-narrative-scene5"
+		             autoplay="false">
+      </a-entity>
 
       <!-- Teleport. -->
-      <a-entity id="teleport-scene5"
-		            transparent="true">
-	      <a-image id="image-teleport-scene5" src="#img-khipu"
-                 scale="6 6 6"
-		             position="-0 2 0"
-                 visible="false"
-                 opacity="1">
-	        <a-animation attribute="rotation"
-		                   begin="rotate"
-		                   dur="5000"
-		                   fill="forwards"
-		                   to="0 360 0"
-		                   repeat="indefinite">
-	        </a-animation>
-	      </a-image>
+
+      <a-entity id="teleport-scene5" position="0.1 -0.5 -2"
+		            scale="0.2 0.2 0.2"
+		            visible="false">
+	      <a-entity geometry="primitive: plane; height: 4; width: 4"
+		              material="side: front; src: #img-amulet-front; transparent: true">
+	      </a-entity>
+	      <a-entity geometry="primitive: plane; height: 4; width: 4"
+		              material="side: back; src: #img-amulet-back; transparent: true">
+	      </a-entity>
+	      <a-animation attribute="rotation"
+		                 begin="rotate"
+		                 dur="5000"
+		                 fill="forwards"
+                     from="0 0 0"
+		                 to="0 360 0"
+		                 repeat="indefinite">
+	      </a-animation>
       </a-entity>
 
       <!-- Scene 6. -->

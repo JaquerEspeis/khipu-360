@@ -77,27 +77,23 @@ var soundNarrativeScene4 = document.getElementById("sound-narrative-scene4");
 var entityGifDanieWrites = document.getElementById("entity-gif-danie-writes");
 
 var imageAmulet34 = document.getElementById("image-amulet-3-4");
+var animationAmulet34 = document.getElementById("animation-amulet-3-4");
 
 var animationScene4NarrativeDelay = document.getElementById("animation-scene4-narrative-delay");
 var teleportScene4 = document.getElementById("teleport-scene4");
 var imageTeleportScene4 = document.getElementById("image-teleport-scene4");
 
-var start = function() {
-    videoScene1.play();
-    videoScene1.pause();
-    var rootPlay = document.getElementById("root");
-    rootPlay.style.display = 'none';
-
-    runKhipu();
-};
-
 // Scene 5.
 var skyInventoriaScene5 = document.getElementById("sky-inventoria-scene5");
 
 var soundBackgroundScene5 = document.getElementById("sound-background-scene5");
+var soundNarrativeScene5 = document.getElementById("sound-narrative-scene5");
+var animationScene5NarrativeDelay = document.getElementById("animation-scene5-narrative-delay");
+var imageKhipu = document.getElementById("image-khipu");
+
+var animationAmuletConnects = document.getElementById("amulet-connects");
 
 var teleportScene5 = document.getElementById("teleport-scene5");
-var imageTeleportScene5 = document.getElementById("image-teleport-scene5");
 
 // Scene 6.
 var skyForrest = document.getElementById("sky-forrest");
@@ -110,6 +106,14 @@ var soundNarrativeScene6 = document.getElementById("sound-narrative-scene6");
 var animationScene6NarrativeDelay = document.getElementById("animation-scene6-narrative-delay");
 
 
+var start = function() {
+    videoScene1.play();
+    videoScene1.pause();
+    var rootPlay = document.getElementById("root");
+    rootPlay.style.display = 'none';
+
+    runKhipu();
+};
 
 
 var runKhipu = function() {
@@ -208,7 +212,6 @@ var runKhipu = function() {
         teleportEnabled = false;
 
         entityGifDanieWrites.setAttribute("visible", "false");
-        imageAmulet34.setAttribute("visible", "false");
 
         soundBackgroundScene4.components.sound.stopSound();
         skyInventoriaScene4.setAttribute("visible", "false");
@@ -221,10 +224,8 @@ var runKhipu = function() {
         soundBackgroundScene5.emit("start");
 
         skyInventoriaScene5.setAttribute("visible", "true");
-        imageTeleportScene5.setAttribute("visible", "true");
-        imageTeleportScene5.emit("rotate");
-
-        teleportEnabled = true;
+        imageAmulet34.setAttribute("visible", "true");
+        imageKhipu.setAttribute("visible", "true");
     };
 
     var stopScene5 = function() {
@@ -233,6 +234,9 @@ var runKhipu = function() {
         soundBackgroundScene5.components.sound.stopSound();
         skyInventoriaScene5.setAttribute("visible", "false");
         teleportScene5.setAttribute("visible", "false");
+
+        imageAmulet34.setAttribute("visible", "false");
+        imageKhipu.setAttribute("visible", "false");
     };
 
     var startScene6 = function() {
@@ -471,12 +475,42 @@ var runKhipu = function() {
 
     // Scene 5 actions.
 
-    imageTeleportScene5.addEventListener("click", function() {
+    teleportScene5.addEventListener("click", function() {
         console.log("click on teleport!");
         if (teleportEnabled == true) {
             stopScene5();
             startScene6();
         }
+    });
+
+    /*
+     * After 3 seconds of starting the scene, the narrative starts.
+     */
+    animationScene5NarrativeDelay.addEventListener("animationend", function() {
+        soundBackgroundScene5.emit("background-sound-reduce-volume");
+        soundNarrativeScene5.components.sound.playSound();
+    });
+
+    /*
+     * When the narrative ends, raise the background volume.
+     */
+    soundNarrativeScene5.addEventListener("sound-ended", function() {
+        soundBackgroundScene5.emit("background-sound-raise-volume");
+        imageAmulet34.emit("start");
+    });
+
+    animationAmulet34.addEventListener("animationend", function() {
+        imageAmulet34.setAttribute("scale", "0.8 0.8 0.8");
+        imageAmulet34.setAttribute("src", "images/amulet_front.png");
+        animationAmulet34.emit("connect");
+    });
+
+    animationAmuletConnects.addEventListener("animationend", function() {
+        imageAmulet34.setAttribute("visible", "false");
+        teleportScene5.setAttribute("visible", "true");
+
+        teleportEnabled = true;
+        teleportScene5.emit("rotate");
     });
 
     // Scene 6 actions.
