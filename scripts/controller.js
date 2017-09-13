@@ -139,7 +139,6 @@ var runKhipu = function() {
         imageTeleportScene2.emit("start");
 
         skyIntro.setAttribute("visible", "false");
-        camera.setAttribute("position", "0 0 4.5");
     };
 
     var stopScene2 = function() {
@@ -160,8 +159,6 @@ var runKhipu = function() {
     var startScene3 = function() {
         soundBackgroundScene3.components.sound.playSound();
         soundBackgroundScene3.emit("start");
-
-        camera.setAttribute("position", "0 2 1");
 
         skyRooftop.setAttribute("visible", "true");
 
@@ -189,8 +186,6 @@ var runKhipu = function() {
     };
 
     var startScene4 = function() {
-        camera.setAttribute("position", "0 1.6 4.5");
-
         soundBackgroundScene4.components.sound.playSound();
         soundBackgroundScene4.emit("start");
 
@@ -206,8 +201,6 @@ var runKhipu = function() {
     };
 
     var startScene5 = function() {
-        camera.setAttribute("position", "0 1.6 4.5");
-
         soundBackgroundScene5.components.sound.playSound();
         soundBackgroundScene5.emit("start");
 
@@ -227,8 +220,6 @@ var runKhipu = function() {
     };
 
     var startScene6 = function() {
-        camera.setAttribute("position", "0 0 4.5");
-
         soundBackgroundScene6.components.sound.playSound();
         soundBackgroundScene6.emit("start");
 
@@ -236,11 +227,11 @@ var runKhipu = function() {
         imageAll.setAttribute("visible", "true");
     };
 
-    startIntro();
+    //startIntro();
 
     // For debugging.
     //startScene1();
-    //startScene2();
+    startScene2();
     //startScene3();
     //startScene4();
     //startScene5();
