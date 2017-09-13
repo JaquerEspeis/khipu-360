@@ -77,6 +77,7 @@ var soundNarrativeScene4 = document.getElementById("sound-narrative-scene4");
 var entityGifDanieWrites = document.getElementById("entity-gif-danie-writes");
 var entityGifAnapDrill = document.getElementById("entity-gif-anap-drill");
 var soundEffectDrill = document.getElementById("sound-effect-drill");
+var soundDanieScene4 = document.getElementById("sound-danie-scene4");
 
 var imageAmulet34 = document.getElementById("image-amulet-3-4");
 var animationAmulet34 = document.getElementById("animation-amulet-3-4");
@@ -215,6 +216,7 @@ var runKhipu = function() {
         entityGifAnapDrill.setAttribute("visible", "true");
         soundEffectDrill.emit("start");
         soundEffectDrill.components.sound.playSound();
+        soundDanieScene4.components.sound.playSound();
         imageAmulet34.setAttribute("visible", "true");
     };
 
@@ -224,6 +226,7 @@ var runKhipu = function() {
         entityGifAnapDrill.setAttribute("visible", "false");
         entityGifDanieWrites.setAttribute("visible", "false");
         soundEffectDrill.components.sound.stopSound();
+        soundDanieScene4.components.sound.stopSound();
 
         soundBackgroundScene4.components.sound.stopSound();
         skyInventoriaScene4.setAttribute("visible", "false");
