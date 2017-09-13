@@ -293,11 +293,11 @@ var runKhipu = function() {
         imageAll.setAttribute("visible", "true");
     };
 
-    //startIntro();
+    startIntro();
 
     // For debugging.
     //startScene1();
-    startScene2();
+    //startScene2();
     //startScene3();
     //startScene4();
     //startScene5();
