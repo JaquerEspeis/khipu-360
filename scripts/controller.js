@@ -135,7 +135,7 @@ var runKhipu = function() {
 
     var startScene2 = function() {
         camera.setAttribute("position", "0 1 0");
-        camera.setAttribute("rotation", "0 270 0");
+        camera.setAttribute("rotation", "0 90 0");
 
         skyMedialab.setAttribute("visible", "true");
 
