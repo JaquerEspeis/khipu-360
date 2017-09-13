@@ -76,6 +76,8 @@ var soundNarrativeScene4 = document.getElementById("sound-narrative-scene4");
 
 var entityGifDanieWrites = document.getElementById("entity-gif-danie-writes");
 
+var imageAmulet34 = document.getElementById("image-amulet-3-4");
+
 var animationScene4NarrativeDelay = document.getElementById("animation-scene4-narrative-delay");
 var teleportScene4 = document.getElementById("teleport-scene4");
 var imageTeleportScene4 = document.getElementById("image-teleport-scene4");
@@ -162,6 +164,7 @@ var runKhipu = function() {
     };
 
     var startScene3 = function() {
+        camera.setAttribute("position", "0 1 0");
         soundBackgroundScene3.components.sound.playSound();
         soundBackgroundScene3.emit("start");
 
@@ -191,18 +194,21 @@ var runKhipu = function() {
     };
 
     var startScene4 = function() {
+        camera.setAttribute("position", "0 1 0");
         soundBackgroundScene4.components.sound.playSound();
         soundBackgroundScene4.emit("start");
 
         skyInventoriaScene4.setAttribute("visible", "true");
 
         entityGifDanieWrites.setAttribute("visible", "true");
+        imageAmulet34.setAttribute("visible", "true");
     };
 
     var stopScene4 = function() {
         teleportEnabled = false;
 
         entityGifDanieWrites.setAttribute("visible", "false");
+        imageAmulet34.setAttribute("visible", "false");
 
         soundBackgroundScene4.components.sound.stopSound();
         skyInventoriaScene4.setAttribute("visible", "false");
@@ -210,6 +216,7 @@ var runKhipu = function() {
     };
 
     var startScene5 = function() {
+        camera.setAttribute("position", "0 1 0");
         soundBackgroundScene5.components.sound.playSound();
         soundBackgroundScene5.emit("start");
 
@@ -229,6 +236,8 @@ var runKhipu = function() {
     };
 
     var startScene6 = function() {
+        camera.setAttribute("position", "0 1 0");
+
         soundBackgroundScene6.components.sound.playSound();
         soundBackgroundScene6.emit("start");
 
