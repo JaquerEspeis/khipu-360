@@ -98,7 +98,12 @@ var imageAnaoScene5 = document.getElementById("image-anao-scene5");
 var imageAnapScene5 = document.getElementById("image-anap-scene5");
 var imageConiScene5 = document.getElementById("image-coni-scene5");
 var imageDanieScene5 = document.getElementById("image-danie-scene5");
+var entityGifAnaoWalkScene5 = document.getElementById("entity-gif-anao-walk-scene5");
+var entityGifAnapWalkScene5 = document.getElementById("entity-gif-anap-walk-scene5");
+var entityGifConiWalkScene5 = document.getElementById("entity-gif-coni-walk-scene5");
+var entityGifDanieWalkScene5 = document.getElementById("entity-gif-danie-walk-scene5");
 
+var animationWalkScene5 = document.getElementById("animation-walk-scene5");
 var animationAmuletConnects = document.getElementById("amulet-connects");
 
 var teleportScene5 = document.getElementById("teleport-scene5");
@@ -278,10 +283,10 @@ var runKhipu = function() {
 
     // For debugging.
     //startScene1();
-    startScene2();
+    //startScene2();
     //startScene3();
     //startScene4();
-    //startScene5();
+    startScene5();
     //startScene6();
 
     // Intro actions.
@@ -522,12 +527,38 @@ var runKhipu = function() {
     soundNarrativeScene5.addEventListener("sound-ended", function() {
         soundBackgroundScene5.emit("background-sound-raise-volume");
         imageAmulet34.emit("start");
+
     });
 
     animationAmulet34.addEventListener("animationend", function() {
         imageAmulet34.setAttribute("scale", "0.8 0.8 0.8");
         imageAmulet34.setAttribute("src", "images/amulet_front.png");
         animationAmulet34.emit("connect");
+
+        imageAnaoScene5.setAttribute("visible", "false");
+        entityGifAnaoWalkScene5.emit("walk");
+
+        imageAnapScene5.setAttribute("visible", "false");
+        entityGifAnapWalkScene5.emit("walk");
+
+        imageConiScene5.setAttribute("visible", "false");
+        entityGifConiWalkScene5.emit("walk");
+
+        imageDanieScene5.setAttribute("visible", "false");
+        entityGifDanieWalkScene5.emit("walk");
+    });
+
+    animationWalkScene5.addEventListener("animationend", function() {
+        entityGifAnaoWalkScene5.setAttribute("visible", "false");
+        imageAnaoScene5.setAttribute("position", "0.7 -1 1.5");
+        imageAnaoScene5.setAttribute("visible", "true");
+        entityGifAnapWalkScene5.pause()
+        entityGifConiWalkScene5.setAttribute("visible", "false");
+        imageConiScene5.setAttribute("position", "-0.3 -1 1.5");
+        imageConiScene5.setAttribute("visible", "true");
+        entityGifDanieWalkScene5.setAttribute("visible", "false");
+        imageDanieScene5.setAttribute("visible", "true");
+        imageDanieScene5.setAttribute("position", "1 -1 1");
     });
 
     animationAmuletConnects.addEventListener("animationend", function() {
