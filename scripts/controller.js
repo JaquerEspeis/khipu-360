@@ -240,9 +240,9 @@ var runKhipu = function() {
 
     // For debugging.
     //startScene1();
-    //startScene2();
+    startScene2();
     //startScene3();
-    startScene4();
+    //startScene4();
     //startScene5();
     //startScene6();
 
