@@ -93,6 +93,11 @@ var soundNarrativeScene5 = document.getElementById("sound-narrative-scene5");
 var animationScene5NarrativeDelay = document.getElementById("animation-scene5-narrative-delay");
 var imageKhipu = document.getElementById("image-khipu");
 
+var imageAnaoScene5 = document.getElementById("image-anao-scene5");
+var imageAnapScene5 = document.getElementById("image-anap-scene5");
+var imageConiScene5 = document.getElementById("image-coni-scene5");
+var imageDanieScene5 = document.getElementById("image-danie-scene5");
+
 var animationAmuletConnects = document.getElementById("amulet-connects");
 
 var teleportScene5 = document.getElementById("teleport-scene5");
@@ -218,7 +223,7 @@ var runKhipu = function() {
 
         entityGifAnapDrill.setAttribute("visible", "false");
         entityGifDanieWrites.setAttribute("visible", "false");
-        soundEffectDrill.components.sound.playSound();
+        soundEffectDrill.components.sound.stopSound();
 
         soundBackgroundScene4.components.sound.stopSound();
         skyInventoriaScene4.setAttribute("visible", "false");
@@ -226,13 +231,18 @@ var runKhipu = function() {
     };
 
     var startScene5 = function() {
-        camera.setAttribute("position", "0 1 0");
+        camera.setAttribute("position", "0 0.5 0");
         soundBackgroundScene5.components.sound.playSound();
         soundBackgroundScene5.emit("start");
 
         skyInventoriaScene5.setAttribute("visible", "true");
         imageAmulet34.setAttribute("visible", "true");
         imageKhipu.setAttribute("visible", "true");
+
+        imageAnaoScene5.setAttribute("visible", "true");
+        imageAnapScene5.setAttribute("visible", "true");
+        imageConiScene5.setAttribute("visible", "true");
+        imageDanieScene5.setAttribute("visible", "true");
     };
 
     var stopScene5 = function() {
@@ -244,6 +254,11 @@ var runKhipu = function() {
 
         imageAmulet34.setAttribute("visible", "false");
         imageKhipu.setAttribute("visible", "false");
+
+        imageAnaoScene5.setAttribute("visible", "false");
+        imageAnapScene5.setAttribute("visible", "false");
+        imageConiScene5.setAttribute("visible", "false");
+        imageDanieScene5.setAttribute("visible", "false");
     };
 
     var startScene6 = function() {
