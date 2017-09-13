@@ -171,6 +171,7 @@ var runKhipu = function() {
 
     var stopScene2 = function() {
         teleportEnabled = false;
+        camera.removeAttribute("target-indicator");
 
         skyMedialab.setAttribute("visible", "false");
         teleportScene2.setAttribute("visible", "false");
@@ -201,6 +202,7 @@ var runKhipu = function() {
 
     var stopScene3 = function() {
         teleportEnabled = false;
+        camera.removeAttribute("target-indicator");
 
         skyRooftop.setAttribute("visible", "false");
         amulet.setAttribute("visible", "false");
@@ -231,6 +233,7 @@ var runKhipu = function() {
 
     var stopScene4 = function() {
         teleportEnabled = false;
+        camera.removeAttribute("target-indicator");
 
         entityGifAnapDrill.setAttribute("visible", "false");
         entityGifDanieWrites.setAttribute("visible", "false");
@@ -259,6 +262,7 @@ var runKhipu = function() {
 
     var stopScene5 = function() {
         teleportEnabled = false;
+        camera.removeAttribute("target-indicator");
 
         soundBackgroundScene5.components.sound.stopSound();
         skyInventoriaScene5.setAttribute("visible", "false");
@@ -289,11 +293,11 @@ var runKhipu = function() {
         imageAll.setAttribute("visible", "true");
     };
 
-    startIntro();
+    //startIntro();
 
     // For debugging.
     //startScene1();
-    //startScene2();
+    startScene2();
     //startScene3();
     //startScene4();
     //startScene5();
@@ -414,6 +418,7 @@ var runKhipu = function() {
      */
     animationWalk.addEventListener("animationend", function() {
         teleportEnabled = true;
+        camera.setAttribute("target-indicator", "target: #teleport-scene2");
         imageTeleportScene2.emit("rotate");
 
         entityGifAnaoWalk.pause();
@@ -475,6 +480,7 @@ var runKhipu = function() {
         soundBackgroundScene3.emit("background-sound-raise-volume");
 
         teleportEnabled = true;
+        camera.setAttribute("target-indicator", "target: #amulet");
         amulet.emit("rotate")
     });
 
