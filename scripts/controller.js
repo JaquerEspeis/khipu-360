@@ -588,6 +588,7 @@ var runKhipu = function() {
         imageAmulet34.setAttribute("visible", "false");
         teleportScene5.setAttribute("visible", "true");
         teleportEnabled = true;
+        camera.setAttribute("target-indicator", "target: #teleport-scene5");
         teleportScene5.emit("rotate");
     });
 

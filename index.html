@@ -701,8 +701,8 @@
                loop="true"
                volume="0">
         <a-animation id="animation-scene5-narrative-delay"
-                     attribute="autoplay"
-                     to="false"
+                     loop="true"
+                     to="true"
                      begin="start"
                      dur="3000">
         </a-animation>
@@ -825,10 +825,13 @@
 
       <!-- Teleport. -->
 
-      <a-entity id="teleport-scene5" position="0.1 -0.5 -2"
+      <a-entity id="teleport-scene5"
+                position="0.1 -0.5 -2" geometry="primitive: sphere; radius: 2.5"
+                material="transparent: true; opacity: 0"
 		            scale="0.2 0.2 0.2"
                 rotation="0 180 0"
-		            visible="false">
+		            visible="false"
+                transparent="true">
 	      <a-entity geometry="primitive: plane; height: 4; width: 4"
 		              material="side: front; src: #img-amulet-front; transparent: true">
 	      </a-entity>
