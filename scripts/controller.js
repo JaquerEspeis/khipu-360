@@ -126,6 +126,9 @@ var runKhipu = function() {
     };
 
     var startScene2 = function() {
+        camera.setAttribute("position", "0 1 0");
+        camera.setAttribute("rotation", "0 270 0");
+
         skyMedialab.setAttribute("visible", "true");
 
         imageAnaoScene2.setAttribute("visible", "true");
@@ -147,10 +150,10 @@ var runKhipu = function() {
         skyMedialab.setAttribute("visible", "false");
         teleportScene2.setAttribute("visible", "false");
 
-        imageAnaoScene2.setAttribute("visible", "false");
-        imageAnapScene2.setAttribute("visible", "false");
-        imageConiScene2.setAttribute("visible", "false");
-        imageDanieScene2.setAttribute("visible", "false");
+        entityGifAnaoWalk.setAttribute("visible", "false");
+        entityGifAnapWalk.setAttribute("visible", "false");
+        entityGifConiWalk.setAttribute("visible", "false");
+        entityGifDanieWalk.setAttribute("visible", "false");
 
         soundEffectScene2.components.sound.stopSound();
         soundBackgroundScene2.components.sound.stopSound();
@@ -334,16 +337,16 @@ var runKhipu = function() {
      * When the door starts making a sound, the girls walk towards it.
      */
     animationDoor.addEventListener("animationend", function() {
-        imageAnaoScene2.emit("walk");
+        imageAnaoScene2.setAttribute("visible", "false");
         entityGifAnaoWalk.emit("walk");
 
-        imageAnapScene2.emit("walk");
+        imageAnapScene2.setAttribute("visible", "false");
         entityGifAnapWalk.emit("walk");
 
-        imageConiScene2.emit("walk");
+        imageConiScene2.setAttribute("visible", "false");
         entityGifConiWalk.emit("walk");
 
-        imageDanieScene2.emit("walk");
+        imageDanieScene2.setAttribute("visible", "false");
         entityGifDanieWalk.emit("walk");
     });
 
@@ -351,20 +354,13 @@ var runKhipu = function() {
      * When the girls reach the door, stop walking.
      */
     animationWalk.addEventListener("animationend", function() {
-        entityGifAnaoWalk.setAttribute("visible", false);
-        imageAnaoScene2.setAttribute("visible", true);
-
-        entityGifAnapWalk.setAttribute("visible", false);
-        imageAnapScene2.setAttribute("visible", true);
-
-        entityGifConiWalk.setAttribute("visible", false);
-        imageConiScene2.setAttribute("visible", true);
-
-        entityGifDanieWalk.setAttribute("visible", false);
-        imageDanieScene2.setAttribute("visible", true);
-
         teleportEnabled = true;
         imageTeleportScene2.emit("rotate");
+
+        entityGifAnaoWalk.pause();
+        entityGifAnapWalk.pause();
+        entityGifConiWalk.pause();
+//        entityGifDanieWalk.pause();
     });
 
     soundEffectScene2.addEventListener("sound-ended", function() {
