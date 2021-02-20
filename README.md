@@ -37,11 +37,11 @@ Aprendé sobre los khipus en https://proyectokhipu.wordpress.com/
 
 ## Credits
  
-* [Melissa Aguilar](https://github.com/tijax12). Story telling, art direction
-* [@elopio](https://github.com/elopio). Developer
-* Gabriel de Camino. Photography
-* Priscilla Campos. Narrator
-* Luciana Gómez. Mentoring
+* [Melissa Aguilar](https://github.com/tijax12). Story telling, art direction.
+* [@elopio](https://github.com/elopio). Developer.
+* Gabriel de Camino. Photography.
+* Priscilla Campos. Narrator.
+* Luciana Gómez. Mentoring.
 
 Special thanks to the whole team of [Miradas 360](https://miradas360.github.io/), [Martín Rabaglia](https://github.com/tinchoforever), [Gia Castello](https://twitter.com/giacastello), [Constanza Piña](https://corazonderobota.wordpress.com/about/), Brun González, [José Nitos](https://github.com/nitos).
 
