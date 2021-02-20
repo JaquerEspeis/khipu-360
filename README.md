@@ -32,11 +32,11 @@ www.proyectokhipu.wordpress.com
 
 #Credits
  
-Melissa Aguilar. Story telling, art direction
-Leo Arias. Developer
-Gabriel de Camino. Photography
-Priscilla Campos. Narrator
-Luciana Gómez. Mentoring
+Melissa Aguilar. Story telling, art direction.
+Leo Arias. Developer.
+Gabriel de Camino. Photography.
+Priscilla Campos. Narrator.
+Luciana Gómez. Mentoring.
 
 Special thanks to the whole team of Miradas 360, Martín Rabaglia, Gia Castello, Constanza Piña, Brun González, José Nitos
 
