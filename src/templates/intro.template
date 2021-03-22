@@ -1,0 +1,7 @@
+<a-plane id="plane-intro-${id}" src="#img-intro-${id}"
+         opacity="0" visibility="true"
+         width="5" height="2.8"
+         position="0 0 -3"
+         animation__opacity_start="property: opacity; from: 0; to: 1; dur: 5000; autoplay: false"
+         animation__opacity_stop="property: opacity; from: 1; to: 0; dur: 5000; autoplay: false">
+</a-plane>
