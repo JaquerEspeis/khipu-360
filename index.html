@@ -38,63 +38,7 @@
       </a-camera>
 
       <!-- Instructions -->
-      <a-entity id="instructions"
-                animation-timeline="timeline: #instructions-timeline; startEvents: startInstructions"
-                intro="">
-
-        <a-sky id="sky-instructions" color="#000" visible="true"></a-sky>
-
-        <a-entity id="instructions-headset"
-                  template="src: src/templates/instructions.template"
-                  data-id-instructions="instructions-headset"
-                  data-img-src-instructions="#img-instructions-headset"
-                  data-text="Ponete auriculares para una mejor experiencia\nUse your headset for a better experience">
-        </a-entity>
-
-        <a-entity id="instructions-cardboard"
-                  template="src: src/templates/instructions.template"
-                  data-id-instructions="instructions-cardboard"
-                  data-img-src-instructions="#img-instructions-cardboard"
-                  data-text="Coloca tu dispositivo en el Cardboard\nPlace your device in the Cardboard">
-        </a-entity>
-
-        <a-entity id="instructions-rotation"
-                  template="src: src/templates/instructions.template"
-                  data-id-instructions="instructions-rotation"
-                  data-img-src-instructions="#img-instructions-rotation"
-                  data-text="Vas a poder moverte libremente todo el tiempo\nYou'll be able to move freely all the time">
-        </a-entity>
-
-        <a-timeline id="instructions-timeline">
-          <a-timeline-group>
-            <a-timeline-animation select="#instructions-headset-img" name="opacity_start"></a-timeline-animation>
-            <a-timeline-animation select="#instructions-headset-img" name="rotation"></a-timeline-animation>
-            <a-timeline-animation select="#instructions-headset-text" name="opacity_start"></a-timeline-animation>
-          </a-timeline-group>
-          <a-timeline-group>
-            <a-timeline-animation select="#instructions-headset-img" name="opacity_stop"></a-timeline-animation>
-            <a-timeline-animation select="#instructions-headset-text" name="opacity_stop"></a-timeline-animation>
-          </a-timeline-group>
-          <a-timeline-group>
-            <a-timeline-animation select="#instructions-cardboard-img" name="opacity_start"></a-timeline-animation>
-            <a-timeline-animation select="#instructions-cardboard-img" name="rotation"></a-timeline-animation>
-            <a-timeline-animation select="#instructions-cardboard-text" name="opacity_start"></a-timeline-animation>
-          </a-timeline-group>
-          <a-timeline-group>
-            <a-timeline-animation select="#instructions-cardboard-img" name="opacity_stop"></a-timeline-animation>
-            <a-timeline-animation select="#instructions-cardboard-text" name="opacity_stop"></a-timeline-animation>
-          </a-timeline-group>
-          <a-timeline-group>
-            <a-timeline-animation select="#instructions-rotation-img" name="opacity_start"></a-timeline-animation>
-            <a-timeline-animation select="#instructions-rotation-img" name="rotation"></a-timeline-animation>
-            <a-timeline-animation select="#instructions-rotation-text" name="opacity_start"></a-timeline-animation>
-          </a-timeline-group>
-          <a-timeline-group>
-            <a-timeline-animation select="#instructions-rotation-img" name="opacity_stop"></a-timeline-animation>
-            <a-timeline-animation select="#instructions-rotation-text" name="opacity_stop"></a-timeline-animation>
-          </a-timeline-group>
-        </a-timeline>
-
+      <a-entity template="src: src/scenes/instructions.html">
       </a-entity>
 
       <!-- Scene 1 -->

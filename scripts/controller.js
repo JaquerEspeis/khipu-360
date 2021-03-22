@@ -18,6 +18,6 @@ var start = function() {
   var rootPlay = document.getElementById("root");
   rootPlay.style.display = "none";
 
-  introHeadset = document.getElementById("instructions-headset");
-  introHeadset.emit("startInstructions");
+  instructionsHeadset = document.getElementById("instructions-headset");
+  instructionsHeadset.emit("startInstructions");
 };
