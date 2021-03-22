@@ -1,0 +1,15 @@
+<a-image id="scene1-image-${name}"
+         src="#${name}-front" position="${initialPosition}"
+         height="4" width="1.25"
+         visible="true"
+         animation__visibility_stop="property: visible; from: true; to: false; dur: 0.1; autoplay: false">
+</a-image>
+<a-entity id="scene1-gif-${name}-walk"
+          position="${initialPosition}"
+          geometry="primitive: plane; height: 4; width: 1.25"
+          material="shader: gif; src:#gif-${name}-walk; transparent: true; autoplay: true; side: double"
+          rotation="0 180 0"
+		      visible="false"
+          animation__visibility_start="property: visible; from: false; to: true; dur: 0.1; autoplay: false"
+          animation__move="property: position; from: ${initialPosition}; to: ${finalPosition}; dur: 3000; easing: linear; autoplay: false">
+</a-entity>

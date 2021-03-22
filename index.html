@@ -7,7 +7,11 @@
     <script src="scripts/aframe.min.js"></script>
 
     <script src="scripts/aframe-template-component.min.js"></script>
+
     <script src="scripts/aframe-animation-timeline-component.min.js"></script>
+
+    <script src="scripts/aframe-gif-shader.js"></script>
+    <script src="scripts/aframe-gif-component.min.js"></script>
 
     <script src="scripts/controller.js"></script>
 
@@ -25,13 +29,18 @@
     <a-scene>
       <a-assets>
         <!-- Images -->
-        <a-entity id="assets-template-instructions" template="src: src/assets/images/instructions.html"></a-entity>
-        <a-entity id="assets-template-intro" template="src: src/assets/images/intro.html"></a-entity>
+        <a-entity template="src: src/assets/images/instructions.html"></a-entity>
+        <a-entity template="src: src/assets/images/intro.html"></a-entity>
+
         <a-entity template="src: src/assets/images/backgrounds.html"></a-entity>
         <a-entity template="src: src/assets/images/characters.html"></a-entity>
         <a-entity template="src: src/assets/images/teleports.html"></a-entity>
+
         <!-- Background audios -->
-	      <audio id="audio-background-scene1" src="audios/background/scene1.mp3"></audio>
+        <a-entity template="src: src/assets/audios/background.html"></a-entity>
+
+        <!-- Sound effects -->
+        <a-entity template="src: src/assets/audios/effects.html"></a-entity>
 
       </a-assets>
 
@@ -50,15 +59,7 @@
       </a-entity>
 
       <!-- Scene 1 -->
-      <a-entity id="scene1"
-                visible="false"
-                template="src: src/templates/scene.template"
-                data-img-src-sky="#img-medialab"
-                data-audio-src-background="#audio-background-scene1"
-                data-img-src-anao="#anao-front"
-                data-img-src-anap="#anap-front"
-                data-img-src-coni="#coni-front"
-                data-img-src-danie="#danie-front">
+      <a-entity template="src: src/scenes/1medialab.html">
       </a-entity>
 
     </a-scene>
