@@ -26,19 +26,27 @@
       <a-assets>
         <!-- Images -->
         <a-entity id="assets-template-instructions" template="src: src/assets/images/instructions.html"></a-entity>
+        <a-entity id="assets-template-intro" template="src: src/assets/images/intro.html"></a-entity>
         <a-entity template="src: src/assets/images/backgrounds.html"></a-entity>
         <a-entity template="src: src/assets/images/characters.html"></a-entity>
         <a-entity template="src: src/assets/images/teleports.html"></a-entity>
         <!-- Background audios -->
 	      <audio id="audio-background-scene1" src="audios/background/scene1.mp3"></audio>
+
       </a-assets>
 
       <a-camera id="camera" wasd-controls-enabled="true"
 		            position="0 0 0">
+        <a-cursor id="cursor" fuse="true" fuseTimeout="500">
+        </a-cursor>
       </a-camera>
 
-      <!-- Instructions -->
+      <!-- Scene: Instructions -->
       <a-entity template="src: src/scenes/instructions.html">
+      </a-entity>
+
+      <!-- Scene: Intro -->
+      <a-entity template="src: src/scenes/intro.html">
       </a-entity>
 
       <!-- Scene 1 -->
