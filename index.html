@@ -1,897 +1,115 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>Khipu 360</title>
-    <script src="scripts/aframe.min.js"></script>
-    <script src="scripts/aframe-gif-shader.js"></script>
-    <script src="scripts/aframe-gif-component.min.js"></script>
-    <script src="scripts/aframe-glow-component.min.js"></script>
-    <script src="scripts/aframe-event-set-component.min.js"></script>
-    <script src="scripts/aframe-ui-components.min.js"></script>
-    <link href="styles/index.css"  rel="stylesheet" type="text/css">
 
+    <script src="scripts/aframe.min.js"></script>
+
+    <script src="scripts/aframe-template-component.min.js"></script>
+    <script src="scripts/aframe-animation-timeline-component.min.js"></script>
+
+    <script src="scripts/controller.js"></script>
+
+    <link href="styles/index.css"  rel="stylesheet" type="text/css">
   </head>
   <body>
-    <div id="root" style="background: #000; z-index: 999 !important; cursor: pointer; position: absolute; top: 0; left: 0;" onclick="javascript:start()"><svg style="width:50px;height:50px" viewBox="0 0 24 24"><path fill="#FFFFFF" d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+    <div id="root"
+         style="background: #000; z-index: 999 !important; cursor: pointer; position: absolute; top: 0; left: 0;"
+         onclick="javascript:start()">
+      <svg style="width:50px;height:50px" viewBox="0 0 24 24">
+        <path fill="#FFFFFF" d="M8,5.14V19.14L19,12.14L8,5.14Z">
+      </path></svg>
     </div>
+
     <a-scene>
       <a-assets>
-	      <!-- Intro. -->
-	      <img id="img-headphones" src="images/intro/headphones.png">
-	      <img id="img-cardboard" src="images/intro/cardboard.png">
-	      <img id="img-rotation" src="images/intro/rotation.png">
-	      <img id="img-intro1" src="images/intro/intro1.jpg">
-	      <img id="img-intro2" src="images/intro/intro2.jpg">
-	      <img id="img-intro3" src="images/intro/intro3.jpg">
-	      <!-- Videos. -->
-	      <video id="video-scene1" src="videos/scene1.mp4"></video>
-	      <!-- 360 images. -->
-	      <img id="img-medialab" src="images/360/medialab.jpg">
-	      <img id="img-rooftop" src="images/360/rooftop.jpg">
-        <img id="img-inventoria-scene4" src="images/360/inventoria-scene4.jpg">
-        <img id="img-inventoria-scene5" src="images/360/inventoria-scene5.jpg">
-        <img id="img-forrest" src="images/360/forrest.jpg">
-
-	      <!-- Teleport. -->
-	      <img id="img-teleport" src="images/teleport.png">
-	      <img id="img-amulet-front" src="images/amulet_front.png">
-	      <img id="img-amulet-back" src="images/amulet_back.png">
-	      <img id="img-khipu" src="images/khipu.png">
-	      <!-- Character images -->
-	      <img id="anap-front" src="images/characters/anap_front.png">
-	      <img id="anao-front" src="images/characters/anao_front.png">
-	      <img id="coni-front" src="images/characters/coni_front.png">
-	      <img id="danie-front" src="images/characters/danie_front.png">
-
-	      <img id="anap-side" src="images/characters/anap_side.png">
-	      <img id="anao-side" src="images/characters/anao_side.png">
-	      <img id="coni-side" src="images/characters/coni_side.png">
-	      <img id="danie-side" src="images/characters/danie_side.png">
-
-        <img id="img-all" src="images/characters/all.png">
-	      <!-- Character gifs -->
-	      <img id="gif-anap-walk" src="gifs/anap_walk.gif">
-	      <img id="gif-anao-walk" src="gifs/anao_walk.gif">
-	      <img id="gif-coni-walk" src="gifs/coni_walk.gif">
-	      <img id="gif-danie-walk" src="gifs/danie_walk.gif">
-
-	      <img id="gif-anap-drill" src="gifs/anap_drill.gif">
-	      <img id="gif-danie-writes" src="gifs/danie_writes.gif">
-
-	      <img id="khipukamayuq-front" src="images/characters/khipukamayuq_front.png">
-	      <img id="amulet-3-4" src="images/amulet_3-4.png">
-
-	      <!-- Background audios. -->
-	      <audio id="audio-background-scene2" src="audios/background/scene2.mp3"></audio>
-	      <audio id="audio-background-scene3" src="audios/background/scene3.mp3"></audio>
-	      <audio id="audio-background-scene4" src="audios/background/scene4.mp3"></audio>
-        <audio id="audio-background-scene5" src="audios/background/scene5.mp3"></audio>
-        <audio id="audio-background-scene6" src="audios/background/scene6.mp3"></audio>
-	      <!-- Sound effects. -->
-	      <audio id="audio-effect-scene2" src="audios/effects/scene2-door.mp3"></audio>
-        <audio id="audio-effect-drill" src="audios/effects/drill.mp3"></audio>
-	      <!-- Narrative audios. -->
-	      <audio id="audio-narrative-scene3" src="audios/narrative/scene3.mp3"></audio>
-	      <audio id="audio-narrative-scene4" src="audios/narrative/scene4.mp3"></audio>
-	      <audio id="audio-narrative-scene5" src="audios/narrative/scene5.mp3"></audio>
-	      <audio id="audio-narrative-scene6" src="audios/narrative/scene6.mp3"></audio>
-	      <!-- Character audios. -->
-	      <audio id="audio-khipukamayuq" src="audios/characters/khipukamayuq.mp3"></audio>
-	      <audio id="audio-danie-scene4" src="audios/characters/danie_scene4.mp3"></audio>
+        <!-- Images -->
+        <a-entity id="assets-template-instructions" template="src: src/assets/images/instructions.html"></a-entity>
+        <a-entity template="src: src/assets/images/backgrounds.html"></a-entity>
+        <a-entity template="src: src/assets/images/characters.html"></a-entity>
+        <a-entity template="src: src/assets/images/teleports.html"></a-entity>
+        <!-- Background audios -->
+	      <audio id="audio-background-scene1" src="audios/background/scene1.mp3"></audio>
       </a-assets>
 
       <a-camera id="camera" wasd-controls-enabled="true"
 		            position="0 0 0">
-        <a-cursor id="cursor" fuse="true" fuseTimeout="500">
-          <a-animation begin="click" easing="ease-in"
-		                   attribute="scale" fill="backwards" from="0.1
-		                                                            0.1 0.1" to="1 1 1" dur="150">
-	        </a-animation>
-          <a-animation begin="cursor-fusing" easing="ease-in"
-		                   attribute="scale" from="1 1 1" to="0.1 0.1 0.1"
-		                   dur="1500">
-	        </a-animation>
-        </a-cursor>
       </a-camera>
 
-      <!-- Intro. -->
-      <a-sky id="sky-intro" color="#000"></a-sky>
+      <!-- Instructions -->
+      <a-entity id="instructions"
+                animation-timeline="timeline: #instructions-timeline; startEvents: startInstructions"
+                intro="">
 
-      <a-image id="image-headphones" src="#img-headphones"
-               visible="false"
-               opacity="0" position="0 1.6 -6">
-        <a-animation attribute="visible"
-                     to="true"
-                     begin="start">
-        </a-animation>
-	      <a-animation id="animation-headphones-start"
-                     attribute="opacity"
-	                   from="0"
-	                   to="1"
-                     begin="start"
-	                   dur="5000">
-	      </a-animation>
-	      <a-animation attribute="rotation"
-                     begin="start"
-		                 dur="5000"
-		                 fill="forwards"
-		                 to="0 360 0"
-		                 repeat="2">
-	      </a-animation>
-	      <a-animation id="animation-headphones-stop"
-                     attribute="opacity"
-	                   from="1"
-	                   to="0"
-	                   begin="stop"
-	                   dur="5000">
-	      </a-animation>
-	      <a-animation attribute="visible"
-                     begin="next"
-                     to="false">
-        </a-animation>
-      </a-image>
+        <a-sky id="sky-instructions" color="#000" visible="true"></a-sky>
 
-      <a-entity id="text-headphones"
-                text="value: Ponete auriculares para una mejor experiencia; anchor: center; width: 5; color: white; opacity:0"
-		            position="0 0.6 -6"
-		            visible="false">
-        <a-animation attribute="visible"
-                     to="true"
-                     begin="start">
-        </a-animation>
-	      <a-animation attribute="text.opacity"
-                     from="0" to="1"
-                     begin="start"
-                     dur="5000">
-	      </a-animation>
-	      <a-animation attribute="text.opacity"
-                     from="1" to="0"
-		                 begin="stop" dur="5000">
-	      </a-animation>
-	      <a-animation attribute="visible"
-                     to="false"
-                     begin="next">
-        </a-animation>
+        <a-entity id="instructions-headset"
+                  template="src: src/templates/instructions.template"
+                  data-id-instructions="instructions-headset"
+                  data-img-src-instructions="#img-instructions-headset"
+                  data-text="Ponete auriculares para una mejor experiencia\nUse your headset for a better experience">
+        </a-entity>
+
+        <a-entity id="instructions-cardboard"
+                  template="src: src/templates/instructions.template"
+                  data-id-instructions="instructions-cardboard"
+                  data-img-src-instructions="#img-instructions-cardboard"
+                  data-text="Coloca tu dispositivo en el Cardboard\nPlace your device in the Cardboard">
+        </a-entity>
+
+        <a-entity id="instructions-rotation"
+                  template="src: src/templates/instructions.template"
+                  data-id-instructions="instructions-rotation"
+                  data-img-src-instructions="#img-instructions-rotation"
+                  data-text="Vas a poder moverte libremente todo el tiempo\nYou'll be able to move freely all the time">
+        </a-entity>
+
+        <a-timeline id="instructions-timeline">
+          <a-timeline-group>
+            <a-timeline-animation select="#instructions-headset-img" name="opacity_start"></a-timeline-animation>
+            <a-timeline-animation select="#instructions-headset-img" name="rotation"></a-timeline-animation>
+            <a-timeline-animation select="#instructions-headset-text" name="opacity_start"></a-timeline-animation>
+          </a-timeline-group>
+          <a-timeline-group>
+            <a-timeline-animation select="#instructions-headset-img" name="opacity_stop"></a-timeline-animation>
+            <a-timeline-animation select="#instructions-headset-text" name="opacity_stop"></a-timeline-animation>
+          </a-timeline-group>
+          <a-timeline-group>
+            <a-timeline-animation select="#instructions-cardboard-img" name="opacity_start"></a-timeline-animation>
+            <a-timeline-animation select="#instructions-cardboard-img" name="rotation"></a-timeline-animation>
+            <a-timeline-animation select="#instructions-cardboard-text" name="opacity_start"></a-timeline-animation>
+          </a-timeline-group>
+          <a-timeline-group>
+            <a-timeline-animation select="#instructions-cardboard-img" name="opacity_stop"></a-timeline-animation>
+            <a-timeline-animation select="#instructions-cardboard-text" name="opacity_stop"></a-timeline-animation>
+          </a-timeline-group>
+          <a-timeline-group>
+            <a-timeline-animation select="#instructions-rotation-img" name="opacity_start"></a-timeline-animation>
+            <a-timeline-animation select="#instructions-rotation-img" name="rotation"></a-timeline-animation>
+            <a-timeline-animation select="#instructions-rotation-text" name="opacity_start"></a-timeline-animation>
+          </a-timeline-group>
+          <a-timeline-group>
+            <a-timeline-animation select="#instructions-rotation-img" name="opacity_stop"></a-timeline-animation>
+            <a-timeline-animation select="#instructions-rotation-text" name="opacity_stop"></a-timeline-animation>
+          </a-timeline-group>
+        </a-timeline>
+
       </a-entity>
 
-      <a-image id="image-cardboard" src="#img-cardboard"
-               visible="false"
-               opacity="0"  position="0 1.6 -6">
-	      <a-animation attribute="visible"
-                     to="true"
-                     begin="start">
-        </a-animation>
-	      <a-animation id="animation-cardboard-start"
-	                   attribute="opacity"
-	                   from="0"
-	                   to="1"
-	                   begin="start"
-	                   dur="5000">
-	      </a-animation>
-	      <a-animation attribute="rotation"
-		                 begin="start"
-		                 dur="5000"
-		                 fill="forwards"
-		                 to="0 360 0"
-		                 repeat="3">
-	      </a-animation>
-	      <a-animation id="animation-cardboard-stop"
-                     attribute="opacity"
-	                   from="1"
-	                   to="0"
-	                   begin="stop"
-	                   dur="5000">
-	      </a-animation>
-	      <a-animation attribute="visible"
-                     begin="next"
-                     to="false">
-        </a-animation>
-      </a-image>
-
-      <a-entity id="text-cardboard"
-                text="value: Coloca tu dispositivo en el Cardboard; anchor: center; width: 5; color: white; opacity:0"
-		            position="0.6 0.6 -6"
-		            visible="false">
-	      <a-animation attribute="visible"
-                     begin="start"
-                     to="true">
-        </a-animation>
-	      <a-animation attribute="text.opacity"
-                     from="0" to="1"
-                     begin="start"
-                     dur="5000">
-	      </a-animation>
-	      <a-animation attribute="text.opacity"
-                     from="1" to="0"
-		                 begin="stop"
-                     dur="5000">
-	      </a-animation>
-	      <a-animation attribute="visible"
-                     to="false"
-                     begin="next">
-        </a-animation>
-      </a-entity>
-
-      <a-image id="image-rotation"
-               src="#img-rotation"
-               visible="false"
-	             opacity="0"
-	             position="0 1.6 -6">
-	      <a-animation attribute="visible"
-                     to="true"
-                     begin="start" >
-        </a-animation>
-	      <a-animation id="animation-rotation-start"
-	                   attribute="opacity"
-	                   from="0"
-	                   to="1"
-	                   begin="start"
-	                   dur="5000">
-	      </a-animation>
-	      <a-animation attribute="rotation"
-		                 begin="start"
-		                 dur="5000"
-		                 fill="forwards"
-		                 to="0 360 0"
-		                 repeat="3">
-	      </a-animation>
-	      <a-animation id="animation-rotation-stop"
-	                   attribute="opacity"
-	                   from="1"
-	                   to="0"
-	                   begin="stop"
-	                   dur="5000">
-	      </a-animation>
-	      <a-animation attribute="visible"
-		                 begin="next"
-		                 to="false">
-	      </a-animation>
-      </a-image>
-
-      <a-entity id="text-rotation"
-                text="value: Vas a poder moverte libremente todo el tiempo; anchor: center; width: 5; color: white; opacity: 0"
-		            position="0 0.6 -6"
-		            visible="false">
-	      <a-animation attribute="visible"
-                     to="true"
-                     begin="start">
-        </a-animation>
-	      <a-animation attribute="text.opacity"
-                     from="0" to="1"
-		                 begin="start"
-                     dur="5000">
-	      </a-animation>
-	      <a-animation attribute="text.opacity"
-                     from="1" to="0"
-		                 begin="stop"
-                     dur="5000">
-	      </a-animation>
-	      <a-animation attribute="visible"
-                     to="false"
-                     begin="next">
-        </a-animation>
-      </a-entity>
-
-      <a-plane id="plane-intro1" src="#img-intro1"
-               opacity="0" visibility="false"
-               width="5" height="2.8"
-               position="0 2 -3">
-        <a-animation attribute="visibility"
-                     to="true"
-                     begin="start">
-        </a-animation>
-	      <a-animation id="animation-intro1-start"
-                     attribute="opacity" from="0" to="1"
-                     begin="start"
-                     dur="5000">
-	      </a-animation>
-	      <a-animation id="animation-intro1-stop"
-                     attribute="opacity"
-                     from="1" to="0"
-		                 begin="stop"
-                     dur="5000">
-	      </a-animation>
-	      <a-animation attribute="visible"
-                     begin="next" to="false">
-        </a-animation>
-      </a-plane>
-
-      <a-plane id="plane-intro2" src="#img-intro2"
-               opacity="0" visibility="false"
-               width="5" height="2.8" position="0 2 -3">
-        <a-animation attribute="visibility"
-                     to="true"
-                     begin="start">
-        </a-animation>
-	      <a-animation id="animation-intro2-start"
-                     attribute="opacity"
-                     from="0" to="1"
-                     begin="start"
-                     dur="5000">
-	      </a-animation>
-	      <a-animation id="animation-intro2-stop"
-                     attribute="opacity"
-                     from="1" to="0"
-		                 begin="stop"
-                     dur="5000">
-	      </a-animation>
-	      <a-animation attribute="visible"
-                     begin="next" to="false">
-        </a-animation>
-      </a-plane>
-
-      <a-plane id="plane-intro3" src="#img-intro3"
-               opacity="0"
-               visibility="false"
-               width="5" height="2.8"
-               position="0 2 -3">
-        <a-animation attribute="visibility"
-                     to="true"
-                     begin="start">
-        </a-animation>
-	      <a-animation id="animation-intro3-start"
-                     attribute="opacity"
-                     from="0" to="1"
-                     begin="start"
-                     dur="5000">
-	      </a-animation>
-	      <a-animation id="animation-intro3-stop"
-                     attribute="opacity"
-                     from="1" to="0"
-		                 begin="stop"
-                     dur="5000">
-	      </a-animation>
-	      <a-animation id="animation-last-intro"
-                     attribute="visible"
-                     begin="next" to="false">
-        </a-animation>
-      </a-plane>
-
-      <!-- Scene 1. -->
-      <a-video id="a-video-scene1" src="#video-scene1"
-	             width="5" height="2.8" position="0 2 -3"
-	             visible="false">
-      </a-video>
-
-      <!-- Scene 2. -->
-      <a-sky id="sky-medialab" radius="5" src="#img-medialab"
-	           rotation="0 -90 0"
-	           visible="false">
-      </a-sky>
-      <a-sound id="sound-background-scene2" src="#audio-background-scene2"
-	             autoplay="false"
-               loop="true"
-	             position="-3 -1 5">
-	      <a-animation attribute="volume"
-		                 dur="5000" from="1" to="0.1"
-		                 begin="background-sound-reduce-volume">
-	      </a-animation>
-	      <a-animation attribute="volume"
-		                 dur="5000" from="0.1" to="1"
-		                 begin="background-sound-raise-volume">
-	      </a-animation>
-      </a-sound>
-      <!-- Characters. -->
-      <a-image id="image-anao-scene2" src="#anao-front" position="1 -1 -2"
-	             height="4" width="1.25"
-	             visible="false">
-      </a-image>
-
-      <a-entity id="entity-gif-anao-walk" position="1 -1 -2" geometry="primitive: plane; height: 4; width: 1.25"
-		            material="shader: gif; src:#gif-anao-walk; transparent: true; autoplay: true; side: double"
-		            rotation="0 180 0"
-		            visible="false">
-	      <a-animation attribute="visible"
-		                 to="true"
-		                 begin="walk">
-	      </a-animation>
-	      <a-animation attribute="position"
-		                 to="1.3 -1 -1.5"
-		                 begin="walk"
-		                 dur="3000">
-	      </a-animation>
-      </a-entity>
-
-      <a-image id="image-anap-scene2" src="#anap-front" position="-3 -1 -2"
-	             height="4" width="1.25"
-	             visible="false">
-      </a-image>
-
-      <a-entity id="entity-gif-anap-walk" position="-3 -1 -2" geometry="primitive: plane; height: 4; width: 1.25"
-		            material="shader: gif; src:#gif-anap-walk; transparent: true; autoplay: true; side: double"
-                rotation="0 180 0"
-		            visible="false">
-	      <a-animation attribute="visible"
-		                 to="true"
-		                 begin="walk">
-	      </a-animation>
-	      <a-animation attribute="position"
-		                 to="-0.15 -1 -1.5"
-		                 begin="walk"
-		                 dur="3000">
-	      </a-animation>
-      </a-entity>
-
-      <a-image id="image-coni-scene2" src="#coni-front" position="-0.75 -1 -3"
-	             height="4" width="1.25"
-	             visible="false">
-      </a-image>
-
-      <a-entity id="entity-gif-coni-walk" position="-0.75 -1 -3" geometry="primitive: plane; height: 4; width: 1.25"
-		            material="shader: gif; src:#gif-coni-walk; transparent: true; autoplay: true; side: double"
-		            rotation="0 180 0"
-		            visible="false">
-	      <a-animation attribute="visible"
-		                 to="true"
-		                 begin="walk">
-	      </a-animation>
-	      <a-animation attribute="position"
-		                 to="0.70 -1 -1.5"
-		                 begin="walk"
-		                 dur="3000">
-	      </a-animation>
-      </a-entity>
-
-      <a-image id="image-danie-scene2" src="#danie-front" position="-2 -1 2"
-	             height="4" width="1.25"
-	             visible="false">
-      </a-image>
-
-      <a-entity id="entity-gif-danie-walk" position="-2 -1 2" geometry="primitive: plane; height: 4; width: 1.25"
-		            material="shader: gif; src:#gif-danie-walk; transparent: true; autoplay: true; side: double"
-		            rotation="0 180 0"
-		            visible="false">
-	      <a-animation attribute="visible"
-		                 to="true"
-		                 begin="walk">
-	      </a-animation>
-	      <a-animation id="animation-walk"
-		                 attribute="position"
-		                 to="-1.15 -1 -1.25"
-		                 begin="walk"
-		                 dur="3000">
-	      </a-animation>
-      </a-entity>
-
-      <!-- Teleport. -->
-      <a-entity id="teleport-scene2" glow="enabled: false; c: 0.3; p:3; scale: 1.1; color: #FFFFFF"
-                geometry="primitive: sphere; radius: 0.7" material="transparent: true; opacity: 0"
-		            position="3.5 0 -0.5"
-                event-set__enter="_event: mouseenter; glow.enabled: true"
-                event-set__leave="_event: mouseleave; glow.enabled: false"
-		            transparent="true" visible="false">
-	      <a-image id="image-teleport-scene2" src="#img-teleport"
-		             rotation="0 90 0"
-		             opacity="0">
-	        <a-animation id="animation-door-delay" attribute="opacity"
-		                   to="0" dur="3000"
-		                   begin="start">
-	        </a-animation>
-	        <a-animation id="animation-door" attribute="opacity"
-		                   begin="start" delay="3000" dur="3000" to="1">
-	        </a-animation>
-	        <a-animation attribute="rotation"
-		                   begin="rotate"
-		                   dur="5000"
-		                   fill="forwards"
-		                   from="0 90 0"
-		                   to="0 -270 0"
-		                   repeat="indefinite">
-	        </a-animation>
-	      </a-image>
-	      <a-sound id="sound-effect-scene2" src="#audio-effect-scene2"
-		             autoplay="false">
-	      </a-sound>
-      </a-entity>
-
-      <!-- Scene 3. -->
-      <a-sky id="sky-rooftop" radius="10" src="#img-rooftop"
-	           rotation="0 -95 0"
-	           visible="false">
-      </a-sky>
-      <a-sound id="sound-background-scene3" src="#audio-background-scene3"
-	             autoplay="false"
-               loop="true"
-	             position="-3 -1 2"
-               volume="0">
-	      <a-animation attribute="volume"
-		                 dur="3000" from="0" to="1"
-		                 begin="start"¨>
-	      </a-animation>
-	      <a-animation attribute="volume"
-		                 dur="5000" from="1" to="0.1"
-		                 begin="background-sound-reduce-volume">
-	      </a-animation>
-	      <a-animation attribute="volume"
-		                 dur="5000" from="0.1" to="1"
-		                 begin="background-sound-raise-volume">
-	      </a-animation>
-      </a-sound>
-      <!-- Characters. -->
-      <a-image id="image-anao-scene3" src="#anao-side" position="2 0 -2"
-	             height="3" width="1"
-	             rotation="0 -90 0"
-	             visible="false">
-      </a-image>
-      <a-image id="image-anap-scene3" src="#anap-side" position="2 0 -1"
-	             height="3" width="1"
-	             rotation="0 -100 0"
-	             visible="false">
-      </a-image>
-      <a-image id="image-coni-scene3" src="#coni-side" position="-2 0 -2"
-	             height="3" width="1"
-	             rotation="0 -80 0"
-	             visible="false">
-      </a-image>
-      <a-image id="image-danie-scene3" src="#danie-side" position="-2 0 -1"
-	             height="3" width="1"
-	             rotation="0 -70 0"
-	             visible="false">
-      </a-image>
-      <a-image id="khipukamayuq" src="#khipukamayuq-front" position="0 4 -3"
-	             height="3" width="1"
-	             opacity="0">
-	      <a-animation id="animation-khipukamayuq" attribute="opacity"
-		                 begin="start" delay="5000" dur="5000" to="1">
-        </a-animation>
-	      <a-animation id="animation-khipukamayuq-delay" attribute="opacity"
-		                 begin="start" dur="5000" to="0">
-        </a-animation>
-	      <a-sound id="sound-khipukamayuq" src="#audio-khipukamayuq"
-		             autoplay="false">
-	      </a-sound>
-      </a-image>
-      <!-- Teleport. -->
-      <a-entity id="amulet" position="0 3.25 -2.5"
-                geometry="primitive: sphere; radius: 2.5"
-                material="transparent: true; opacity: 0"
-		            scale="0 0 0" rotation="90 0 360"
-		            visible="true">
-	      <a-entity geometry="primitive: plane; height: 4; width: 4"
-		              material="side: front; src: #img-amulet-front; transparent: true">
-	      </a-entity>
-	      <a-entity geometry="primitive: plane; height: 4; width: 4"
-		              material="side: back; src: #img-amulet-back; transparent: true">
-	      </a-entity>
-	      <a-animation id="amulet-delay" attribute="scale" to="0 0 0"
-		                 begin="amulet-appears-started" dur="20000">
-	      </a-animation>
-	      <a-animation id="amulet-appears" attribute="scale" to="0.2 0.2 0.2"
-		                 begin="amulet-delay-ended">
-	      </a-animation>
-	      <a-animation id="amulet-decends" attribute="position" to="0 1 -1.5"
-		                 begin="amulet-appears-ended" dur="3000">
-	      </a-animation>
-	      <a-animation attribute="rotation" to="0 360 0"
-		                 begin="amulet-appears-ended" dur="3000">
-	      </a-animation>
-	      <a-animation attribute="rotation"
-		                 begin="rotate"
-		                 dur="5000"
-		                 fill="forwards"
-                     from="0 0 0"
-		                 to="0 360 0"
-		                 repeat="indefinite">
-	      </a-animation>
-      </a-entity>
-      <!-- Narrative. -->
-      <a-entity>
-	      <a-sound id="sound-narrative-scene3" src="#audio-narrative-scene3"
-		             autoplay="false">
-      </a-entity>
-
-      <!-- Scene 4. -->
-      <a-sky id="sky-inventoria-scene4" radius="5" src="#img-inventoria-scene4"
-	           rotation="0 250 0"
-	           visible="false">
-      </a-sky>
-      <a-sound id="sound-background-scene4" src="#audio-background-scene4"
-	             autoplay="false"
-               loop="true"
-	             position="0 0 0"
-               volume="0">
-	      <a-animation attribute="volume"
-		                 dur="3000" from="0" to="1"
-		                 begin="start">
-	      </a-animation>
-        <a-animation id="animation-scene4-narrative-delay"
-                     attribute="autoplay"
-                     to="false"
-                     begin="start"
-                     dur="3000">
-        </a-animation>
-	      <a-animation attribute="volume"
-		                 dur="3000" from="1" to="0.1"
-		                 begin="background-sound-reduce-volume">
-	      </a-animation>
-	      <a-animation attribute="volume"
-		                 dur="5000" from="0.1" to="1"
-		                 begin="background-sound-raise-volume">
-	      </a-animation>
-      </a-sound>
-
-      <!-- Characters -->
-      <a-entity id="entity-gif-anap-drill" position="2 -0.1 0.65" geometry="primitive: plane; height: 1.4; width: 0.5"
-		            material="shader: gif; src:#gif-anap-drill; transparent: true; autoplay: true; side: double"
-                rotation="0 270 0"
-		            visible="false">
-	      <a-sound id="sound-effect-drill" src="#audio-effect-drill"
-                 loop="true"
-		             autoplay="false">
-          <a-animation attribute="volume"
-                       begin="start"
-                       dur="5000"
-                       from="0" to="1"
-                       repeat="indefinite">
-          </a-animation>
-	      </a-sound>
-      </a-entity>
-      <a-entity id="entity-gif-danie-writes" position="0.15 -0.1 -3" geometry="primitive: plane; height: 1.4; width: 0.5"
-		            material="shader: gif; src:#gif-danie-writes; transparent: true; autoplay: true; side: double"
-		            visible="false">
-	      <a-sound id="sound-danie-scene4" src="#audio-danie-scene4"
-                 volume="2.5"
-		             autoplay="false">
-	      </a-sound>
-      </a-entity>
-
-      <a-image id="image-amulet-3-4" src="#amulet-3-4"
-		           position="2.4 -1 -3.5"
-               rotation="45 -15 0"
-               visible="false">
-        <a-animation id="animation-amulet-3-4" attribute="position"
-                     dur="3000"
-                     begin="start"
-                     to="1.9 10 -2.7">
-        </a-animation>
-        <a-animation attribute="rotation"
-                     dur="3000"
-                     begin="start"
-                     to="-45 0 45">
-        </a-animation>
-	      <a-animation id="amulet-connects" attribute="position" to="0.1 -0.5 -2"
-		                 begin="connect" dur="3000">
-	      </a-animation>
-	      <a-animation attribute="rotation" from="0 0 0" to="0 360 0"
-		                 begin="connect" dur="3000">
-	      </a-animation>
-      </a-image>
-
-      <!-- Narrative. -->
-      <a-entity>
-	      <a-sound id="sound-narrative-scene4" src="#audio-narrative-scene4"
-		             autoplay="false">
-      </a-entity>
-
-      <!-- Teleport. -->
-      <a-entity id="teleport-scene4" glow="enabled: false; c: 0.3; p:3; scale: 1.1; color: #FFFFFF"
-                geometry="primitive: sphere; radius: 0.7" material="transparent: true; opacity: 0"
-                position="1.5 1 -2"
-                event-set__enter="_event: mouseenter; glow.enabled: true"
-                event-set__leave="_event: mouseleave; glow.enabled: false"
-		            transparent="true" visible="false">
-	      <a-image id="image-teleport-scene4" src="#img-teleport"
-                 visible="false"
-                 opacity="0">
-	        <a-animation attribute="visible"
-                       to="true"
-		                   begin="rotate">
-	        </a-animation>
-	        <a-animation attribute="opacity"
-                       to="1"
-		                   begin="rotate"
-                       dur="1000">
-	        </a-animation>
-	        <a-animation attribute="rotation"
-		                   begin="rotate"
-		                   dur="5000"
-		                   fill="forwards"
-		                   to="0 360 0"
-		                   repeat="indefinite">
-	        </a-animation>
-	      </a-image>
-      </a-entity>
-
-      <!-- Scene 5. -->
-      <a-sky id="sky-inventoria-scene5" radius="5" src="#img-inventoria-scene5"
-	           rotation="0 250 0"
-	           visible="false">
-      </a-sky>
-      <a-sound id="sound-background-scene5" src="#audio-background-scene5"
-	             autoplay="false"
-               loop="true"
-               volume="0">
-        <a-animation id="animation-scene5-narrative-delay"
-                     loop="true"
-                     to="true"
-                     begin="start"
-                     dur="3000">
-        </a-animation>
-	      <a-animation attribute="volume"
-		                 dur="3000" from="0" to="1"
-		                 begin="start">
-	      </a-animation>
-	      <a-animation attribute="volume"
-		                 dur="3000" from="1" to="0.1"
-		                 begin="background-sound-reduce-volume">
-	      </a-animation>
-	      <a-animation attribute="volume"
-		                 dur="5000" from="0.1" to="1"
-		                 begin="background-sound-raise-volume">
-	      </a-animation>
-      </a-sound>
-      <a-image id="image-khipu" src="#img-khipu"
-               visible="false"
-               scale="5 5 5"
-               position="-0 2 -2.5">
-      </a-image>
-
-      <!-- Characters. -->
-
-      <a-image id="image-anao-scene5" src="#anao-front" position="3 -1 3"
-	             height="3" width="1"
-	             visible="false">
-      </a-image>
-
-      <a-entity id="entity-gif-anao-walk-scene5" position="3 -1 3" geometry="primitive: plane; height: 3; width: 1"
-		            material="shader: gif; src:#gif-anao-walk; transparent: true; autoplay: true; side: double"
-		            visible="false">
-	      <a-animation attribute="visible"
-		                 to="true"
-		                 begin="walk">
-	      </a-animation>
-	      <a-animation attribute="position"
-		                 to="0.7 -1 1.5"
-		                 begin="walk"
-		                 dur="3000">
-	      </a-animation>
-      </a-entity>
-
-      <a-image id="image-anap-scene5" src="#anap-front" position="-3 -1 -2"
-	             height="3" width="1"
-	             visible="false">
-      </a-image>
-
-      <a-entity id="entity-gif-anap-walk-scene5" position="-3 -1 -2" geometry="primitive: plane; height: 3; width: 1"
-		            material="shader: gif; src:#gif-anap-walk; transparent: true; autoplay: true; side: double"
-                rotation="0 180 0"
-		            visible="false">
-	      <a-animation attribute="visible"
-		                 to="true"
-		                 begin="walk">
-	      </a-animation>
-	      <a-animation attribute="position"
-		                 to="-1 -1 -2"
-		                 begin="walk"
-		                 dur="3000">
-	      </a-animation>
-      </a-entity>
-
-      <a-image id="image-coni-scene5" src="#coni-front" position="0.8 -1 2"
-	             height="3" width="1"
-	             visible="false">
-      </a-image>
-
-      <a-entity id="entity-gif-coni-walk-scene5" position="0.8 -1 2" geometry="primitive: plane; height: 3; width: 1"
-		            material="shader: gif; src:#gif-coni-walk; transparent: true; autoplay: true; side: double"
-		            visible="false">
-	      <a-animation attribute="visible"
-		                 to="true"
-		                 begin="walk">
-	      </a-animation>
-	      <a-animation id="animation-walk-scene5" attribute="position"
-                     to="-0.3 -1 1.5"
-		                 begin="walk"
-		                 dur="3000">
-	      </a-animation>
-      </a-entity>
-
-      <a-image id="image-danie-scene5" src="#danie-front" position="0 -1 2.5"
-	             height="3" width="1"
-	             visible="false">
-      </a-image>
-
-      <a-entity id="entity-gif-danie-walk-scene5" position="0 -1 2.5" geometry="primitive: plane; height: 3; width: 1"
-		            material="shader: gif; src:#gif-danie-walk; transparent: true; autoplay: true; side: double"
-		            rotation="0 180 0"
-		            visible="false">
-	      <a-animation attribute="visible"
-		                 to="true"
-		                 begin="walk">
-	      </a-animation>
-	      <a-animation id="animation-walk"
-		                 attribute="position"
-		                 to="1 -1 1"
-		                 begin="walk"
-		                 dur="3000">
-	      </a-animation>
-      </a-entity>
-
-      <a-image id="khipukamayuq-scene5" src="#khipukamayuq-front" position="0 2 -2"
-	             height="2" width="0.75"
-	             opacity="0">
-	      <a-animation id="animation-khipukamayuq-scene5" attribute="opacity"
-		                 begin="start" dur="5000" to="1">
-        </a-animation>
-	      <a-sound id="sound-khipukamayuq-scene5" src="#audio-khipukamayuq"
-		             autoplay="false">
-	      </a-sound>
-      </a-image>
-
-      <!-- Narrative. -->
-      <a-entity>
-	      <a-sound id="sound-narrative-scene5" src="#audio-narrative-scene5"
-		             autoplay="false">
-      </a-entity>
-
-      <!-- Teleport. -->
-      <a-entity id="teleport-scene5"
-                position="0.1 -0.5 -2" geometry="primitive: sphere; radius: 2.5"
-                material="transparent: true; opacity: 0"
-		            scale="0.2 0.2 0.2"
-                rotation="0 180 0"
-		            visible="false"
-                transparent="true">
-	      <a-entity geometry="primitive: plane; height: 4; width: 4"
-		              material="side: front; src: #img-amulet-front; transparent: true">
-	      </a-entity>
-	      <a-entity geometry="primitive: plane; height: 4; width: 4"
-		              material="side: back; src: #img-amulet-back; transparent: true">
-	      </a-entity>
-	      <a-animation attribute="rotation"
-		                 begin="rotate"
-		                 dur="5000"
-		                 fill="forwards"
-                     from="0 0 0"
-		                 to="0 360 0"
-		                 repeat="indefinite">
-	      </a-animation>
-      </a-entity>
-
-      <!-- Scene 6. -->
-      <a-sky id="sky-forrest" radius="10" src="#img-forrest"
-	           visible="false">
-      </a-sky>
-      <a-sound id="sound-background-scene6" src="#audio-background-scene6"
-	             autoplay="false"
-               loop="true"
-               volume="0">
-        <a-animation id="animation-scene6-narrative-delay"
-                     attribute="autoplay"
-                     to="false"
-                     begin="start"
-                     dur="3000">
-        </a-animation>
-	      <a-animation attribute="volume"
-		                 dur="3000" from="0" to="1"
-		                 begin="start">
-	      </a-animation>
-	      <a-animation attribute="volume"
-		                 dur="3000" from="1" to="0.1"
-		                 begin="background-sound-reduce-volume">
-	      </a-animation>
-	      <a-animation attribute="volume"
-		                 dur="5000" from="0.1" to="1"
-		                 begin="background-sound-raise-volume">
-	      </a-animation>
-      </a-sound>
-
-      <!-- Characters. -->
-      <a-image id="image-all" src="#img-all" position="4 -1 -2"
-               height="4" width="4"
-               rotation="0 -30 0"
-	             visible="false">
-      </a-image>
-
-      <!-- Narrative. -->
-      <a-entity>
-	      <a-sound id="sound-narrative-scene6" src="#audio-narrative-scene6"
-		             autoplay="false">
+      <!-- Scene 1 -->
+      <a-entity id="scene1"
+                visible="false"
+                template="src: src/templates/scene.template"
+                data-img-src-sky="#img-medialab"
+                data-audio-src-background="#audio-background-scene1"
+                data-img-src-anao="#anao-front"
+                data-img-src-anap="#anap-front"
+                data-img-src-coni="#coni-front"
+                data-img-src-danie="#danie-front">
       </a-entity>
 
     </a-scene>
 
-    <script src="scripts/controller.js"></script>
   </body>
 </html>
