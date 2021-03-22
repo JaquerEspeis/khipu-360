@@ -26,6 +26,11 @@
   </a-entity>
 
   <a-timeline id="instructions-timeline">
+    <!--
+    Use templates to avoid repetition.
+    It seems that a-timeline fails to trigger the animations nested in an entity.
+    --elopio -- 20210321
+    -->
     <a-timeline-group>
       <a-timeline-animation select="#instructions-headset-img" name="opacity_start"></a-timeline-animation>
       <a-timeline-animation select="#instructions-headset-img" name="rotation"></a-timeline-animation>
