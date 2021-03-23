@@ -74,14 +74,71 @@ AFRAME.registerComponent("scene1", {
 
         let camera = scene.querySelector("#camera");
         camera.removeAttribute("target-indicator");
-        // scene2.setAttribute("visible", true);
-        // scene2.emit("startScene2");
+
+        startScene2();
       }
     });
 
   }
 });
 
+AFRAME.registerComponent("scene2", {
+  init: function () {
+    let scene = this.el.sceneEl;
+
+    // After the background sound volume is reduced, play the khipukamayuq sound effect.
+    let scene2SoundKhipukamayuq = scene.querySelector("#scene2-sound-khipukamayuq");
+    let scene2SoundBackground = scene.querySelector("#scene2-sound-background");
+    scene2SoundBackground.addEventListener("animationcomplete__volume_reduce", function() {
+      scene2SoundKhipukamayuq.components.sound.playSound();
+    });
+
+    // After the move animation is complete.
+    let scene2SoundNarrative = scene.querySelector("#scene2-sound-narrative");
+
+    let scene2 = scene.querySelector("#scene2");
+    scene2.addEventListener("animationtimelinecomplete", function() {
+      // Rotate the amulet.
+      let scene2Amulet = scene.querySelector("#scene2-amulet");
+      scene2Amulet.emit("scene2-amulet-rotate");
+
+      // Play the narrative.
+      scene2SoundNarrative.components.sound.playSound();
+    });
+
+    // After the narrative ended.
+    scene2SoundNarrative.addEventListener("sound-ended", function() {
+      scene2SoundBackground.emit("scene2-volume-raise");
+
+      teleportEnabled = true;
+
+      // Mark the teleport as the target.
+      let camera = scene.querySelector("#camera");
+      camera.setAttribute("target-indicator", "target: #scene2-amulet");
+
+      let teleport = scene.querySelector("#scene2-amulet");
+      teleport.setAttribute("class", "clickable");
+    });
+
+    let amulet = scene.querySelector("#scene2-amulet");
+    amulet.addEventListener("click", function() {
+      console.log("click on teleport!");
+      if (teleportEnabled == true) {
+        teleportEnabled = false;
+
+        scene2.setAttribute("visible", false);
+        scene2SoundBackground.components.sound.stopSound();
+        scene2SoundKhipukamayuq.components.sound.stopSound();
+
+        let camera = scene.querySelector("#camera");
+        camera.removeAttribute("target-indicator");
+
+        startScene3();
+      }
+    });
+
+  }
+});
 
 var start = function() {
   // Hide the play button.
@@ -90,7 +147,8 @@ var start = function() {
 
   //startInstructions();
   // For debugging.
-  startScene1();
+  //startScene1();
+  startScene2();
 };
 
 var startInstructions = function() {
@@ -110,4 +168,20 @@ var startScene1 = function() {
   scene1.emit("startScene1");
   let scene1SoundBackground = document.getElementById("scene1-sound-background");
   scene1SoundBackground.components.sound.playSound();
+};
+
+var startScene2 = function() {
+  let camera = document.getElementById("camera");
+  camera.setAttribute("position", "0 0.5 0");
+  camera.setAttribute("rotation", "0 90 0");
+
+  let scene2 = document.getElementById("scene2");
+  scene2.setAttribute("visible", true);
+  scene2.emit("startScene2");
+  let scene2SoundBackground = document.getElementById("scene2-sound-background");
+  scene2SoundBackground.components.sound.playSound();
+};
+
+var startScene3 = function() {
+
 };

@@ -1,0 +1,109 @@
+<a-entity id="scene2"
+          scene2=""
+          visible="false"
+          animation-timeline="timeline: #timeline-scene2; startEvents: startScene2">
+
+  <!-- 360 background image -->
+  <a-sky radius="10"
+         src="#img-rooftop"
+         rotation="0 -95 0"
+         visible="true">
+  </a-sky
+
+  <!-- Background audio -->
+  <a-sound id="scene2-sound-background"
+           src="#scene2-audio-background"
+           autoplay="false"
+           loop="true"
+           position="-3 -1 2"
+           animation__volume_reduce="property: volume; dur: 3000; from: 1; to:0.1; autoplay: false"
+           animation__volume_raise="property: volume; dur: 3000; from: 0.1; to:1; autoplay: false; startEvents: scene2-volume-raise">
+  </a-sound>
+
+  <!-- Characters -->
+  <a-image src="#anao-side" position="2 0 -2"
+           height="3" width="1"
+           rotation="0 -90 0"
+           visible="true">
+  </a-image>
+  <a-image src="#anap-side" position="2 0 -1"
+           height="3" width="1"
+           rotation="0 -100 0"
+           visible="true">
+  </a-image>
+  <a-image src="#coni-side" position="-2 0 -2"
+           height="3" width="1"
+           rotation="0 -80 0"
+           visible="true">
+  </a-image>
+  <a-image src="#danie-side" position="-2 0 -1"
+           height="3" width="1"
+           rotation="0 -70 0"
+           visible="true">
+  </a-image>
+
+  <a-image id="scene2-khipukamayuq" src="#khipukamayuq-front" position="0 4 -3"
+           height="3" width="1"
+           visible="true"
+           opacity="0"
+           animation__opacity_start="property: opacity; from: 0; to: 1; dur: 5000; autoplay: false">
+    <a-sound id="scene2-sound-khipukamayuq" src="#audio-khipukamayuq"
+	           autoplay="false">
+    </a-sound>
+  </a-image>
+
+  <!-- Teleport. -->
+  <a-entity id="scene2-amulet" position="0 3.25 -2.5"
+            geometry="primitive: sphere; radius: 3"
+            material="transparent: true; opacity: 0"
+            scale="0 0 0" rotation="90 0 360"
+	          visible="true"
+            animation__mouseenter="property: material.opacity; startEvents: mouseenter; easing: easeInCubic; dur: 500; from: 0; to: 0.5"
+            animation__mouseleave="property: material.opacity; startEvents: mouseleave; easing: easeInCubic; dur: 500; from: 0.5; to: 0"
+            animation__scale="property: scale; from: 0 0 0; to: 0.2 0.2 0.2; autoplay: false"
+            animation__move="property: position; from: 0. 3.25 -2.35; to: 0 1 -1.5; dur: 3000; autoplay: false"
+            animation__move_rotation="property: rotation; from: 90 0 360; to: 0 360 0; dur: 3000; autoplay: false"
+            animation__rotation="property: rotation; from: 0 0 0; to: 0 360 0; dur: 5000; startEvents: scene2-amulet-rotate; loop: true; easing: linear">
+    <a-entity geometry="primitive: plane; height: 4; width: 4"
+              material="side: front; src: #img-amulet-front; transparent: true">
+    </a-entity>
+    <a-entity geometry="primitive: plane; height: 4; width: 4"
+              material="side: back; src: #img-amulet-back; transparent: true">
+    </a-entity>
+  </a-entity>
+
+  <!-- Narrative. -->
+  <a-entity>
+    <a-sound id="scene2-sound-narrative" src="#audio-narrative-scene2"
+             autoplay="false">
+    </a-sound>
+  </a-entity>
+
+  <a-timeline id="timeline-scene2">
+    <a-timeline-animation select="#scene2-sound-background"
+                          name="volume_raise">
+    </a-timeline-animation>
+    <a-timeline-group>
+      <a-timeline-animation select="#scene2-sound-background"
+                            name="volume_reduce">
+      </a-timeline-animation>
+      <a-timeline-animation select="#scene2-khipukamayuq"
+                            name="opacity_start">
+      </a-timeline-animation>
+    </a-timeline-group>
+
+    <a-timeline-animation select="#scene2-amulet"
+                          name="scale">
+    </a-timeline-animation>
+    <a-timeline-group>
+      <a-timeline-animation select="#scene2-amulet"
+                            name="move">
+      </a-timeline-animation>
+      <a-timeline-animation select="#scene2-amulet"
+                            name="move_rotation">
+      </a-timeline-animation>
+    </a-timeline-group>
+
+  </a-timeline>
+
+</a-entity>
