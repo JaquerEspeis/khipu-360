@@ -57,17 +57,20 @@ AFRAME.registerComponent("scene1", {
       // Mark the teleport as the target.
       let camera = scene.querySelector("#camera");
       camera.setAttribute("target-indicator", "target: #scene1-teleport");
+
+      let teleport = scene.querySelector("#scene1-teleport");
+      teleport.setAttribute("class", "clickable");
     });
 
-    teleport = scene.querySelector("#scene1-image-teleport");
+    let teleport = scene.querySelector("#scene1-teleport");
     teleport.addEventListener("click", function() {
       console.log("click on teleport!");
       if (teleportEnabled == true) {
         teleportEnabled = false;
 
         scene1.setAttribute("visible", false);
-        let scene1SoundBackground = scene.querySelector("#scene1-sound-background");
         scene1SoundBackground.components.sound.stopSound();
+        scene1SoundEffect.components.sound.stopSound();
 
         let camera = scene.querySelector("#camera");
         camera.removeAttribute("target-indicator");

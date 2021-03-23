@@ -47,12 +47,17 @@
        --elopio - 20210321
   -->
   <a-entity id="scene1-teleport"
-		        position="3.5 0 -0.5"
-		        transparent="true" visible="true">
+            position="3.5 0 -0.5"
+            transparent="true"
+            visible="true"
+            material="transparent: true; opacity: 0"
+            geometry="primitive: sphere; radius: 0.8"
+            animation__mouseenter="property: material.opacity; startEvents: mouseenter; easing: easeInCubic; dur: 500; from: 0; to: 0.5"
+            animation__mouseleave="property: material.opacity; startEvents: mouseleave; easing: easeInCubic; dur: 500; from: 0.5; to: 0">
 	  <a-image id="scene1-image-teleport"
-             class="clickable"
              src="#img-teleport"
              rotation="0 90 0"
+             visible="true"
 		         opacity="0"
              animation__opacity_start="property: opacity; from: 0; to: 1; dur: 3000; autoplay: false"
              animation__rotation="property: rotation; from: 0 0 0; to: 0 360 0; dur: 5000; easing: linear; loop: true; autoplay: true">
