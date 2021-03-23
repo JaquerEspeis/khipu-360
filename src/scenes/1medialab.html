@@ -10,13 +10,13 @@
   </a-sky>
 
   <!-- Background audio -->
-  <a-sound id="sound-background-scene1"
-           src="#audio-background-scene1"
+  <a-sound id="scene1-sound-background"
+           src="#scene1-audio-background"
            autoplay="false"
            loop="true"
            position="-3 -1 5"
-           animation__volume_reduce="property: volume; dur: 5000; from: 1; to:0.1; autoplay: false"
-           animation__volume_raise="property: volume; dur: 5000; from: 0.1; to:1; autoplay: false">
+           animation__volume_reduce="property: volume; dur: 3000; from: 1; to:0.1; autoplay: false"
+           animation__volume_raise="property: volume; dur: 3000; from: 0.1; to:1; autoplay: false; startEvents: scene1_volume_raise">
   </a-sound>
 
   <!-- Characters -->
@@ -49,7 +49,9 @@
   <a-entity id="scene1-teleport"
 		        position="3.5 0 -0.5"
 		        transparent="true" visible="true">
-	  <a-image id="scene1-image-teleport" src="#img-teleport"
+	  <a-image id="scene1-image-teleport"
+             class="clickable"
+             src="#img-teleport"
              rotation="0 90 0"
 		         opacity="0"
              animation__opacity_start="property: opacity; from: 0; to: 1; dur: 3000; autoplay: false"
@@ -57,20 +59,21 @@
 	  </a-image>
 
     <!-- Sound effect -->
-    <a-sound id="sound-effect-scene1" src="#audio-effect-scene1"
+    <a-sound id="scene1-sound-effect" src="#scene1-audio-effect"
 		         autoplay="false">
 	  </a-sound>
 
   </a-entity>
 
   <a-timeline id="timeline-scene1">
+    <a-timeline-animation select="#scene1-sound-background"
+                          name="volume_reduce"
+                          offset="3000">
+    </a-timeline-animation>
     <a-timeline-animation select="#scene1-image-teleport"
                           name="opacity_start">
     </a-timeline-animation>
     <a-timeline-group>
-      <a-timeline-animation select="#sound-background-scene1"
-                            name="volume_reduce">
-      </a-timeline-animation>
       <a-timeline-animation select="#scene1-gif-anao-walk"
                             name="visibility_start">
       </a-timeline-animation>
@@ -110,7 +113,6 @@
       <a-timeline-animation select="#scene1-image-danie"
                             name="visibility_stop">
       </a-timeline-animation>
-
     </a-timeline-group>
 
   </a-timeline>

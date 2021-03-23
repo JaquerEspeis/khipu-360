@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Khipu 360</title>
 
-    <script src="scripts/aframe.min.js"></script>
+    <script src="scripts/aframe.js"></script>
 
     <script src="scripts/aframe-template-component.min.js"></script>
 
@@ -13,7 +13,7 @@
     <script src="scripts/aframe-gif-shader.js"></script>
     <script src="scripts/aframe-gif-component.min.js"></script>
 
-    <script src="scripts/aframe-ui-components.min.js"></script>
+    <script src="scripts/aframe-ui-components.js"></script>
 
     <script src="scripts/controller.js"></script>
 
@@ -46,12 +46,17 @@
 
       </a-assets>
 
-      <a-camera id="camera"
-                wasd-controls-enabled="true"
-		            position="0 0 0">
-        <a-cursor id="cursor" fuse="true" fuseTimeout="500">
-        </a-cursor>
-      </a-camera>
+      <a-entity id="camera" camera look-controls>
+        <a-entity cursor="fuse: true; fuseTimeout: 500"
+                  position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                  material="color: black; shader: flat"
+                  animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+                  animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
+                  animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
+                  raycaster="objects: .clickable">
+        </a-entity>
+      </a-entity>
 
       <!-- Scene: Instructions -->
       <a-entity template="src: src/scenes/instructions.html">
