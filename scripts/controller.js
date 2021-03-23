@@ -140,6 +140,63 @@ AFRAME.registerComponent("scene2", {
   }
 });
 
+AFRAME.registerComponent("scene3", {
+  init: function () {
+    let scene = this.el.sceneEl;
+
+    // After the background sound volume is reduced, play the narrative.
+    let scene3SoundNarrative = scene.querySelector("#scene3-sound-narrative");
+    let scene3SoundBackground = scene.querySelector("#scene3-sound-background");
+    scene3SoundBackground.addEventListener("animationcomplete__volume_reduce", function() {
+      scene3SoundNarrative.components.sound.playSound();
+    });
+
+    // After the move animation is complete.
+    let scene3 = scene.querySelector("#scene3");
+    scene3.addEventListener("animationtimelinecomplete", function() {
+      // Hide the amulet.
+      let scene3Amulet = scene.querySelector("#scene3-amulet");
+      scene3Amulet.setAttribute("visible", "false");
+
+    });
+
+    // After the narrative ended.
+    let teleport = scene.querySelector("#scene3-teleport");
+    scene3SoundNarrative.addEventListener("sound-ended", function() {
+      scene3SoundBackground.emit("scene3-volume-raise");
+
+      teleportEnabled = true;
+
+      // Mark the teleport as the target.
+      let camera = scene.querySelector("#camera");
+      camera.setAttribute("target-indicator", "target: #scene3-teleport");
+
+      teleport.setAttribute("class", "clickable");
+    });
+
+    teleport.addEventListener("click", function() {
+      console.log("click on teleport!");
+      if (teleportEnabled == true) {
+        teleportEnabled = false;
+
+        scene3.setAttribute("visible", false);
+        scene3SoundBackground.components.sound.stopSound();
+        let soundEffectDrill = scene.querySelector("#sound-effect-drill");
+        soundEffectDrill.components.sound.stopSound();
+
+        let scene3SoundDanie = scene.querySelector("#scene3-sound-danie");
+        scene3SoundDanie.components.sound.stopSound();
+
+        let camera = scene.querySelector("#camera");
+        camera.removeAttribute("target-indicator");
+
+        startScene4();
+      }
+    });
+
+  }
+});
+
 var start = function() {
   // Hide the play button.
   var rootPlay = document.getElementById("root");
@@ -148,7 +205,8 @@ var start = function() {
   //startInstructions();
   // For debugging.
   //startScene1();
-  startScene2();
+  //startScene2();
+  startScene3();
 };
 
 var startInstructions = function() {
@@ -183,5 +241,22 @@ var startScene2 = function() {
 };
 
 var startScene3 = function() {
+  let camera = document.getElementById("camera");
+  camera.setAttribute("position", "0 1 0");
 
+  let scene3 = document.getElementById("scene3");
+  scene3.setAttribute("visible", true);
+  scene3.emit("startScene3");
+
+  let scene3SoundBackground = document.getElementById("scene3-sound-background");
+  scene3SoundBackground.components.sound.playSound();
+
+  let soundEffectDrill = document.getElementById("sound-effect-drill");
+  soundEffectDrill.components.sound.playSound();
+
+  let scene3SoundDanie = document.getElementById("scene3-sound-danie");
+  scene3SoundDanie.components.sound.playSound();
+};
+
+var startScene4 = function() {
 };

@@ -53,10 +53,12 @@
   </a-image>
 
   <!-- Teleport. -->
-  <a-entity id="scene2-amulet" position="0 3.25 -2.5"
+  <a-entity id="scene2-amulet"
+            position="0 3.25 -2.5"
             geometry="primitive: sphere; radius: 3"
             material="transparent: true; opacity: 0"
-            scale="0 0 0" rotation="90 0 360"
+            scale="0 0 0"
+            rotation="90 0 360"
 	          visible="true"
             animation__mouseenter="property: material.opacity; startEvents: mouseenter; easing: easeInCubic; dur: 500; from: 0; to: 0.5"
             animation__mouseleave="property: material.opacity; startEvents: mouseleave; easing: easeInCubic; dur: 500; from: 0.5; to: 0"
