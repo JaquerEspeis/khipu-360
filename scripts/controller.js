@@ -261,18 +261,36 @@ AFRAME.registerComponent("scene4", {
   }
 });
 
+AFRAME.registerComponent("scene5", {
+  init: function () {
+    let scene = this.el.sceneEl;
+    // After the move animation is complete.
+    let scene5 = scene.querySelector("#scene5");
+    let scene5SoundNarrative = scene.querySelector("#scene5-sound-narrative");
+    scene5.addEventListener("animationtimelinecomplete", function() {
+      scene5SoundNarrative.components.sound.playSound();
+    });
+
+    scene5SoundNarrative.addEventListener("sound-ended", function() {
+      let scene5SoundBackground = scene.querySelector("#scene5-sound-background");
+      scene5SoundBackground.emit("scene5-volume-raise");
+    });
+  }
+});
+
 
 var start = function() {
   // Hide the play button.
   var rootPlay = document.getElementById("root");
   rootPlay.style.display = "none";
 
-  //startInstructions();
+  startInstructions();
   // For debugging.
   //startScene1();
   //startScene2();
   //startScene3();
-  startScene4();
+  //startScene4();
+  //startScene5()
 };
 
 var startInstructions = function() {
@@ -337,4 +355,10 @@ var startScene4 = function() {
 };
 
 var startScene5 = function() {
+  let scene5SoundBackground = document.getElementById("scene5-sound-background");
+  scene5SoundBackground.components.sound.playSound();
+
+  let scene5 = document.getElementById("scene5");
+  scene5.setAttribute("visible", true);
+  scene5.emit("startScene5");
 };
