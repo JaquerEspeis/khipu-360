@@ -1,0 +1,179 @@
+<a-entity id="scene4"
+          scene4=""
+          visible="false"
+          animation-timeline="timeline: #timeline-scene4; startEvents: startScene4">
+
+  <!-- 360 background image -->
+  <a-sky radius="5" src="#img-inventoria-night"
+         rotation="0 250 0"
+	       visible="true">
+  </a-sky>
+
+  <!-- Background audio -->
+  <a-sound id="scene4-sound-background"
+           src="#scene4-audio-background"
+           autoplay="false"
+           loop="true"
+           animation__volume_reduce="property: volume; dur: 3000; from: 1; to:0.1; autoplay: false"
+           animation__volume_raise="property: volume; dur: 3000; from: 0.1; to:1; autoplay: false; startEvents: scene4_volume_raise">
+  </a-sound>
+
+  <!-- Characters -->
+  <!-- FIXME: walking.template is not working here.
+       --elopio -- 20210323
+  -->
+  <a-image id="scene4-image-anao"
+           src="#anao-front" position="3 -1 3"
+           height="3" width="1"
+           visible="true"
+           animation__visibility_stop="property: visible; from: true; to: false; dur: 0.1; autoplay: false">
+  </a-image>
+  <a-entity id="scene4-gif-anao-walk"
+            position="3 -1 3"
+            geometry="primitive: plane; height: 3; width: 1"
+            material="shader: gif; src:#gif-anao-walk; transparent: true; autoplay: true; side: double"
+		        visible="false"
+            animation__visibility_start="property: visible; from: false; to: true; dur: 0.1; autoplay: false"
+            animation__move="property: position; from: 3 -1 3; to: 0.7 -1 1.5; dur: 3000; easing: linear; autoplay: false">
+  </a-entity>
+
+  <a-image id="scene4-image-anap"
+           src="#anap-front" position="-3 -1 -2"
+           height="3" width="1"
+           visible="true"
+           animation__visibility_stop="property: visible; from: true; to: false; dur: 0.1; autoplay: false">
+  </a-image>
+  <a-entity id="scene4-gif-anap-walk"
+            position="-3 -1 -2"
+            geometry="primitive: plane; height: 3; width: 1"
+            material="shader: gif; src:#gif-anap-walk; transparent: true; autoplay: true; side: double"
+            rotation="0 180 0"
+		        visible="false"
+            animation__visibility_start="property: visible; from: false; to: true; dur: 0.1; autoplay: false"
+            animation__move="property: position; from: -3 -1 -2; to: -1 -1 -2; dur: 3000; easing: linear; autoplay: false">
+  </a-entity>
+  <a-image id="scene4-image-coni"
+           src="#coni-front" position="0.8 -1 2"
+           height="3" width="1"
+           visible="true"
+           animation__visibility_stop="property: visible; from: true; to: false; dur: 0.1; autoplay: false">
+  </a-image>
+  <a-entity id="scene4-gif-coni-walk"
+            position="0.8 -1 2"
+            geometry="primitive: plane; height: 3; width: 1"
+            material="shader: gif; src:#gif-coni-walk; transparent: true; autoplay: true; side: double"
+		        visible="false"
+            animation__visibility_start="property: visible; from: false; to: true; dur: 0.1; autoplay: false"
+            animation__move="property: position; from: 0.8 -1 2; to: -0.3 -1 1.5; dur: 3000; easing: linear; autoplay: false">
+  </a-entity>
+  <a-image id="scene4-image-danie"
+           src="#danie-front" position="0 -1 2.5"
+           height="3" width="1"
+           visible="true"
+           animation__visibility_stop="property: visible; from: true; to: false; dur: 0.1; autoplay: false">
+  </a-image>
+  <a-entity id="scene4-gif-danie-walk"
+            position="0 -1 2.5"
+            rotation="0 180 0"
+            geometry="primitive: plane; height: 3; width: 1"
+            material="shader: gif; src:#gif-danie-walk; transparent: true; autoplay: true; side: double"
+		        visible="false"
+            animation__visibility_start="property: visible; from: false; to: true; dur: 0.1; autoplay: false"
+            animation__move="property: position; from: 0 -1 2.5; to: 1 -1 1; dur: 3000; easing: linear; autoplay: false">
+  </a-entity>
+
+  <a-image id="scene4-khipukamayuq" src="#khipukamayuq-front" position="0.2 0.5 -3"
+           height="2" width="0.75"
+           visible="true"
+           opacity="0"
+           animation__opacity_start="property: opacity; from: 0; to: 1; dur: 5000; autoplay: false">
+    <a-sound id="scene4-sound-khipukamayuq" src="#audio-khipukamayuq"
+	           autoplay="false">
+    </a-sound>
+  </a-image>
+
+  <!-- Khipu -->
+  <a-image id="image-khipu" src="#img-khipu"
+           visible="true"
+           scale="5 5 5"
+           position="-0 2 -2.5">
+  </a-image>
+
+  <!-- Teleport. -->
+  <a-entity id="scene4-amulet"
+            geometry="primitive: sphere; radius: 3" material="transparent: true; opacity: 0"
+            scale="0.2 0.2 0.2"
+            position="0.1 -0.5 -2"
+            visible="true"
+            animation__mouseenter="property: material.opacity; startEvents: mouseenter; easing: easeInCubic; dur: 500; from: 0; to: 0.5"
+            animation__mouseleave="property: material.opacity; startEvents: mouseleave; easing: easeInCubic; dur: 500; from: 0.5; to: 0"
+            animation__rotation="property: rotation; from: 0 0 0; to: 0 360 0; dur: 5000; startEvents: scene4-amulet-rotate; loop: true; easing: linear">
+    <a-entity geometry="primitive: plane; height: 4; width: 4"
+              material="side: front; src: #img-amulet-front; transparent: true">
+    </a-entity>
+    <a-entity geometry="primitive: plane; height: 4; width: 4"
+              material="side: back; src: #img-amulet-back; transparent: true">
+    </a-entity>
+  </a-entity>
+
+  <!-- Narrative. -->
+  <a-entity>
+    <a-sound id="scene4-sound-narrative" src="#audio-narrative-scene4"
+             autoplay="false">
+    </a-sound>
+  </a-entity>
+
+  <a-timeline id="timeline-scene4">
+    <a-timeline-animation select="#scene4-sound-background"
+                          name="volume_raise">
+    </a-timeline-animation>
+    <a-timeline-group>
+      <a-timeline-animation select="#scene4-sound-background"
+                            name="volume_reduce">
+      </a-timeline-animation>
+      <a-timeline-animation select="#scene4-gif-anao-walk"
+                            name="visibility_start">
+      </a-timeline-animation>
+      <a-timeline-animation select="#scene4-gif-anao-walk"
+                            name="move">
+      </a-timeline-animation>
+      <a-timeline-animation select="#scene4-image-anao"
+                            name="visibility_stop">
+      </a-timeline-animation>
+
+      <a-timeline-animation select="#scene4-gif-anap-walk"
+                            name="visibility_start">
+      </a-timeline-animation>
+      <a-timeline-animation select="#scene4-gif-anap-walk"
+                            name="move">
+      </a-timeline-animation>
+      <a-timeline-animation select="#scene4-image-anap"
+                            name="visibility_stop">
+      </a-timeline-animation>
+
+      <a-timeline-animation select="#scene4-gif-coni-walk"
+                            name="visibility_start">
+      </a-timeline-animation>
+      <a-timeline-animation select="#scene4-gif-coni-walk"
+                            name="move">
+      </a-timeline-animation>
+      <a-timeline-animation select="#scene4-image-coni"
+                            name="visibility_stop">
+      </a-timeline-animation>
+
+      <a-timeline-animation select="#scene4-gif-danie-walk"
+                            name="visibility_start">
+      </a-timeline-animation>
+      <a-timeline-animation select="#scene4-gif-danie-walk"
+                            name="move">
+      </a-timeline-animation>
+      <a-timeline-animation select="#scene4-image-danie"
+                            name="visibility_stop">
+      </a-timeline-animation>
+      <a-timeline-animation select="#scene4-khipukamayuq"
+                            name="opacity_start">
+      </a-timeline-animation>
+    </a-timeline-group>
+  </a-timeline>
+
+</a-entity>

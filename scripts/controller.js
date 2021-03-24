@@ -197,6 +197,71 @@ AFRAME.registerComponent("scene3", {
   }
 });
 
+AFRAME.registerComponent("scene4", {
+  init: function () {
+    let scene = this.el.sceneEl;
+
+    // After the background sound volume is reduced, play the narrative.
+    let scene4SoundNarrative = scene.querySelector("#scene4-sound-narrative");
+    let scene4SoundBackground = scene.querySelector("#scene4-sound-background");
+    scene4SoundBackground.addEventListener("animationcomplete__volume_reduce", function() {
+      scene4SoundNarrative.components.sound.playSound();
+    });
+
+    // After the move animation is complete.
+    let scene4 = scene.querySelector("#scene4");
+    scene4.addEventListener("animationtimelinecomplete", function() {
+      //  Pause the gifs
+      let gifAnaoWalk = scene.querySelector("#scene4-gif-anao-walk");
+      let gifAnapWalk = scene.querySelector("#scene4-gif-anap-walk");
+      let gifConiWalk = scene.querySelector("#scene4-gif-coni-walk");
+      let gifDanieWalk = scene.querySelector("#scene4-gif-danie-walk");
+      gifAnaoWalk.pause();
+      gifAnapWalk.pause();
+      gifConiWalk.pause();
+      gifDanieWalk.pause();
+
+      let scene4SoundKhipukamayuq = scene.querySelector("#scene4-sound-khipukamayuq");
+      scene4SoundKhipukamayuq.components.sound.playSound();
+    });
+
+    // After the narrative ended.
+    let teleport = scene.querySelector("#scene4-amulet");
+    scene4SoundNarrative.addEventListener("sound-ended", function() {
+      scene4SoundBackground.emit("scene4-volume-raise");
+      teleport.emit("scene4-amulet-rotate");
+
+      teleportEnabled = true;
+
+      // Mark the teleport as the target.
+      let camera = scene.querySelector("#camera");
+      camera.setAttribute("target-indicator", "target: #scene4-amulet");
+
+      teleport.setAttribute("class", "clickable");
+    });
+
+    teleport.addEventListener("click", function() {
+      console.log("click on teleport!");
+      if (teleportEnabled == true) {
+        teleportEnabled = false;
+
+        scene4.setAttribute("visible", false);
+        scene4SoundBackground.components.sound.stopSound();
+
+        let scene4SoundKhipukamayuq = scene.querySelector("#scene4-sound-khipukamayuq");
+        scene4SoundKhipukamayuq.components.sound.stopSound();
+
+        let camera = scene.querySelector("#camera");
+        camera.removeAttribute("target-indicator");
+
+        startScene5();
+      }
+    });
+
+  }
+});
+
+
 var start = function() {
   // Hide the play button.
   var rootPlay = document.getElementById("root");
@@ -206,7 +271,8 @@ var start = function() {
   // For debugging.
   //startScene1();
   //startScene2();
-  startScene3();
+  //startScene3();
+  startScene4();
 };
 
 var startInstructions = function() {
@@ -259,4 +325,16 @@ var startScene3 = function() {
 };
 
 var startScene4 = function() {
+  let camera = document.getElementById("camera");
+  camera.setAttribute("position", "0 0.5 0");
+
+  let scene4SoundBackground = document.getElementById("scene4-sound-background");
+  scene4SoundBackground.components.sound.playSound();
+
+  let scene4 = document.getElementById("scene4");
+  scene4.setAttribute("visible", true);
+  scene4.emit("startScene4");
+};
+
+var startScene5 = function() {
 };

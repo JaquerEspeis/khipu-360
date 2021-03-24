@@ -1,12 +1,12 @@
-<a-image id="scene1-image-${name}"
+<a-image id="scene${scene}-image-${name}"
          src="#${name}-front" position="${initialPosition}"
-         height="4" width="1.25"
+         height="${height}" width="{width}"
          visible="true"
          animation__visibility_stop="property: visible; from: true; to: false; dur: 0.1; autoplay: false">
 </a-image>
-<a-entity id="scene1-gif-${name}-walk"
+<a-entity id="scene${scene}-gif-${name}-walk"
           position="${initialPosition}"
-          geometry="primitive: plane; height: 4; width: 1.25"
+          geometry="primitive: plane; height: ${height}; width: ${width}"
           material="shader: gif; src:#gif-${name}-walk; transparent: true; autoplay: true; side: double"
           rotation="0 180 0"
 		      visible="false"
