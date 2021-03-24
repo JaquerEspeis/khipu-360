@@ -1,0 +1,44 @@
+<a-entity id="scene5"
+          scene5=""
+          visible="false"
+          animation-timeline="timeline: #timeline-scene5; startEvents: startScene5">
+
+  <!-- 360 background image -->
+  <a-sky radius="10" src="#img-forrest"
+	       visible="true">
+  </a-sky>
+
+  <!-- Background audio -->
+  <a-sound id="scene5-sound-background"
+           src="#scene5-audio-background"
+           autoplay="false"
+           loop="true"
+           animation__volume_reduce="property: volume; dur: 3000; from: 1; to:0.1; autoplay: false"
+           animation__volume_raise="property: volume; dur: 3000; from: 0.1; to:1; autoplay: false; startEvents: scene4_volume_raise">
+  </a-sound>
+
+  <!-- Characters. -->
+  <a-image id="image-all" src="#img-all" position="4 -1 -2"
+           height="4" width="4"
+           rotation="0 -30 0"
+	         visible="true">
+  </a-image>
+
+  <!-- Narrative. -->
+  <a-entity>
+	  <a-sound id="scene5-sound-narrative" src="#audio-narrative-scene5"
+		         autoplay="false">
+  </a-entity>
+
+  <a-timeline id="timeline-scene5">
+    <a-timeline-animation select="#scene5-sound-background"
+                          name="volume_raise">
+    </a-timeline-animation>
+    <a-timeline-group>
+      <a-timeline-animation select="#scene5-sound-background"
+                            name="volume_reduce">
+      </a-timeline-animation>
+    </a-timeline-group>
+  </a-timeline>
+
+</a-entity>

@@ -1,0 +1,63 @@
+<a-entity id="instructions"
+          animation-timeline="timeline: #timeline-instructions; startEvents: startInstructions"
+          instructions="">
+
+  <a-sky id="sky-instructions" color="#000" visible="true"></a-sky>
+
+  <a-entity id="instructions-headset"
+            template="src: src/templates/instruction.template"
+            data-id-instructions="instructions-headset"
+            data-img-src-instructions="#img-instructions-headset"
+            data-text="Ponete auriculares para una mejor experiencia\nUse your headset for a better experience">
+  </a-entity>
+
+  <a-entity id="instructions-cardboard"
+            template="src: src/templates/instruction.template"
+            data-id-instructions="instructions-cardboard"
+            data-img-src-instructions="#img-instructions-cardboard"
+            data-text="Coloca tu dispositivo en el Cardboard\nPlace your device in the Cardboard">
+  </a-entity>
+
+  <a-entity id="instructions-rotation"
+            template="src: src/templates/instruction.template"
+            data-id-instructions="instructions-rotation"
+            data-img-src-instructions="#img-instructions-rotation"
+            data-text="Vas a poder moverte libremente todo el tiempo\nYou'll be able to move freely all the time">
+  </a-entity>
+
+  <a-timeline id="timeline-instructions">
+    <!-- TODO:
+    Use templates to avoid repetition.
+    It seems that a-timeline fails to trigger the animations nested in an entity.
+    --elopio -- 20210321
+    -->
+    <a-timeline-group>
+      <a-timeline-animation select="#instructions-headset-img" name="opacity_start"></a-timeline-animation>
+      <a-timeline-animation select="#instructions-headset-img" name="rotation"></a-timeline-animation>
+      <a-timeline-animation select="#instructions-headset-text" name="opacity_start"></a-timeline-animation>
+    </a-timeline-group>
+    <a-timeline-group>
+      <a-timeline-animation select="#instructions-headset-img" name="opacity_stop"></a-timeline-animation>
+      <a-timeline-animation select="#instructions-headset-text" name="opacity_stop"></a-timeline-animation>
+    </a-timeline-group>
+    <a-timeline-group>
+      <a-timeline-animation select="#instructions-cardboard-img" name="opacity_start"></a-timeline-animation>
+      <a-timeline-animation select="#instructions-cardboard-img" name="rotation"></a-timeline-animation>
+      <a-timeline-animation select="#instructions-cardboard-text" name="opacity_start"></a-timeline-animation>
+    </a-timeline-group>
+    <a-timeline-group>
+      <a-timeline-animation select="#instructions-cardboard-img" name="opacity_stop"></a-timeline-animation>
+      <a-timeline-animation select="#instructions-cardboard-text" name="opacity_stop"></a-timeline-animation>
+    </a-timeline-group>
+    <a-timeline-group>
+      <a-timeline-animation select="#instructions-rotation-img" name="opacity_start"></a-timeline-animation>
+      <a-timeline-animation select="#instructions-rotation-img" name="rotation"></a-timeline-animation>
+      <a-timeline-animation select="#instructions-rotation-text" name="opacity_start"></a-timeline-animation>
+    </a-timeline-group>
+    <a-timeline-group>
+      <a-timeline-animation select="#instructions-rotation-img" name="opacity_stop"></a-timeline-animation>
+      <a-timeline-animation select="#instructions-rotation-text" name="opacity_stop"></a-timeline-animation>
+    </a-timeline-group>
+  </a-timeline>
+
+</a-entity>

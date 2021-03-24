@@ -1,0 +1,40 @@
+<a-entity id="intro"
+          animation-timeline="timeline: #timeline-intro; startEvents: startIntro"
+          intro=""
+          visible="false">
+
+  <a-sky id="sky-intro" color="#000"></a-sky>
+
+  <a-entity template="src: src/templates/intro.template"
+            data-id="title">
+  </a-entity>
+  <a-entity template="src: src/templates/intro.template"
+            data-id="description">
+  </a-entity>
+  <a-entity template="src: src/templates/intro.template"
+            data-id="project">
+  </a-entity>
+
+  <a-video id="video-intro" src="#video-intro"
+	         width="5" height="2.8" position="0 2 -3"
+	         visible="false">
+  </a-video>
+
+  <a-timeline id="timeline-intro">
+    <!-- TODO:
+    Use templates to avoid repetition.
+    It seems that a-timeline fails to trigger the animations nested in an entity.
+    --elopio -- 20210321
+    -->
+    <a-timeline-animation select="#plane-intro-title" name="opacity_start"></a-timeline-animation>
+    <a-timeline-animation select="#plane-intro-title" name="opacity_stop"></a-timeline-animation>
+
+    <a-timeline-animation select="#plane-intro-description" name="opacity_start"></a-timeline-animation>
+    <a-timeline-animation select="#plane-intro-description" name="opacity_stop"></a-timeline-animation>
+
+    <a-timeline-animation select="#plane-intro-project" name="opacity_start"></a-timeline-animation>
+    <a-timeline-animation select="#plane-intro-project" name="opacity_stop"></a-timeline-animation>
+
+  </a-timeline>
+
+</a-entity>

@@ -1,0 +1,96 @@
+<a-entity id="scene3"
+          scene3=""
+          visible="false"
+          animation-timeline="timeline: #timeline-scene3; startEvents: startScene3">
+
+  <!-- 360 background image -->
+  <a-sky radius="5"
+         src="#img-inventoria-day"
+         rotation="0 250 0"
+         visible="true">
+  </a-sky>
+
+  <!-- Background audio -->
+  <a-sound id="scene3-sound-background"
+           src="#scene3-audio-background"
+           autoplay="false"
+           loop="true"
+           position="0 0 0"
+           animation__volume_reduce="property: volume; dur: 3000; from: 1; to:0.1; autoplay: false"
+           animation__volume_raise="property: volume; dur: 3000; from: 0.1; to:1; autoplay: false; startEvents: scene2-volume-raise">
+  </a-sound>
+
+  <!-- Characters -->
+  <a-entity id="entity-gif-anap-drill" position="2 -0.1 0.65" geometry="primitive: plane; height: 1.4; width: 0.5"
+            material="shader: gif; src:#gif-anap-drill; transparent: true; autoplay: true; side: double"
+            rotation="0 270 0"
+            visible="true">
+    <a-sound id="sound-effect-drill" src="#audio-effect-drill"
+             loop="true"
+             autoplay="false"
+             on="startScene3">
+    </a-sound>
+  </a-entity>
+  <a-entity id="entity-gif-danie-writes" position="0.15 -0.1 -3" geometry="primitive: plane; height: 1.4; width: 0.5"
+            material="shader: gif; src:#gif-danie-writes; transparent: true; autoplay: true; side: double"
+            visible="true">
+	  <a-sound id="scene3-sound-danie" src="#audio-danie-scene3"
+             volume="2.5"
+             autoplay="false"
+             on="startScene3">
+	  </a-sound>
+  </a-entity>
+
+  <!-- Amulet. -->
+  <a-image id="scene3-amulet" src="#img-amulet-scene3"
+           position="2.4 -1 -3.5"
+           rotation="45 -15 0"
+           visible="true"
+           opacity="1"
+           animation__move="property: position; from: 2.4 -1 -3.5; to: 1.9 10 -2.7; dur: 3000; autoplay: false"
+           animation__move_rotation="property: rotation; from: 45 -15 0; to: -45 0 45; dur: 3000; autoplay: false">
+  </a-image>
+
+  <!-- Teleport. -->
+  <a-entity id="scene3-teleport"
+            geometry="primitive: sphere; radius: 0.9" material="transparent: true; opacity: 0"
+            position="1.5 1 -2"
+            transparent="true"
+            visible="true"
+            animation__mouseenter="property: material.opacity; startEvents: mouseenter; easing: easeInCubic; dur: 500; from: 0; to: 0.5"
+            animation__mouseleave="property: material.opacity; startEvents: mouseleave; easing: easeInCubic; dur: 500; from: 0.5; to: 0">
+	  <a-image id="scene3-image-teleport" src="#img-teleport"
+             visible="true"
+             opacity="0"
+             animation__opacity_start="property: opacity; from: 0; to: 1; dur: 3000; autoplay: false"
+             animation__rotation="property: rotation; from: 0 0 0; to: 0 360 0; dur: 5000; easing: linear; loop: true; autoplay: true">>
+	  </a-image>
+  </a-entity>
+
+  <!-- Narrative. -->
+  <a-entity>
+    <a-sound id="scene3-sound-narrative" src="#audio-narrative-scene3"
+             autoplay="false">
+  </a-entity>
+
+  <a-timeline id="timeline-scene3">
+    <a-timeline-animation select="#scene3-sound-background"
+                          name="volume_raise">
+    </a-timeline-animation>
+    <a-timeline-group>
+      <a-timeline-animation select="#scene3-sound-background"
+                            name="volume_reduce">
+      </a-timeline-animation>
+      <a-timeline-animation select="#scene3-amulet"
+                            name="move">
+      </a-timeline-animation>
+      <a-timeline-animation select="#scene3-amulet"
+                            name="move_rotation">
+      </a-timeline-animation>
+    </a-timeline-group>
+    <a-timeline-animation select="#scene3-image-teleport"
+                          name="opacity_start">
+    </a-timeline-animation>
+  </a-timeline>
+
+</a-entity>
