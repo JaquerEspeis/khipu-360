@@ -15,10 +15,15 @@
             data-id="project">
   </a-entity>
 
-  <a-video id="video-intro" src="#video-intro"
-	         width="5" height="2.8" position="0 2 -3"
-	         visible="false">
-  </a-video>
+  <a-entity id="video-entity"
+            opacity="0"
+            visible="false"
+            animation__visible="property: visible; from: false; to: true; dur: 1; autoplay: false"
+            animation__opacity_start="property: opacity; from: 0; to: 1; dur: 3000; autoplay: false">
+    <a-video id="video-intro" src="#video-intro"
+	           width="5" height="2.8" position="0 0 -3">
+    </a-video>
+  </a-entity>
 
   <a-timeline id="timeline-intro">
     <!-- TODO:
@@ -34,6 +39,8 @@
 
     <a-timeline-animation select="#plane-intro-project" name="opacity_start"></a-timeline-animation>
     <a-timeline-animation select="#plane-intro-project" name="opacity_stop"></a-timeline-animation>
+    <a-timeline-animation select="#video-entity" name="visible"></a-timeline-animation>
+    <a-timeline-animation select="#video-entity" name="opacity_start"></a-timeline-animation>
 
   </a-timeline>
 

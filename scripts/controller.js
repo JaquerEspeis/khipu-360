@@ -18,7 +18,6 @@ AFRAME.registerComponent("intro", {
     let intro = scene.querySelector("#intro");
     let video = scene.querySelector("#video-intro");
     intro.addEventListener("animationtimelinecomplete", function() {
-      video.setAttribute("visible", true);
       video.play();
     });
 
