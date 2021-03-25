@@ -284,6 +284,14 @@ AFRAME.registerComponent("scene5", {
 });
 
 
+document.addEventListener('DOMContentLoaded', function() {
+  var scene = document.querySelector('a-scene');
+  scene.addEventListener('loaded', function (e) {
+    var rootPlay = document.getElementById("root");
+    rootPlay.style.display = "flex";
+  });
+});
+
 var start = function() {
   // Hide the play button.
   var rootPlay = document.getElementById("root");
