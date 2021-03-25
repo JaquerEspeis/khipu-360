@@ -289,13 +289,27 @@ var start = function() {
   var rootPlay = document.getElementById("root");
   rootPlay.style.display = "none";
 
-  startInstructions();
-  // For debugging.
-  //startScene1();
-  //startScene2();
-  //startScene3();
-  //startScene4();
-  //startScene5()
+  const params = new URLSearchParams(location.search);
+
+  switch(params.get("scene")) {
+  case "1":
+    startScene1();
+    break;
+  case "2":
+    startScene2();
+    break;
+  case "3":
+    startScene3();
+    break;
+  case "4":
+    startScene4();
+    break;
+  case "5":
+    startScene5();
+    break;
+  default:
+    startInstructions();
+  }
 };
 
 var startInstructions = function() {
