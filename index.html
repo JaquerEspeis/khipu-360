@@ -22,6 +22,7 @@
     <link href="styles/index.css"  rel="stylesheet" type="text/css">
   </head>
   <body>
+
     <div id="root"
          style="background: #000; z-index: 999 !important; cursor: pointer; position: absolute; top: 0; left: 0;"
          onclick="javascript:start()">
@@ -30,7 +31,7 @@
       </path></svg>
     </div>
 
-    <a-scene>
+    <a-scene loading-screen="dotsColor: red; backgroundColor: black">
       <a-assets>
         <!-- Images -->
         <a-entity template="src: src/assets/images/instructions.html"></a-entity>

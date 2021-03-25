@@ -24,3 +24,7 @@
     font-size: 1.6em;
     text-align: center;
 }
+
+.a-loader-title {
+  color: red;
+}
