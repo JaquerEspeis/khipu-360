@@ -17,6 +17,8 @@
 
     <script src="scripts/aframe-glow-component.js"></script>
 
+    <script src="scripts/aframe-render-order-component.min.js"></script>
+
     <script src="scripts/controller.js"></script>
 
     <link href="styles/index.css"  rel="stylesheet" type="text/css">
@@ -31,7 +33,7 @@
       </path></svg>
     </div>
 
-    <a-scene loading-screen="dotsColor: red; backgroundColor: black">
+    <a-scene loading-screen="dotsColor: red; backgroundColor: black" render-order="layer1, layer2">
       <a-assets>
         <!-- Images -->
         <a-entity template="src: src/assets/images/instructions.html"></a-entity>

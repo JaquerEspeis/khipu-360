@@ -289,12 +289,12 @@ var start = function() {
   var rootPlay = document.getElementById("root");
   rootPlay.style.display = "none";
 
-  startInstructions();
+  //startInstructions();
   // For debugging.
   //startScene1();
   //startScene2();
   //startScene3();
-  //startScene4();
+  startScene4();
   //startScene5()
 };
 

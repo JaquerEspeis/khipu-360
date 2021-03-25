@@ -44,6 +44,7 @@
            animation__visibility_stop="property: visible; from: true; to: false; dur: 0.1; autoplay: false">
   </a-image>
   <a-entity id="scene4-gif-anap-walk"
+            render-order="layer2"
             position="-3 -1 -2"
             geometry="primitive: plane; height: 3; width: 1"
             material="shader: gif; src:#gif-anap-walk; transparent: true; autoplay: true; side: double"
@@ -93,7 +94,9 @@
   </a-image>
 
   <!-- Khipu -->
-  <a-image id="image-khipu" src="#img-khipu"
+  <a-image id="image-khipu"
+           render-order="layer1"
+           src="#img-khipu"
            visible="true"
            scale="5 5 5"
            position="-0 2 -2.5">
