@@ -81,6 +81,17 @@
     </a-sound>
   </a-entity>
 
+  <!-- Subtitles. -->
+  <a-entity id="scene2-subtitles"
+            text-plane="text: Now we begin our mission:
+to create an electrotextile binary computer,
+based in the ancient Inca Khipus,
+before the next solar eclipse.; backgroundColor: #00000077; strokeColor: #fff; transparent: true; font-size: 1; opacity: 0"
+            scale="0.1 0.1"
+            position="0 -0.5 -1.5"
+            animation__opacity_start="property: text-plane.opacity; from: 0; to: 1; dur: 1000; autoplay: false">
+  </a-entity>
+
   <a-timeline id="timeline-scene2">
     <a-timeline-animation select="#scene2-sound-background"
                           name="volume_raise">
@@ -105,6 +116,9 @@
                             name="move_rotation">
       </a-timeline-animation>
     </a-timeline-group>
+    <a-timeline-animation select="#scene2-subtitles"
+                          name="opacity_start">
+    </a-timeline-animation>
 
   </a-timeline>
 

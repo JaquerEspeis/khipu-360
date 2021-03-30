@@ -51,7 +51,7 @@
             rotation="0 180 0"
 		        visible="false"
             animation__visibility_start="property: visible; from: false; to: true; dur: 0.1; autoplay: false"
-            animation__move="property: position; from: -3 -1 -2; to: -1 -1 -2; dur: 3000; easing: linear; autoplay: false">
+            animation__move="property: position; from: -3 -1 -2; to: -1 -1 -2.5; dur: 3000; easing: linear; autoplay: false">
   </a-entity>
   <a-image id="scene4-image-coni"
            src="#coni-front" position="0.8 -1 2"
@@ -126,6 +126,17 @@
     </a-sound>
   </a-entity>
 
+  <!-- Subtitles. -->
+  <a-entity id="scene4-subtitles"
+            render-order="layer3"
+            text-plane="text: Our ancestors made their khipus with their hands.
+Today, we use drills and copper wire
+to spun an electromagnetic Khipu.; backgroundColor: #00000077; strokeColor: #fff; transparent: true; font-size: 1; opacity: 0"
+            scale="0.1 0.1"
+            position="0 -0.5 -1"
+            animation__opacity_start="property: text-plane.opacity; from: 0; to: 1; dur: 1000; autoplay: false">
+  </a-entity>
+
   <a-timeline id="timeline-scene4">
     <a-timeline-animation select="#scene4-sound-background"
                           name="volume_raise">
@@ -177,6 +188,9 @@
                             name="opacity_start">
       </a-timeline-animation>
     </a-timeline-group>
+    <a-timeline-animation select="#scene4-subtitles"
+                          name="opacity_start">
+    </a-timeline-animation>
   </a-timeline>
 
 </a-entity>
